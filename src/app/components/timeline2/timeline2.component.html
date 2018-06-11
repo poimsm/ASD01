@@ -1,0 +1,194 @@
+
+<!-- <div *ngFor="let post of _ps.posts">
+  {{post.mensaje}}
+</div> -->
+
+
+<div class="row" style="">
+  <!-- <div class="col-md-12 bg-light text-muted" style="height:40px;display:flex;justify-content:center;border-bottom:1px solid #ccc">
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;background:white;height:40px;font-size:18px;display:flex;align-items:center">hot</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">reciente</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">siguiendo
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            3
+          </div>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">PM
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            5
+          </div>
+        </span>
+      </a>
+    </div>
+  </div> -->
+
+  <div class="col-md-12 text-muted" style="margin-top:50px;margin-bottom:20px;display:flex;justify-content:center">
+    <input type="text" name="post" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:1px solid #ccc;display:flex;align-items:center"
+      [(ngModel)]="post"
+      (keyup.enter)="enviar_post()"
+      placeholder="Comenzar post...">
+  </div>
+
+
+  <div *ngFor="let post of _ps.posts" class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 " style=";display:flex;justify-content:center">
+    <div class="" id="visto"  style="width:100%;background:#eee;padding:15px">
+      <div style="display:flex;justify-content:flex-start;align-items:flex-start;">
+        <div class="text-muted"style="color:#ccc;height:60px;width:60px;font-size:30px;display:flex;justify-content:flex-start;align-items:center;margin-right:5px">
+          130
+        </div>
+        <div>
+          <img src="assets/02.jpg" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+        </div>
+        <div style="padding-left:15px;width:100%">
+          <p style="font-weight:450;padding:0px;margin:0px">
+            {{post.mensaje}}
+          </p>
+          <div class="" style="margin:0px;color:#bbb;display:flex;justify-content:space-between;flex-wrap:wrap">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+              <div class="text-muted" style="margin-right:10px;">
+                hace 14 min
+              </div>
+              <div class="text-muted" style="">
+
+                <div class="btn-group dropright">
+                  <a style="padding:0px;" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false">
+                    <span class="text-primary" style="font-weight:450">{{post.nombre}}  </span>
+                  </a>
+                  <div class="dropdown-menu all" style="border:0px;padding:0px;margin-top:-50px;">
+                    <div class="" style="width:370px;height:500px;position:relative;z-index:4">
+                      <img src="assets/user2.jpg" style="object-fit:cover;max-width:370px;height:500px;border-radius:4px"alt="">
+                      <i class="fas fa-ellipsis-h" style="position:absolute;top:5px;right:5px;color:white"></i>
+                      <div class=""style="padding-left:20px;padding-right:0px;position:absolute;top:30px;color:white;">
+                        <span style="background:#333;opacity:0.7;border-radius:2px;padding:5px;font-size:18px;font-weight:450">
+                          Oscar Garcia
+                        </span> <br><br>
+                        <p style="background:#333;opacity:0.7;border-radius:2px;padding:5px;">
+                          bostezo porque intento demostrar aburrimiento </p>
+                          <img src="assets/u2.jpg" style="max-height:200px;max-width:330px;border-radius:2px" alt="">
+                          <div style="margin-top:10px;display:flex;justify-content:flex-start;align-items:center">
+                            <button class="btn btn-danger disabled" style="">20 Posts</button>
+                            <button class="btn btn-info disabled" style="margin-left:10px">45 Shop</button>
+                            <span style=";margin-left:10px;background:#333;opacity:0.7;padding:5px;border-radius:5px">
+                              23
+                              <i class="fas fa-heart" style="color:coral;font-size:20px"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary disabled" style=";position:absolute;bottom:30px;left:20px;width:200px">Seguir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="text-muted" style=";width:120px;display:flex;justify-content:center;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;;margin-right:3px;">
+                12 <i class="fas fa-images" style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div style="display:flex;align-items:center;margin-right:3px;">
+                33 <i class="far fa-comment-alt"style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div class=""style="display:flex;align-items:center;margin-right:3px">
+                14 <i class="fas fa-thumbs-up"style="color:#bbb;margin-left:3px"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngFor="let post of _ps.posts" class="col-md-12" style=";display:flex;justify-content:center">
+  <div class="" id="visto"  style="width:600px;background:#eee;padding:15px">
+    <div style="display:flex;justify-content:flex-start;align-items:flex-start;">
+      <div class="text-muted"style="color:#ccc;height:60px;width:80px;font-size:30px;display:flex;justify-content:flex-start;align-items:center;margin-right:0px">
+        B
+      </div>
+      <div>
+        <img src="assets/02.jpg" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+      </div>
+      <div style="padding-left:15px;width:100%">
+        <p style="font-weight:450;padding:0px;margin:0px">
+          {{post.mensaje}}
+        </p>
+        <div class="" style="margin:0px;color:#bbb;display:flex;justify-content:space-between;flex-wrap:wrap">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+            <div class="text-muted" style="margin-right:10px;">
+              hace 14 min
+            </div>
+            <div class="text-muted" style="">
+
+              <div class="btn-group dropright">
+                <a style="padding:0px;" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false">
+                  <span class="text-primary" style="font-weight:450">{{post.nombre}}  </span>
+                </a>
+                <div class="dropdown-menu all" style="border:0px;padding:0px;margin-top:-50px;">
+                  <div class="" style="width:370px;height:500px;position:relative;z-index:4">
+                    <img src="assets/user2.jpg" style="object-fit:cover;width:370px;height:500px;border-radius:4px"alt="">
+                    <i class="fas fa-ellipsis-h" style="position:absolute;top:5px;right:5px;color:white"></i>
+                    <div class=""style="padding-left:20px;padding-right:0px;position:absolute;top:30px;color:white;">
+                      <span style="background:#333;opacity:0.7;border-radius:2px;padding:5px;font-size:18px;font-weight:450">
+                        Oscar Garcia
+                      </span> <br><br>
+                      <p style="background:#333;opacity:0.7;border-radius:2px;padding:5px;">
+                        bostezo porque intento demostrar aburrimiento </p>
+                        <img src="assets/u2.jpg" style="max-height:200px;max-width:330px;border-radius:2px" alt="">
+                        <div style="margin-top:10px;display:flex;justify-content:flex-start;align-items:center">
+                          <button class="btn btn-danger disabled" style="">20 Posts</button>
+                          <button class="btn btn-info disabled" style="margin-left:10px">45 Shop</button>
+                          <span style=";margin-left:10px;background:#333;opacity:0.7;padding:5px;border-radius:5px">
+                            23
+                            <i class="fas fa-heart" style="color:coral;font-size:20px"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary disabled" style=";position:absolute;bottom:30px;left:20px;width:200px">Seguir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="text-muted" style=";width:120px;display:flex;justify-content:center;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;;margin-right:3px;">
+              12 <i class="fas fa-images" style="color:#bbb;margin-left:3px"></i>
+            </div>
+            <div style="display:flex;align-items:center;margin-right:3px;">
+              33 <i class="far fa-comment-alt"style="color:#bbb;margin-left:3px"></i>
+            </div>
+            <div class=""style="display:flex;align-items:center;margin-right:3px">
+              14 <i class="fas fa-thumbs-up"style="color:#bbb;margin-left:3px"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

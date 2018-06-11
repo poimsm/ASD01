@@ -1,0 +1,16 @@
+.bottom {
+  box-shadow: 0 5px 5px -5px #333;
+}
+a { color:white;
+    /* padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px; */
+    text-decoration: none;
+
+ }
+a:hover {
+   /* color:pink !important; */
+   text-decoration:none;
+   cursor:pointer;
+   opacity:0.5;
+}

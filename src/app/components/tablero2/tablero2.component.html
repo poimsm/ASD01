@@ -1,0 +1,149 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="!showUser">
+
+  <div class="row" style="height:1000px">
+    <div class="col-md-1" style="background:#2D2F3E">
+
+    </div>
+    <div class="col-md-10 text-dark"style="">
+
+  <div class="row" style="padding-top:50px">
+    <div class="col-md-12">
+      <h4>Próximas salidas (Subastadas)</h4>
+      <div class="bg-light" style="display:flex;justify-content:flex-start;">
+        <table class="table table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Tiempo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Medio</th>
+              <th scope="col">Zona de partida</th>
+              <th scope="col">Zona de llegada</th>
+              <th scope="col">Valor mínimo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">En 15min</th>
+              <td>Mark</td>
+              <td> <i class="fas fa-bicycle"style="font-size:30px"></i> </td>
+              <td>Centro</td>
+              <td>Población Menzel</td>
+              <td>$600</td>
+            </tr>
+            <tr>
+              <th scope="row">En 20min</th>
+              <td>Jacob</td>
+              <td><i class="fas fa-car" style="font-size:30px"></i></td>
+              <td>Niebla</td>
+              <td>Terminal de buses</td>
+              <td>$500</td>
+            </tr>
+            <tr>
+              <th scope="row">En 8min</th>
+              <td>Alex</td>
+              <td><i class="fas fa-motorcycle" style="font-size:30px"></i></td>
+              <td>Plazuela Berlin</td>
+              <td>Sodimac</td>
+              <td>$800</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <h4>Entrada de pedidos</h4>
+    </div>
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">Paquete</th>
+          <th scope="col">Nombre</th>
+          <!-- <th scope="col">Medio</th> -->
+          <th scope="col">Punto de partida</th>
+          <th scope="col">Punto de entrega</th>
+          <th scope="col">Hora de llegada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">ligero</th>
+          <td>Mark</td>
+          <!-- <td> <i class="fas fa-bicycle"style="font-size:30px"></i> </td> -->
+          <td>Corral 240</td>
+          <td>Av. Ramon Picarte 453</td>
+          <td>Entre 18:30 - 19:00</td>
+        </tr>
+        <tr>
+          <th scope="row">2.5kg</th>
+          <td>Jacob</td>
+          <!-- <td><i class="fas fa-car" style="font-size:30px"></i></td> -->
+          <td>Caopolican 1202</td>
+          <td>Simon Bolivar 802</td>
+          <td>Entre 8:30 - 12:00</td>
+        </tr>
+        <tr>
+          <th scope="row">ligero</th>
+          <td>Alex</td>
+          <!-- <td><i class="fas fa-motorcycle" style="font-size:30px"></i></td> -->
+          <td>Pedro Montt 302</td>
+          <td>Av. Francia 2002</td>
+          <td>Entre 13:45 - 14:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div style="border:1px solid #bbb;border-radius:6px">
+      <span>Ingresar código</span>
+    </div>
+
+    </div>
+    <div class="col-md-1" style="background:#2D2F3E">
+    </div>
+  </div>
+
+  <a routerLink="user2" (click)="showUser=true">
+  <div class="bg-dark text-white toggle2" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+    <div style="display:flex;justify-content:center">
+      <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="height:15px;background:white;width:12px">
+        </div>
+        <div style="height:15px;background:white;width:12px">
+        </div>
+      </div>
+      <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:15px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>
+
+  <a>
+  <div class="bg-danger text-white toggle" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+    <div style="display:flex;justify-content:center">
+      <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="height:15px;background:white;width:12px">
+        </div>
+        <div style="height:15px;background:white;width:12px">
+        </div>
+      </div>
+      <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:15px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>
+</div>

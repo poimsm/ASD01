@@ -1,0 +1,50 @@
+input {
+  outline: none;
+}
+/* ::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+} */
+a {
+  color: white;
+  /* padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px; */
+  text-decoration: none;
+}
+a:hover {
+  color: dodgerblue !important;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+textarea {
+  color: gray;
+  outline: none;
+  border: 0px;
+  resize: none;
+  display: block;
+  box-sizing: padding-box;
+  overflow: hidden;
+  padding: 10px !important;
+  width: 380px;
+  font-size: 16px;
+  margin: 10px auto;
+  /* margin: 50px auto; */
+}
+
+/* .alto {
+  height: 300px;
+}
+@media only screen and (min-width: 670px) {
+  .alto {
+    height: 400px;
+  }
+} */
+
+ul,
+li {
+  list-style-type: none;
+  padding: 5px;
+}

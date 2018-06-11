@@ -1,0 +1,173 @@
+.principal {
+  padding-top:30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.bottom {
+  box-shadow: 0 5px 5px -5px #333;
+}
+.left {
+  box-shadow: -5px 0 5px -5px #bbb;
+}
+.fots{
+  width: 300px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.chat{
+  /* position: absolute;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  z-index: 1; */
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1;
+    /* width: 40px;
+    height: 40px; */
+  font-size: 18px;
+}
+.box{
+  position:fixed;
+  bottom:100px;
+  right: 40px;
+  z-index: 1;
+  font-size: 17px;
+  color:red;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  /* background: #bbb; */
+}
+ul, li { list-style-type: none; margin-left: 0; padding-left: 0;}
+.bot{z-index:1;
+opacity: 1}
+a {
+
+
+    text-decoration: none;
+ }
+a:hover {
+   width: 210px !important;
+   color:black !important;
+   text-decoration:none;
+   cursor:pointer;
+   background:gray;
+   opacity: 0.2;
+}
+
+// Colors
+$bg-color: #333;
+$dot-color: #333;
+
+// Dimensions
+$dot-size: 2px;
+$dot-space: 22px;
+
+.hola {
+	background:
+		linear-gradient(90deg, #333 (20px), transparent 1%) center,
+		linear-gradient(#333 (20px), transparent 1%) center,
+		#333;
+	/* background-size: $dot-space $dot-space; */
+}
+
+@media screen and (min-width: 0px) and (max-width: 380px) {
+.fots{
+  width:100%;
+}
+.box{
+  width: 100%;
+  right:0px;
+  bottom:80px;
+}
+.chat{
+
+  right:30px;
+  bottom:30px;
+}
+}
+
+
+
+/* The Modal (background) */
+.modal {
+   /* display: none; /* Hidden by default */ */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+   background-color: #fefefe;
+   margin: 15% auto; /* 15% from the top and centered */
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+
+
+#button {
+    display: inline-block;
+    margin-top: 20%;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow:    0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -moz-box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    -moz-transition: -moz-box-shadow .1s ease-in-out;
+    -o-transition: -o-box-shadow .1s ease-in-out;
+    transition: box-shadow .1s ease-in-out;
+    font-size: 50px;
+    color: #fff;
+}
+
+#button .hola {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ec528d;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(338, 90%, 80%, .8)), to(hsla(338, 90%, 70%, .2)));
+    background-image: -webkit-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    background-image: -moz-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    background-image: -o-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    font-family: 'Pacifico', Arial, sans-serif;
+    line-height: 1;
+    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
+    -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
+    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+}

@@ -1,0 +1,463 @@
+<!-- <div *ngIf="h" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:4">
+       <div *ngIf="!showVer" style="position:fixed;top:10%;left:25%;z-index:3;width:50%;background:white;padding:50px;border-radius:8px;">
+          <i (click)="h=false" style="position:absolute;top:5px;right:1px;font-size:30px;color:black"class="fas fa-times-circle"></i>
+          <div class="row">
+            <div class="col-md-12 bg-light" style="margin-bottom: 5px;border-radius: 6px;display:flex;flex-wrap:wrap;justify-content:space-around">
+              <a (click)="showVendedor=true ; showDescription=false" style="width:40%;text-align:center"><span style="text-align:center">Vendedor</span></a>|
+              <a (click)="showVendedor=false ; showDescription=true" style="width:40%;text-align:center"><span style="width:50%;text-align:center">Descripción</span></a>
+            </div>
+            <div class="row" *ngIf="showVendedor">
+              <div class="col-md-8" style="display:flex;justify-content:center;align-items:center">
+                <img src="assets/01.jpg" style="width:100%" alt="">
+              </div>
+              <div class="col-md-4">
+                <div style="display:flex;align-items:center;flex-wrap:wrap">
+                  <i style="font-size:40px;padding-left:30px" class="fas fa-user-circle"></i>
+                  <a style="padding-left:20px"><span class="text-primary">Alejandro Esteban</span></a>
+                </div>
+                102 <a><i class="fas fa-heart text-danger"></i></a><br>
+                Dejar huella <a><i class="fas fa-paw"></i></a>
+                <div class="text-muted" style="margin-top:15px;border:1px solid #bbb;border-radius:6px;padding:10px">
+                  Hola soy de Valdivia, me gusta crear nuevas lineas de productos
+                  en el mercado de jugetes de autos deportivos
+                </div>
+                <div style="display:flex;align-items:center">
+                  <a (click)="showVer=true"><h4>Ver más</h4></a>
+                  <i class="fas fa-caret-right text-muted" style=";margin-left:10px;font-size:40px"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="showDescription">
+              <div class="col-md-12" style="display:flex;flex-direction:column;justify-content:flex-start">
+                <p>Este vehículo Ferrari F12 Viene con licencia oficial y es una fiel replica del modelo original. Manejar un Ferrari nunca había estado tan cerca.
+                  Para el encendido usa una llave para simular la puesta en marcha con sonidos.
+                  El auto tiene una serie de sonidos como bocinazo, música.</p>
+
+                  CARACTERISTICAS
+                  <ul>
+                    <li>- Sistema de música - se puede conectar MP3, CD, radio, grabadora, etc.,</li>
+                    <li>- Edad: 1 Hasta 7 años aproximadamente</li>
+                    <li>- Capacidad: Hasta 35 kg</li>
+                    <li>- Control de luces</li>
+                    <li>- Asiento cómodo y sistema de seguridad</li>
+                    <li>- Tamaño: 112cm Largo x 57cm Ancho x 46cm Alto</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+       </div>
+       <div (click)="h=false" style="position:absolute;top:0px;left:0px;width:100%;height:100%">
+       </div>
+
+
+
+
+
+       <div *ngIf="showVer" style="position:fixed;top:10%;left:25%;z-index:3;width:50%;background:white;padding:50px;border-radius:8px;">
+          <i (click)="h=false" style="position:absolute;top:5px;right:1px;font-size:30px;color:black"class="fas fa-times-circle"></i>
+          <div class="row">
+            <div class="col-md-12 bg-light" style="margin-bottom: 5px;border-radius: 6px;display:flex;flex-wrap:wrap;justify-content:space-around">
+              <a (click)="showVendedor=true ; showDescription=false"><span style="width:50%;text-align:center">Vendedor</span></a>|
+              <a (click)="showVendedor=false ; showDescription=true"><span style="width:50%;text-align:center">Descripción</span></a>
+            </div>
+            <div class="row" *ngIf="showVendedor">
+              <div class="col-md-12">
+                <div style="display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap">
+                  <span>Calificación del vendedor</span>
+                  <div class="rating" style="font-size:30px">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                  </div>
+                </div>
+
+
+                <span>Deseo comprar</span>
+
+              </div>
+            </div>
+            <div class="row" *ngIf="showDescription">
+              <div class="col-md-12" style="display:flex;flex-direction:column;justify-content:flex-start">
+                <p>Este vehículo Ferrari F12 Viene con licencia oficial y es una fiel replica del modelo original. Manejar un Ferrari nunca había estado tan cerca.
+                  Para el encendido usa una llave para simular la puesta en marcha con sonidos.
+                  El auto tiene una serie de sonidos como bocinazo, música.</p>
+
+                  CARACTERISTICAS
+                  <ul>
+                    <li>- Sistema de música - se puede conectar MP3, CD, radio, grabadora, etc.,</li>
+                    <li>- Edad: 1 Hasta 7 años aproximadamente</li>
+                    <li>- Capacidad: Hasta 35 kg</li>
+                    <li>- Control de luces</li>
+                    <li>- Asiento cómodo y sistema de seguridad</li>
+                    <li>- Tamaño: 112cm Largo x 57cm Ancho x 46cm Alto</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+       </div>
+       <div (click)="h=false" style="position:absolute;top:0px;left:0px;width:100%;height:100%">
+       </div>
+</div> -->
+
+
+
+<div *ngIf="h" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:4">
+
+<div style="overflow: hidden; height:200px;z-index:4">
+  <div *ngIf="!showVer" style="overflow: auto;max-height: 550px;position:fixed;top:10%;left:25%;z-index:3;width:50%;background:white;padding:50px;border-radius:8px;">
+     <i (click)="h=false" style="position:absolute;top:5px;right:1px;font-size:30px;color:black"class="fas fa-times-circle"></i>
+     <div class="row">
+       <div class="col-md-12 bg-light" style="margin-bottom: 5px;border-radius: 6px;display:flex;flex-wrap:wrap;justify-content:space-around">
+         <a (click)="showVendedor=false ; showDescription=false ;showProducto=true; showOferta=false" style="width:30%;text-align:center"><span style="text-align:center;font-size:20px">Producto</span></a>|
+         <a (click)="showVendedor=false ; showDescription=true ;showProducto=false; showOferta=false" style="width:30%;text-align:center"><span style="text-align:center;font-size:20px">Descripción</span></a>|
+         <a (click)="showVendedor=true ; showDescription=false ;showProducto=false; showOferta=false" style="width:30%;text-align:center"><span style="text-align:center;font-size:20px">Vendedor</span></a>
+       </div>
+
+
+       <!-- <div class="" style="position:relative;width:100%">
+         <img src="assets/01.jpg" style="width:100%;border-radius: 10px"alt="">
+         <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+           <span style="font-family: 'Gugi', cursive;">106</span>
+           <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+         </div>
+       </div> -->
+
+
+       <div class="row" *ngIf="showProducto">
+         <div class="col-md-8" style="display:flex;justify-content:center;align-items:center">
+           <img src="assets/01.jpg" style="position:relative;width:100%" alt="">
+
+           <div style="position:absolute; top:8px;right:16px;color:white;background:coral;opacity:0.6;border-radius:3px">
+             <a (click)="showOferta=true"><span style="font-family: 'Gugi', cursive;">OFERTA</span></a>
+             <!-- <a style="padding: 5px"><i class="fas fa-heart"></i></a> -->
+           </div>
+         </div>
+         <div class="col-md-4">
+           <div style="display:flex;align-items:center;flex-wrap:wrap">
+             <i style="font-size:40px;padding-left:30px" class="fas fa-user-circle"></i>
+             <a style="padding-left:20px"><span class="text-primary">Alejandro Esteban</span></a>
+           </div>
+           102 <a><i class="fas fa-heart text-danger"></i></a><br>
+           Dejar huella <a><i class="fas fa-paw"></i></a>
+           <div class="text-muted" style="margin-top:15px;border:1px solid #bbb;border-radius:6px;padding:10px">
+             Hola soy de Valdivia, me gusta crear nuevas lineas de productos
+             en el mercado de jugetes de autos deportivos
+           </div>
+           <div style="display:flex;align-items:center">
+             <a (click)="showVer=true"><h4>Ver más</h4></a>
+             <i class="fas fa-caret-right text-muted" style=";margin-left:10px;font-size:40px"></i>
+           </div>
+         </div>
+       </div>
+
+       <!-- <div class="row" *ngIf="showVendedor">
+         <div class="col-md-8" style="display:flex;justify-content:center;align-items:center">
+           <img src="assets/01.jpg" style="width:100%" alt="">
+         </div>
+         <div class="col-md-4">
+           <div style="display:flex;align-items:center;flex-wrap:wrap">
+             <i style="font-size:40px;padding-left:30px" class="fas fa-user-circle"></i>
+             <a style="padding-left:20px"><span class="text-primary">Alejandro Esteban</span></a>
+           </div>
+           102 <a><i class="fas fa-heart text-danger"></i></a><br>
+           Dejar huella <a><i class="fas fa-paw"></i></a>
+           <div class="text-muted" style="margin-top:15px;border:1px solid #bbb;border-radius:6px;padding:10px">
+             Hola soy de Valdivia, me gusta crear nuevas lineas de productos
+             en el mercado de jugetes de autos deportivos
+           </div>
+           <div style="display:flex;align-items:center">
+             <a (click)="showVer=true"><h4>Ver más</h4></a>
+             <i class="fas fa-caret-right text-muted" style=";margin-left:10px;font-size:40px"></i>
+           </div>
+         </div>
+       </div> -->
+
+       <div class="row" *ngIf="showVendedor" style="">
+         <div style="display:flex;align-items:center;flex-wrap:wrap">
+           <i style="font-size:40px;padding-left:30px" class="fas fa-user-circle"></i>
+           <a style="padding-left:20px"><span class="text-primary">Alejandro Esteban</span></a>
+         </div>
+         <div style="width:100%;display:flex;justify-content:center;">
+           <div class="row" style="width:600px">
+             <div class="col-md-12">
+               <h2>Historia</h2>
+             </div>
+             <div class="col-md-12" style="display:flex;flex-wrap:wrap;">
+               <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">Oscar Garcia</h4>
+               <h5 style="font-weight:400;padding-left:6px">tiene</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+               <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">También</h4>
+               <h5 style="font-weight:400;padding-left:6px">en total ha conseguido</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">lanzar 6 productos</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">de los cuales</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">3</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">se han convertido en</h5>
+
+
+               <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">top más vendidos.</h4>
+               <h5 style="font-weight:400;padding-left:6px">Tiene</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+               <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+               <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+             </div>
+             </div>
+             </div>
+         <!-- <img src="assets/test02.png" style="width:600px;height:200px;object-fit: contain;" alt=""> -->
+       </div>
+       <div class="row" *ngIf="showOferta">
+         <img src="assets/test01.png" alt="">
+       </div>
+
+
+       <div class="row" *ngIf="showDescription">
+         <div class="col-md-12" style="display:flex;flex-direction:column;justify-content:flex-start">
+           <p>Este vehículo Ferrari F12 Viene con licencia oficial y es una fiel replica del modelo original. Manejar un Ferrari nunca había estado tan cerca.
+             Para el encendido usa una llave para simular la puesta en marcha con sonidos.
+             El auto tiene una serie de sonidos como bocinazo, música.</p>
+
+             CARACTERISTICAS
+             <ul>
+               <li>- Sistema de música - se puede conectar MP3, CD, radio, grabadora, etc.,</li>
+               <li>- Edad: 1 Hasta 7 años aproximadamente</li>
+               <li>- Capacidad: Hasta 35 kg</li>
+               <li>- Control de luces</li>
+               <li>- Asiento cómodo y sistema de seguridad</li>
+               <li>- Tamaño: 112cm Largo x 57cm Ancho x 46cm Alto</li>
+             </ul>
+         </div>
+       </div>
+     </div>
+  </div>
+  <!-- <div (click)="h=false" style="position:absolute;top:0px;left:0px;width:100%;height:100%">
+  </div> -->
+
+
+
+
+
+  <div *ngIf="showVer" style="position:fixed;top:10%;left:25%;z-index:3;width:50%;background:white;padding:50px;border-radius:8px;">
+     <i (click)="h=false" style="position:absolute;top:5px;right:1px;font-size:30px;color:black"class="fas fa-times-circle"></i>
+     <div class="row">
+       <div class="col-md-12 bg-light" style="margin-bottom: 5px;border-radius: 6px;display:flex;flex-wrap:wrap;justify-content:space-around">
+         <a (click)="showVendedor=true ; showDescription=false"><span style="width:50%;text-align:center">Vendedor</span></a>|
+         <a (click)="showVendedor=false ; showDescription=true"><span style="width:50%;text-align:center">Descripción</span></a>
+       </div>
+       <div class="row" *ngIf="showVendedor">
+         <div class="col-md-12">
+           <div style="display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap">
+             <span>Calificación del vendedor</span>
+             <div class="rating" style="font-size:30px">
+               <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+             </div>
+           </div>
+
+
+           <span>Deseo comprar</span>
+
+         </div>
+       </div>
+       <div class="row" *ngIf="showDescription">
+         <div class="col-md-12" style="display:flex;flex-direction:column;justify-content:flex-start">
+           <p>Este vehículo Ferrari F12 Viene con licencia oficial y es una fiel replica del modelo original. Manejar un Ferrari nunca había estado tan cerca.
+             Para el encendido usa una llave para simular la puesta en marcha con sonidos.
+             El auto tiene una serie de sonidos como bocinazo, música.</p>
+
+             CARACTERISTICAS
+             <ul>
+               <li>- Sistema de música - se puede conectar MP3, CD, radio, grabadora, etc.,</li>
+               <li>- Edad: 1 Hasta 7 años aproximadamente</li>
+               <li>- Capacidad: Hasta 35 kg</li>
+               <li>- Control de luces</li>
+               <li>- Asiento cómodo y sistema de seguridad</li>
+               <li>- Tamaño: 112cm Largo x 57cm Ancho x 46cm Alto</li>
+             </ul>
+         </div>
+       </div>
+     </div>
+  </div>
+  <div (click)="h=false" style="position:absolute;top:0px;left:0px;width:100%;height:100%">
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="fluid-container text-muted">
+
+<div class="row" style="width:100%;margin-top:-30px">
+
+<div class="col-md-12" style="padding-top:30px;display:flex;justify-content:space-around;flex-wrap: wrap;">
+
+  <div class="" style="position:relative;margin:25px">
+    <a (click)="h=true"><img src="assets/01.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+    <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+      <span style="font-family: 'Gugi', cursive;">106</span>
+      <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+    </div>
+  </div>
+
+
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/02.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/b06.png" style="border-radius: 10px;"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/03.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/b05.png" style="border-radius: 10px;"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/04.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/05.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/06.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/07.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/21.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<!-- <div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/b03.png" style="width:100%;border-radius: 10px;"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div> -->
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/09.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/10.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/11.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a (click)="h=true"><img src="assets/12.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a data-toggle="modal" data-target=".13"><img src="assets/13.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a data-toggle="modal" data-target=".14"><img src="assets/14.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a data-toggle="modal" data-target=".15"><img src="assets/15.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+<div class="" style="position:relative;margin:25px">
+  <a data-toggle="modal" data-target=".16"><img src="assets/16.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+  <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+    <span style="font-family: 'Gugi', cursive;">106</span>
+    <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>

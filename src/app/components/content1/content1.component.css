@@ -1,0 +1,45 @@
+a {
+  color:white;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    /* margin-top: 10px; */
+    /* border-radius: 5px; */
+    text-decoration: none;
+
+ }
+a:hover {
+   color:pink !important;
+   text-decoration:none;
+   cursor:pointer;
+   /* background:grey; */
+   opacity: 0.5;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   left: 0;
+   color: gold;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

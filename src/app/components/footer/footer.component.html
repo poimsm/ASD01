@@ -1,0 +1,251 @@
+
+<nav class="navbar bottom bg-danger text-muted" style="">
+  <div class="row" style=";width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+
+
+  <div class="col-lg-2 col-md-2 col-sm-12" style="text-align:center">
+    <a routerLink="home2" style="">
+      <h3 class="" style="">Joopiter</h3>
+    </a>
+  </div>
+
+  <div class="col-lg-5 col-md-5 col-sm-12" style="display:flex;justify-content:center;align-items:center">
+    <input style="height:40px" class="input bg-light" type="text" name="" value="" placeholder="Buscar">
+    <div class="lupa bg-light" style=";height:40px;display:flex;justify-content:center;align-items:center" ><i class="fas fa-search"></i>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-5 col-sm-12" style="width:100%">
+    <div class=" text-light"style="border-radius:4px;display:flex;align-items:center;justify-content:space-around">
+      <!-- <a routerLink="timeline2" style="background:#e33d4c;"><h5>OoO</h5></a> -->
+      <!-- <a routerLink = "card4" style="background:#e33d4c"><i class="fas fa-shopping-cart"></i></a>
+      <a routerLink = "card4" style="background:#e33d4c"><i class="far fa-bell"></i></a> -->
+      <a><h5>OoO</h5></a>
+      <a class=" text-light" style="border:0px solid white;"><h5 style="font-weight:300">Identificate</h5></a>
+      <a class=" text-light"style="border:0px solid white;"><h5 style="font-weight:300">Registrate</h5></a>
+
+
+      <div class="btn-group">
+
+        <!-- <a style="padding:0px;border-radius: 50px;color:white" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false">
+          <i style="font-size:40px" class="fas fa-user-circle"></i>
+        </a> -->
+      <!-- <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Right
+      </button> -->
+      <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" routerLink="user3">
+          <div class="text-info" style="padding-left:10px;">
+            <ul>
+              <li style="font-size:20px">Oscar Garcia</li>
+              <li style="font-size:14px">poimsm@gmail.com</li>
+            </ul>
+          </div>
+        </button>
+        <div class="dropdown-divider"></div>
+
+        <!-- <button class="dropdown-item" type="button">
+          <i class="fas fa-shopping-bag text-muted" style="font-size:25px"></i>
+          <span class="" style="padding-left:30px">Que me han gustado</span>
+        </button> -->
+        <button class="dropdown-item" type="button">
+          <i class="fas fa-shopping-bag text-muted" style="font-size:22px"></i>
+          <span class="" style="padding-left:30px">Mis pedidos</span>
+        </button>
+        <button class="dropdown-item" type="button">
+          <i class="fab fa-slack text-muted" style="font-size:22px"></i>
+          <span class="" style="padding-left:30px">Mi Código</span>
+        </button>
+        <button class="dropdown-item" type="button">
+          <i class="fas fa-cog text-muted" style="font-size:22px"></i>
+          <span class="" style="padding-left:30px">Configuración</span>
+        </button>
+        <!-- <button class="dropdown-item" type="button">
+          <i class="fas fa-sign-in-alt text-muted"></i>
+          <span class="" style="padding-left:30px">Salir</span>
+        </button> -->
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" type="button">
+          <i class="fas fa-info text-muted" style="font-size:22px"></i>
+          <span class="" style="padding-left:30px">Información</span>
+        </button>
+        <button class="dropdown-item" type="button">
+          <i class="fas fa-envelope text-muted" style="font-size:22px"></i>
+          <!-- <i class="fas fa-inbox text-muted" style="font-size:22px"></i> -->
+          <span class="" style="padding-left:20px">Enviar comentario</span>
+        </button>
+        <button class="dropdown-item" type="button">
+          <i class="fas fa-map-marker-alt text-muted" style="font-size:22px"></i>
+          <span class="" style="padding-left:30px">Valdivia</span>
+        </button>
+        <button class="dropdown-item" type="button" style="font-weight:420;font-size:18px">Salir</button>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</nav>
+
+
+
+
+<span style="font-size:36px;font-weight:400;">Una red de compras en tu ciudad conectada</span><br>
+<span style=";margin:0px;margin:0px;color:white;font-size:21px;">
+  Nuevo muro de publicaciones con más herramientas y más arbitradas</span><br>
+<span style="margin:0px;margin:0px;color:white;font-size:15px;">Sube lo que vendes y ocupa métodos de pago, métodos de envios, crea galerías y preparate para lanzar nuevos productos de venta!  </span>
+
+<br>
+<span class="badge badge-dark"><i class="fas fa-rocket" style="font-size:20px"></i></span>
+<span class="badge badge-dark"><i class="fas fa-rocket" style="font-size:20px"></i></span>
+<span class="badge badge-dark"><i class="fas fa-rocket" style="font-size:20px"></i></span>
+
+
+
+
+
+
+
+
+<!-- ---------------------hot------------- -->
+
+<!-- <div *ngFor="let post of _ps.posts">
+  {{post.mensaje}}
+</div> -->
+
+
+<div class="row " style="background:#fff;">
+
+
+  <!-- <div class="col-md-12 text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+    <input type="text" name="post" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:1px solid #ccc;display:flex;align-items:center"
+      [(ngModel)]="post"
+      (keyup.enter)="enviar_post()"
+      placeholder="Comenzar post...">
+  </div> -->
+
+
+
+
+
+
+
+  <div *ngFor="let post of _ps.posts" class="shadow-bottom-rightt col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 " style=";margin-bottom:0px;border-radius:6px;display:flex;justify-content:center">
+    <div class="" id="visto"  style="width:100%;;padding:10px">
+      <div class=""style="width:100%;text-align:right;margin-bottom:-20px">
+        <!-- <a><i class="fas fa-ellipsis-h" style="color:#eee"></i></a> -->
+
+        <div class="btn-group dropleft">
+          <a style="padding:0px;" class="" data-toggle="dropdown"  aria-expanded="false">
+            <i class="fas fa-ellipsis-h" style="color:#eee"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Guardar</a>
+            <a class="dropdown-item">Mandar PM</a>
+            <a class="dropdown-item">Reportar</a>
+          </div>
+        </div>
+
+      </div>
+      <div style="display:flex;justify-content:flex-start;align-items:flex-start;">
+
+        <!-- <div class="text-muted"style="color:#ccc;height:60px;width:60px;font-size:30px;display:flex;justify-content:flex-start;align-items:center;margin-right:5px">
+          13
+        </div> -->
+        <div class="">
+          <img src="assets/02.jpg" class=""style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+        </div>
+        <div style="padding-left:15px;width:100%">
+          <p style="font-weight:450;padding:0px;margin:0px">
+            {{post.mensaje}}
+          </p>
+          <img class=""src="assets/17.jpg" style="width:120px;border-radius:2px;border-bottom:5px solid dodgerblue;" alt="">
+          <div class="text-muted" style="margin:0px;color:#333;display:flex;justify-content:space-between;flex-wrap:wrap">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+              <div class="text-muted" style="margin-right:10px;">
+                hace 14 min
+              </div>
+              <div class="text-muted" style="display:flex;justify-content:flex-start;align-items:center">
+                <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                </div>
+                <a style="padding:0px;" >
+                  <span class="text-primary" style="font-weight:450">{{post.nombre}}  </span>
+                </a>
+                <a (click)="showResp = true" style="padding:0px;margin-left:10px"class="dropdown-toggle">
+                  <span class="text-dark" style="font-weight:450">Ver respuestas</span>
+                </a>
+              </div>
+            </div>
+            <div class="text-muted" style=";width:120px;display:flex;justify-content:center;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;;margin-right:3px;">
+                12 <i class="fas fa-images" style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div style="display:flex;align-items:center;margin-right:3px;">
+                33 <i class="far fa-comment-alt"style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div class=""style="display:flex;align-items:center;margin-right:3px">
+                14 <i class="fas fa-thumbs-up"style="color:gold;margin-left:3px"></i>
+              </div>
+            </div>
+            <div *ngIf="showResp"style="margin-left:3px;">
+              <span>Buenno tengo esto, te sirve?</span>
+              <div class="" style="margin-left:8px;display:flex;justify-content:flex-start;align-items:center">
+                <div>
+                  <img src="assets/10.jpg" class=""style="margin-right:5px;margin-top:6px;width:30px;height:30px;object-fit:cover;border-radius:50%" alt="">
+                </div>
+                <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                </div>
+                <span style="color:#007bff;font-size:16px;font-weight:450;">ByRaz</span>
+              </div>
+              <div class="" style="margin-left:0px; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                <div style="width:250px;height:250px;display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center;background:blue">
+                  <div class="">
+                    <img src="assets/14.jpg" style="max-height:100%;max-width:100%;border-bottom:5px solid dodgerblue;border-radius:4px" alt="">
+                  </div>
+                  <div class="">
+                    <img src="assets/14.jpg" style="max-height:100%;max-width:100%;border-bottom:5px solid dodgerblue;border-radius:4px" alt="">
+                  </div>
+                  <!-- <img src="assets/14.jpg" style="max-height:100%;max-width:100%;border-bottom:5px solid dodgerblue;border-radius:4px" alt=""> -->
+                  <!-- <img src="assets/14.jpg" style="height: 100%; width: 100%; object-fit: contain;border-bottom:5px solid dodgerblue;border-radius:4px" alt=""> -->
+
+                </div>
+                <!-- <img src="assets/11.jpg" style="width:100%;margin-left:10px" alt=""> -->
+                <!-- <img src="assets/13.jpg" style="width:50px;height:200px;object-fit: cover;border-bottom:5px solid dodgerblue;border-radius:10px" alt=""> -->
+
+              </div>
+            </div>
+
+            <div *ngIf="showResp"style="margin-left:3px;width:100%">
+              <span>Buenno tengo esto, te sirve?</span>
+              <div class="" style="margin-left:8px;display:flex;justify-content:flex-start;align-items:center">
+                <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                </div>
+                <span style="color:#007bff;font-size:16px;font-weight:450;">ByRaz</span>
+              </div>
+              <div class="" style="padding-left:10px;width:100%; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                <img src="assets/11.jpg" style="width:200px;margin-left:10px" alt="">
+              </div>
+            </div>
+
+            <div *ngIf="showResp"style="margin-left:3px;width:100%">
+              <span>Buenno tengo esto, te sirve?</span>
+              <div class="" style="margin-left:8px;display:flex;justify-content:flex-start;align-items:center">
+                <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                </div>
+                <span style="color:#007bff;font-size:16px;font-weight:450;">ByRaz</span>
+              </div>
+              <div class="" style="padding-left:10px;width:100%; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                <img src="assets/13.jpg" style="width:200px;margin-left:10px" alt="">
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

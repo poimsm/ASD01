@@ -1,0 +1,150 @@
+<div class="row" style="background:#fff;">
+  <div *ngIf="showImg" (click)="showImg = false" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
+    <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative">
+      <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
+      <div class="text-muted" style="position:absolute;top:0px;left:0px;padding:10px">
+        <span class="">Gafas de Sol 100% naturales
+          <span class="text-primary">$4500</span>
+        </span>
+      </div>
+      <button style="position:absolute;bottom:20px;right:20px" class="btn btn-dark disabled">
+        Comprar
+      </button>
+      <!-- <div class="text-muted" style="position:absolute;bottom:10px;left:20px;padding:10px">
+          <span style="font-size:26px;color:rgb(27, 48, 61)">$4000</span>
+        </div> -->
+      <img src="assets/12.jpg" style="max-width: 450px;max-height: 500px">
+    </div>
+  </div>
+  <div *ngFor="let post of postt; let i = index" class="shadow-bottom-rightt col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-5 offset-lg-3 col-xl-5 offset-xl-3 "
+    style=";margin-bottom:0px;border-radius:6px;display:flex;justify-content:center">
+
+
+    <div class="" id="visto" style="width:100%;;padding:10px">
+      <div class="" style="width:100%;text-align:right;margin-bottom:-20px;padding-right:10px">
+        <div class="btn-group dropleft">
+          <a style="padding:0px;" class="" data-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-ellipsis-h" style="color:#bbb"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Guardar</a>
+            <a class="dropdown-item">Mandar PM</a>
+            <a class="dropdown-item">Reportar</a>
+          </div>
+        </div>
+      </div>
+      <div class="" style="border-radius:5px;;display:flex;justify-content:flex-start;align-items:flex-start;">
+        <div style="padding-left:10px">
+          <img src="assets/02.jpg" class="" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+        </div>
+        <div style="padding-left:15px;width:100%">
+          <p style="font-weight:450;padding:0px;margin:0px;font-size:16px;max-width:420px">
+            {{post.mensaje}}
+          </p>
+          <div style="max-width:280px">
+            <img class="" src="assets/04.jpg" style="max-height:100%;max-width:100%;border-radius:2px;border-bottom:5px solid dodgerblue;"
+              alt="">
+          </div>
+          <div class="text-muted" style="margin:0px;color:#333;display:flex;justify-content:space-between;flex-wrap:wrap">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+              <div class="text-muted" style="margin-right:10px;">
+                Hace 14 min
+              </div>
+              <div class="text-muted" style="display:flex;justify-content:flex-start;align-items:center">
+                <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                </div>
+                <a (click)="navegar('user')" style="padding:0px;">
+                  <span class="text-primary" style="font-weight:450">{{post.nombre}} </span>
+                </a>
+                <a *ngIf="l != i" (click)="l = i" style="padding:0px;margin-left:10px" class="dropdown-toggle">
+                  <span class="text-dark" style="font-weight:450">Ver respuestas</span>
+                </a>
+                <a *ngIf="l === i" (click)="l = 999" style="padding:0px;margin-left:10px" class="dropdown-toggle">
+                  <span class="text-dark" style="font-weight:450">Ocultar</span>
+                </a>
+              </div>
+            </div>
+            <div class="text-muted" style=";width:130px;display:flex;justify-content:center;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;;margin-right:3px;">
+                12
+                <i class="fas fa-images" style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div style="display:flex;align-items:center;margin-right:3px;">
+                <div *ngFor="let comentario of comentarioss">
+                  <div *ngIf="comentario.post_id === post.post_id">
+                    {{ comentcounter() }}
+                  </div>
+                </div>
+                {{comentC}}
+                <i class="far fa-comment-alt" style="color:#bbb;margin-left:3px"></i>
+              </div>
+              <div style="display:flex;align-items:center;margin-right:3px">
+                <div *ngFor="let like of likee">
+                  <div *ngIf="like.post_id === post.id">
+                    {{ likecounter() }}
+                  </div>
+                </div>
+                <div *ngFor="let like of likee; let j = index">
+                  <ng-template #goo>
+                    <a *ngIf="likee.length-1 ===j" (click)="agregarLikePost(post.id)" [attr.id]="post.id + 'este'">
+                      {{ likeC }}
+                      <i class="fas fa-thumbs-up" style="color:#bbb;margin-left:3px"></i>
+                    </a>
+                  </ng-template>
+
+                  <a *ngIf="like.usuario_id === _ds.uid && like.post_id === post.id; else goo" (click)="quitarLikePost($event.currentTarget.id)"
+                    [attr.id]="like.id">
+                    {{ likeC }} {{ remove(post.id) }}
+                    <i class="fas fa-thumbs-up" style="color:gold;margin-left:3px"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="i === l" class="" style="padding-left:8px;padding-right:8px;padding-bottom:15px;border-radius:3px">
+              <div *ngFor="let comentario of comentarioss">
+                <div *ngIf="comentario.post_id === post.id">
+                  <div class="" style="margin-left:8px;display:flex;justify-content:flex-start;align-items:center">
+                    <div>
+                      <img src="assets/10.jpg" class="" style="margin-right:5px;margin-top:6px;width:30px;height:30px;object-fit:cover;border-radius:50%"
+                        alt="">
+                    </div>
+                    <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
+                    </div>
+                    <span style="color:#007bff;font-size:16px;font-weight:450;">ByRaz</span>
+                  </div>
+                  <div class="" style="margin-left:0px; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                    <div style="width:100%">
+                      {{comentario.mensaje}}
+                    </div>
+                    <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:flex-start">
+                      <img (click)="showImg = true" class="" src="assets/15.jpg" style="margin:5px;width:100px;height:100px;object-fit:cover;border-radius:2px;"
+                        alt="">
+                      <img class="" src="assets/11.jpg" style="margin:5px;width:100px;height:100px;object-fit:cover;border-radius:2px;" alt="">
+                      <img class="" src="assets/12.jpg" style=";margin:5px;width:100px;height:100px;object-fit:cover;border-radius:2px;" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:flex-start;align-items:center">
+              <a [routerLink]="['/post','comentar', post.id]">
+                <h5>Comentar</h5>
+              </a>
+              <a (click)="navegar('post')">
+                <i class="fas fa-chevron-circle-right" style="margin-left: 5px;color:#bbb;font-size:25px"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    {{ likereset() }} {{ comentreset() }}
+  </div>
+</div>

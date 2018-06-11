@@ -1,0 +1,328 @@
+<!-- <div style="width:100%;height:30px;background:#e33d4c ;color:white">
+  holllaa
+</div>
+<div class="pos-f-t">
+  <nav class="navbar navbar-dark bg-danger" style="display:flex; justify-content:space-around; ">
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-around;width:300px">
+      <a routerLink="home"><h2 class="logo2">Joopiter</h2></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=" navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div style="display:flex;justify-content:center;align-items: center;">
+      <input style="outline: none; border-width: 0px;height:30px;width:350px;border-radius:5px 0px 0px 5px" type="text" name="" value="">
+      <div style=" border-width: 0px; height: 30px;background:#fff;border-radius:0px 5px 5px 0px;width:20px"><i class="fas fa-search"></i></div>
+    </div>
+
+    <div style="color:#fff; size:20px;">
+
+  <a routerLink = "login" style="color:#fff;"> <span style="font-size:20px">Fherx </span> </a>
+      <i style="width:20px;height:20px" class="fas fa-user"></i>
+    </div>
+    <div style="width:3%">
+    </div>
+  </nav>
+
+  <div class="collapse" id="navbarToggleExternalContent">
+
+    <div class="bg-light p-4">
+      <div style="display:flex;justify-content:space-around">
+        <div >
+          <h4 class="text-muted">Ciudad</h4>
+          <span class="text-muted">Valdivia</span> <br>
+          <span class="text-muted">Concepcion</span>
+
+
+        </div>
+        <div >
+          <h4 class="text-muted">Explora</h4>
+          <ul class="text-muted">
+            <li> <a routerLink = "login">Este mundo</a></li>
+            <li> <a routerLink = "login">Descuentos promocionales</a></li>
+            <li> <a routerLink = "login">Envios y sistemas varios</a></li>
+            <li> <a routerLink = "login">Otros</a></li>
+          </ul>
+        </div>
+        <div >
+          <h4 class="text-muted">Comprador</h4>
+          <ul class="text-muted">
+            <li>Vestuario</li>
+            <li>Tecnología</li>
+            <li>Productos para el hogar</li>
+            <li>Abastecimientos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- ------------------------ -->
+
+
+<!-- <nav class="navbar bg-light" style="display:flex; justify-content:space-around; ">
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-around;width:300px">
+    <a routerLink="home"><h2 class="logo2" style="color:#E57373">Joopiter</h2></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class=" navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div style="display:flex;justify-content:center;align-items: center;">
+    <input style="outline: none; border-width: 0px;height:30px;width:350px;border-radius:5px 0px 0px 5px" type="text" name="" value="">
+    <div style=" background: white;border-width: 0px; height: 30px;border-radius:0px 5px 5px 0px;width:20px"><i class="fas fa-search"></i></div>
+  </div>
+
+  <div style="color:#fff; size:20px;">
+
+<a routerLink = "login" class="text-muted"> <span style="font-size:20px">Fherx </span> </a>
+    <i class="text-dark"style="color:#bbb;width:20px;height:20px" class="fas fa-user"></i>
+  </div>
+  <div style="width:3%">
+  </div>
+</nav> -->
+<!-- ------------------------ -->
+<!-- <a routerLink="login"><h2>wewewe</h2></a> -->
+<nav class="navbar navbar-dark bg-danger " style="display:flex; justify-content:space-around;flex-wrap: wrap">
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-around;max-width:300px">
+    <a (click)="showBar = false" routerLink="landing/land1" style="margin-right:10px">
+      <h2 class="logo2">Joopiter</h2>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class=" navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div style="display:flex;justify-content:center;align-items: center;">
+    <input style="outline: none; border-width: 0px;height:30px;min-width:220px;max-width:350px;border-radius:5px 0px 0px 5px"
+      type="text" name="" value="">
+    <div style=" border-width: 0px; height: 30px;background:#fff;border-radius:0px 5px 5px 0px;width:20px">
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+
+  <div style="color:#fff;padding:3px;border-radius:5px; display:flex;width:250px;background:#e33d4c;align-items:center; justify-content:space-around">
+    <a (click)="showBar = true" routerLink="hot" style="color:#fff;">
+      <!-- <i style="font-size:30px" class="fab fa-cloudversify"></i> -->
+      <!-- <i style="font-size:20px" class="fas fa-cloud"></i> -->
+      <!-- <i style="font-size:20px" class="fab fa-discourse"></i> -->
+      <!-- <span style="font-size:20px">Oscar Garcia Fuen</span> -->
+      <span style="font-size:20px">{{_ps.usuario.name}}</span>
+
+
+      <!-- <i  class="fab fa-rocketchat"></i> -->
+    </a>
+    <a routerLink="login">
+      <!-- <i class="fas fa-bell"></i> -->
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+    <a routerLink="user3">
+      <!-- <span style="font-size:20px">Oscar Garcia...</span> -->
+      <!-- <span style="font-size:20px">{{_ps.usuario.name}}</span> -->
+      <!-- <i style="width:15px;height:15px;font-size:40px" class="fab fa-grav"></i> -->
+      <i style="width:15px;height:15px" class="fas fa-user"></i>
+    </a>
+  </div>
+  <div style="width:3%">
+  </div>
+</nav>
+<div class="bg-light text-dark" style="border-bottom:0.5px solid #bbb;border-top:0.5px solid #bbb;justify-content:flex-end;display: flex;flex-wrap: wrap;font-weight: 300;font-size:16px;width:100%;background:#e33d4c ;color:white">
+  <!-- <div >
+    <button class="btn btn-light" name="button"> holllaaa</button>
+
+  </div> -->
+  <!-- <button class="btn btn-light" style="width:33%"> holllaaa</button>
+  <button class="btn btn-light" style="width:33%"> Chaooo</button> -->
+  <!-- <button class="btn btn-light" style="width:33%"> holllaaa</button> -->
+
+  <!-- <div style="height: 30px;text-align: center;border-left:0.5px solid #bbb;width:25%">
+    <a>Panel</a>
+  </div>
+  <div style="height: 30px;text-align: center;border-left:0.5px solid #bbb;width:25%">
+    <a>Secciones</a>
+  </div> -->
+  <!-- <div style="height: 35px;text-align: center;border-left:0.5px solid #bbb;width:25%">
+    <a routerLink="card2" style="color:grey;font-size:20px">Compras</a>
+  </div>
+  <div style="height: 35px;text-align: center;border-left:0.5px solid #bbb;width:25%">
+    <a routerLink = "anuncios" style="color:grey;font-size:20px">Muro</a>
+  </div> -->
+
+
+  <!-- <div style="text-align: center;border-left:0.5px solid #bbb;height:30px;width:150px">
+    <a>Gana dinero</a>
+
+  </div>
+  <div style="text-align: center;border-left:0.5px solid #bbb;height:30px;width:150px">
+    <a>Recibe envios</a>
+  </div> -->
+
+
+
+  <!-- ------------------------------------ -->
+
+  <!-- <div *ngIf="showBar" class="row"style="background:#007bff;">
+  <div class="col-md-12 col-lg-6">
+    <button routerLink="post" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
+      Nuevo post
+    </button>
+
+  </div>
+  <div class="col-lg-6">
+    <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
+      Crea un producto
+    </button>
+
+  </div>
+</div> -->
+</div>
+<!-- <div class="row" style="">
+  <div class="col-md-12  text-muted" style="height:40px;display:flex;justify-content:center;border-bottom:1px solid #ccc">
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;background:white;height:40px;font-size:18px;display:flex;align-items:center">hot</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">reciente</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">siguiendo
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            3
+          </div>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">PM
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            5
+          </div>
+        </span>
+      </a>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- <div class="row" style="">
+  <div class="col-md-12  text-muted" style="height:40px;display:flex;justify-content:center;border-bottom:1px solid #ccc">
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;background:white;height:40px;font-size:18px;display:flex;align-items:center">Popular ahora</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Reciente</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Siguiendo
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            3
+          </div>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a>
+        <span style="border-right:1px solid #ccc;margin-top:0px;border-left:1px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">PM
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            5
+          </div>
+        </span>
+      </a>
+    </div>
+  </div>
+</div> -->
+
+<div class="mobile" style="display;justify-content:center;align-items:center;flex-wrap:wrap">
+  <button routerLink="post" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
+    Volver
+  </button>
+
+</div>
+
+<div *ngIf="showBar" style="display;justify-content:center;align-items:center;flex-wrap:wrap">
+  <button [routerLink]="['/post','post', '']" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px" class="btn btn-primary">
+    Nuevo post
+  </button>
+  <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px" class="btn btn-primary">
+    Crear tienda
+  </button>
+</div>
+
+
+<!-- <div *ngIf="showBar" class="row"style="background:#007bff;">
+  <div class="col-md-12 col-lg-6">
+    <button routerLink="post" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
+      Nuevo post
+    </button>
+
+  </div>
+  <div class="col-lg-6">
+    <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
+      Crea un producto
+    </button>
+
+  </div>
+</div> -->
+
+
+
+
+
+<div *ngIf="showBar" class="row " style="padding-top:10px;padding-bottom:10px;width:100%">
+  <div class="col-md-12  text-muted" style="display:flex;justify-content:center;border-bottom:0px solid #ccc;flex-wrap:wrap">
+    <div style="display:flex;justify-content:center">
+      <a routerLink="hot" class="text-muted">
+        <span style="margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Popular ahora</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a routerLink="reciente" class="text-muted">
+        <span style="margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Lo más reciente</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a routerLink="guardado" class="text-muted">
+        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Guardado
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            3
+          </div>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a routerLink="siguiendo" class="text-muted">
+        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Seguidos
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            5
+          </div>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a routerLink="pm" class="text-muted">
+        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Mensajes
+          <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+            3
+          </div>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

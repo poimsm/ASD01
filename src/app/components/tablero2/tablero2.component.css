@@ -1,0 +1,78 @@
+.toggle{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1;
+  font-size: 18px;
+}
+.toggle2{
+  position: fixed;
+  bottom: 150px;
+  right: 50px;
+  z-index: 1;
+  font-size: 18px;
+}
+ul, li { list-style-type: none;padding:5px}
+
+
+a {font-weight:430 !important;
+  /* color: white !important; */
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+ }
+a:hover {font-weight:430 !important;
+   color:pink !important;
+   text-decoration:none;
+   cursor:pointer;
+   /* background:#bbb;
+   opacity: 0.1; */
+   /* background:gray !important; */
+   opacity: 0.6;
+}
+
+
+.board {
+    padding:  5px 10px;
+    display: inline-block;
+
+    -webkit-border-radius: 3px;
+    text-transform: uppercase;
+    color: white;
+    /* background:red; */
+    background: rgb(30, 30, 30);
+    -webkit-box-shadow:
+  inset 2px 0px 4px rgba(0,0,0,0.9),
+  inset -2px 0px 4px rgba(0,0,0,0.9);
+  border-bottom: 1px solid rgba(0,0,0,0.7);
+-webkit-box-shadow:
+  inset 0 -1px 0 rgba(50,50,50,0.7),
+  inset 0 -2px 0 rgba(0,0,0,0.7),
+  inset 2px 0px 4px rgba(0,0,0,0.9),
+  inset -2px 0px 4px rgba(0,0,0,0.9);
+
+}
+.board:before {
+    border-top: 1px solid rgba(0,0,0,0.4);
+    /* this line will be barely visible, but that's how we want it */
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    height: 0px;
+    position: relative;
+    /* you might need to ajust these positions to your layout */
+    width: 110%;
+    left: -9px;
+    top: 11px;
+    content: " "; /* we have to set this, otherwise it won't be visible */
+    display: block;
+    -webkit-box-shadow:
+  inset 0 -1px 0 rgba(50,50,50,0.7),
+  inset 0 -2px 0 rgba(0,0,0,0.7),
+  inset 2px 0px 4px rgba(0,0,0,0.9),
+  inset -2px 0px 4px rgba(0,0,0,0.9),
+  /* This one is new and adds a light edge on the bottom*/
+  0 1px 0px rgba(255,255,255,0.2);
+background: -webkit-gradient(linear, center top, center bottom,
+  color-stop(0.0, rgba(0,0,0, 1)),
+  color-stop(0.05, rgba(30,30,30, 1)),
+  color-stop(1.0, rgba(50, 50, 60, 1)));
+}

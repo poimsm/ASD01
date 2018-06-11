@@ -1,0 +1,91 @@
+
+
+
+
+.centered-and-cropped {
+  object-fit: cover;
+  position: relative;
+
+}
+.contenedor {
+    /* Set size of crop area. Setting its location happens bellow. */
+    width: 200px;
+    height: 200px;
+    overflow: hidden;  /* Crop it like it's hot! */
+    border-radius: 50%;
+}
+.imagen {
+    position: relative;
+    top: 0px;
+    left: -30px;
+    /* Scale the image as you normally would. */
+    width: 300px;
+    /* height: 150px; */
+}
+
+
+
+.box {
+				height: 150px;
+				width: 300px;
+				margin: 20px;
+				border: 1px solid #ccc;
+			}
+
+			.top {
+				box-shadow: 0 -5px 5px -5px #333;
+			}
+
+			.right {
+				box-shadow: 5px 0 5px -5px #333;
+			}
+
+			.bottom {
+				box-shadow: 0 5px 5px -5px #333;
+			}
+
+			.left {
+				box-shadow: -5px 0 5px -5px #333;
+			}
+      .r-b-l {
+        box-shadow: 5px 0 5px -5px #333;
+      }
+
+			.all {
+				box-shadow: 0 0 5px #333;
+			}
+.shadow-bottom-right{
+    box-shadow: 0 5px 10px -5px rgba(115,115,115,0.75),
+                5px 0 10px -5px rgba(115,115,115,0.75);
+}
+a {
+  color:white;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    /* margin-top: 10px; */
+    /* border-radius: 5px; */
+    text-decoration: none;
+
+ }
+a:hover {
+   color:pink !important;
+   text-decoration:none;
+   cursor:pointer;
+   /* background:grey; */
+   opacity: 0.5;
+}
+.toggle{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1;
+  font-size: 18px;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

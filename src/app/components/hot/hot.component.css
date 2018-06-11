@@ -1,0 +1,53 @@
+a {
+  color: #6c757d;
+  /* padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px; */
+  text-decoration: none;
+}
+a:hover {
+  /* color:pink !important; */
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.shadow-bottom-right {
+  box-shadow: 5px 0 10px -5px dodgerblue;
+}
+.img {
+  object-fit: cover;
+}
+
+.ajuste {
+  height: auto;
+}
+.fondo {
+  max-width: 50%;
+}
+
+@media only screen and (max-width: 970px) {
+  /* .ajuste{
+    height:auto;
+  } */
+  .fondo {
+    max-width: 100%;
+  }
+}
+.speech-bubble {
+  position: relative;
+  background: #bbb;
+  border-radius: 0.4em;
+}
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: #bbb;
+  border-left: 0;
+  margin-top: -8px;
+  margin-left: -8px;
+}

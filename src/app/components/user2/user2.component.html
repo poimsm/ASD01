@@ -1,0 +1,445 @@
+
+<div *ngIf="showEnvios">
+
+  <div class="row" style="height:1000px">
+    <div class="col-md-2" style="">
+
+    </div>
+    <div class="col-md-9 text-dark"style="">
+
+  <div class="row" style="padding-top:50px;margin-left:-200px;">
+    <div class="col-md-12">
+      <h4>Próximas salidas (Subastadas)</h4>
+      <div class="bg-light" style="display:flex;justify-content:flex-start;">
+        <table class="table table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Tiempo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Medio</th>
+              <th scope="col">Zona de partida</th>
+              <th scope="col">Zona de llegada</th>
+              <th scope="col">Valor mínimo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">En 15min</th>
+              <td>Mark</td>
+              <td> <i class="fas fa-bicycle"style="font-size:30px"></i> </td>
+              <td>Centro</td>
+              <td>Población Menzel</td>
+              <td>$600</td>
+            </tr>
+            <tr>
+              <th scope="row">En 20min</th>
+              <td>Jacob</td>
+              <td><i class="fas fa-car" style="font-size:30px"></i></td>
+              <td>Niebla</td>
+              <td>Terminal de buses</td>
+              <td>$500</td>
+            </tr>
+            <tr>
+              <th scope="row">En 8min</th>
+              <td>Alex</td>
+              <td><i class="fas fa-motorcycle" style="font-size:30px"></i></td>
+              <td>Plazuela Berlin</td>
+              <td>Sodimac</td>
+              <td>$800</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <h4>Entrada de pedidos</h4>
+    </div>
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">Paquete</th>
+          <th scope="col">Nombre</th>
+          <!-- <th scope="col">Medio</th> -->
+          <th scope="col">Punto de partida</th>
+          <th scope="col">Punto de entrega</th>
+          <th scope="col">Ventana de entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">ligero</th>
+          <td>Mark</td>
+          <!-- <td> <i class="fas fa-bicycle"style="font-size:30px"></i> </td> -->
+          <td>Corral 240</td>
+          <td>Av. Ramon Picarte 453</td>
+          <td>Entre 18:30 - 19:00</td>
+        </tr>
+        <tr>
+          <th scope="row">2.5kg</th>
+          <td>Jacob</td>
+          <!-- <td><i class="fas fa-car" style="font-size:30px"></i></td> -->
+          <td>Caopolican 1202</td>
+          <td>Simon Bolivar 802</td>
+          <td>Entre 8:30 - 12:00</td>
+        </tr>
+        <tr>
+          <th scope="row">ligero</th>
+          <td>Alex</td>
+          <!-- <td><i class="fas fa-motorcycle" style="font-size:30px"></i></td> -->
+          <td>Pedro Montt 302</td>
+          <td>Av. Francia 2002</td>
+          <td>Entre 13:45 - 14:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div style="border:1px solid #bbb;border-radius:6px">
+      <span>Ingresar código</span>
+    </div>
+
+    </div>
+    <div class="col-md-1" style="background:#2D2F3E">
+    </div>
+  </div>
+
+  <a (click)="showEnvios=false">
+  <div class="bg-dark text-white toggle2" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+    <div style="display:flex;justify-content:center">
+      <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="height:15px;background:white;width:12px">
+        </div>
+        <div style="height:15px;background:white;width:12px">
+        </div>
+      </div>
+      <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:15px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>
+
+  <a>
+  <div class="bg-danger text-white toggle" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+    <div style="display:flex;justify-content:center">
+      <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="height:15px;background:white;width:12px">
+        </div>
+        <div style="height:15px;background:white;width:12px">
+        </div>
+      </div>
+      <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:15px;background:white;width:12px">
+        </div>
+        <div style="margin-left: 0px;height:5px;background:white;width:12px">
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>
+</div>
+
+
+
+
+
+<div *ngIf="!showEnvios">
+<div class="row" style="height:100%">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+  <div *ngIf='showD =="upload"' style="margin-left: -200px;height:600px;display:flex;justify-content:center;flex-wrap:wrap">
+    <div style="display:flex;justify-content:center;margin-top:100px">
+      <div style="width:400px;height:200px">
+        <div class="card" style="width: 520px;">
+          <div class="card-body">
+            <h5 class="card-title">Subir una foto</h5>
+            <div style="width:450px;height:220px;margin:20px;border:2px dashed #bbb;padding:50px">
+              <span class="text-muted" style="font-size:30px;margin:20px">Arrastra la imagen</span> <br>
+              <div style="display:flex;justify-content:flex-start;align-items:center">
+                <i class="fas fa-images" style="margin-left: 10px;color:#bbb;font-size:50px"></i>
+                <!-- <span class="text-muted" style="font-size:30px;padding-left:30px">,</span> -->
+                <span class="text-muted" style="font-size:20px;padding-left:10px;">o también</span>
+              </div>
+               <br>
+              <button style="margin-left:90px"class="btn btn-info">Selecciona una</button>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Es una imagen para mi galería!
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <label class="form-check-label" for="exampleRadios2">
+                Es un producto nuevo!
+              </label>
+            </div>
+            <a class="btn btn-primary" style="color:white;margin-top:10px"><i class="fas fa-cloud-upload-alt" ></i> Subir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div (click)="showHuella=false" *ngIf="showHuella" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:4">
+    <div style="display:flex;justify-content:center;align-items:center;padding:100px">
+
+    </div>
+  </div>
+
+
+
+  <div *ngIf='showD =="profile"' style="margin-left: -200px;height:600px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap">
+    <div style="width:100%;display:flex;justify-content:space-around;align-items:center">
+      <!-- <img src="assets/u04.jpg" style="" alt=""> -->
+<!-- overflow:hidden;height:200px;width:200px;border-radius:50% -->
+      <!-- <img src="assets/u03.jpg" style=""alt=""> -->
+    </div>
+    <!-- background:#333;opacity:0.8;color:white; -->
+    <div style="width:100%;display:flex;justify-content:center;margin-top:-350px">
+      <div class="row" style="width:600px">
+        <div class="col-md-12">
+          <h2>Historia</h2>
+        </div>
+        <div class="col-md-12" style="display:flex;flex-wrap:wrap;">
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">Oscar Garcia</h4>
+          <h5 style="font-weight:400;padding-left:6px">tiene</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">También</h4>
+          <h5 style="font-weight:400;padding-left:6px">en total ha conseguido</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">lanzar 6 productos</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">de los cuales</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">3</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">se han convertido en</h5>
+
+
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">top más vendidos.</h4>
+          <h5 style="font-weight:400;padding-left:6px">Tiene</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">Oscar Garcia</h4>
+          <h5 style="font-weight:400;padding-left:6px">tiene</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">También</h4>
+          <h5 style="font-weight:400;padding-left:6px">en total ha conseguido</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">lanzar 6 productos</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">de los cuales</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">3</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">se han convertido en</h5>
+
+
+          <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">top más vendidos.</h4>
+          <h5 style="font-weight:400;padding-left:6px">Tiene</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+          <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+          <h5 style="font-weight:400;padding-left:6px">personas.</h5>
+
+          
+
+
+        </div>
+
+
+
+        <!-- <div class="col-md-6" style="display:flex;align-items:center">
+          <a (click)="h=true"><img src="assets/u14.jpg" style="border-radius: 10px;width:100%"alt=""></a>
+        </div>
+        <div class="col-md-6" >
+          <ul style="width:100%">
+            <li style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+              <h4 class="text-primary" style="font-weight:400;font-weight:400;padding-left:6px">Oscar Garcia</h4>
+              <h5 style="font-weight:400;padding-left:6px">tiene</h5>
+              <a><h4 class="text-info"style="font-weight:400;padding-left:6px">42 Seguidores</h4></a>
+              <h5 style="font-weight:400;padding-left:6px">y esta</h5>
+              <a><h4 class="text-info"style="font-weight:400;padding-left:6px">Siguiendo a 21</h4></a>
+              <h5 style="font-weight:400;padding-left:6px">personas</h5>
+            </li>
+            <hr>
+
+            <li class="text-dark" style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+              <span style="font-weight:600">8</span>
+              <span style="padding-left:6px">Productos lanzados</span>
+              </li>
+            <li class="text-muted" style="font-size:30px">
+              <a (click)="showHuella=true" >Ver Huella</a>
+              <a><i class="fas fa-paw" style="font-size:40px;color:#bbb"></i></a>
+            </li>
+            <li style="margin-top:50px;display:flex;justify-content:space-around">
+              <button class="btn btn-dark " style="width:150px">Agregar</button>
+              <button class="btn btn-dark " style="width:150px">Seguir</button>
+            </li>
+          </ul>
+        </div>     -->
+      </div>
+    </div>
+  </div>
+
+
+      <div *ngIf='showD =="gallery"' style="padding-top:30px;display:flex;justify-content:space-around;flex-wrap: wrap;">
+<h4 class="text-muted" style="width:100%">Mi Galería</h4>
+        <div class="" style="position:relative;margin:25px">
+          <a (click)="h=true"><img src="assets/u01.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+          <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+            <span style="font-family: 'Gugi', cursive;">106</span>
+            <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+          </div>
+          <div style="position:absolute; top:20%;width:100%;color:white;background:#333;opacity:0.6;border-radius:3px">
+            <span style="font-family: 'Gugi', cursive;">106</span>
+            <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+          </div>
+        </div>
+
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u06.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u07.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u03.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u04.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u09.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u08.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u12.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u10.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u11.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="" style="position:relative;margin:25px">
+        <a (click)="h=true"><img src="assets/u11.jpg" style="border-radius: 10px;width:300px"alt=""></a>
+        <div style="position:absolute; top:8px;right:16px;color:white;background:#333;opacity:0.6;border-radius:3px">
+          <span style="font-family: 'Gugi', cursive;">106</span>
+          <a style="padding: 5px"><i class="fas fa-heart"></i></a>
+        </div>
+      </div>
+      </div>
+  </div>
+  <!-- background:#2D2F3E -->
+  <div class="col-md-1 left" style="">
+  </div>
+</div>
+
+<a (click)="showEnvios=true">
+<div class="bg-dark text-white toggle2" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+  <div style="display:flex;justify-content:center">
+    <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+      <div style="height:15px;background:white;width:12px">
+      </div>
+      <div style="height:15px;background:white;width:12px">
+      </div>
+    </div>
+    <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+      <div style="margin-left: 0px;height:5px;background:white;width:12px">
+      </div>
+      <div style="margin-left: 0px;height:15px;background:white;width:12px">
+      </div>
+      <div style="margin-left: 0px;height:5px;background:white;width:12px">
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+
+<a (click)="toggle()">
+<div class="bg-danger text-white toggle" style="border-radius:50%;margin-top:-40px;width:70px;height:70px;display:flex;justify-content:center;align-items:center">
+  <div style="display:flex;justify-content:center">
+    <div style="align-items: flex-start;height:40px;display:flex;flex-direction:column;justify-content:space-around">
+      <div style="height:15px;background:white;width:12px">
+      </div>
+      <div style="height:15px;background:white;width:12px">
+      </div>
+    </div>
+    <div  style="height:40px;display:flex;flex-direction:column;justify-content:space-around">
+      <div style="margin-left: 0px;height:5px;background:white;width:12px">
+      </div>
+      <div style="margin-left: 0px;height:15px;background:white;width:12px">
+      </div>
+      <div style="margin-left: 0px;height:5px;background:white;width:12px">
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+</div>

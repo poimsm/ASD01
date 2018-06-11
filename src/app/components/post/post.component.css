@@ -1,0 +1,48 @@
+.main-container {
+  margin-top: 40px;
+}
+
+/* Drop Zone */
+.drop-zone {
+  border: dotted 3px lightgray;
+  opacity: 0.5;
+  color: #666;
+  text-align: center;
+}
+
+.file-over {
+  border: dotted 3px dodgerblue;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.text-green {
+  color: green;
+}
+a {
+  color: #6c757d;
+  /* padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 5px; */
+  text-decoration: none;
+}
+a:hover {
+  /* color: gray; */
+
+  /* color: pink !important; */
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5 !important;
+}
+ul,
+li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
