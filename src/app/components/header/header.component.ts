@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../providers/post.service';
-import { Router } from '@angular/router';
-declare var jQuery:any;
-declare var $:any;
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { DataService } from "../../providers/data.service";
+declare var jQuery: any;
+declare var $: any;
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
   showBar = false;
-  constructor( public _ps: PostService, private router: Router) {
-    this._ps.getPost().subscribe( ()=>{
-      // setTimeout( ()=>{this.elemento.style.backgroundColor="white"},40);
-    });
+  ownerData: any;
+  notificador = 0;
 
-    console.log(this._ps);
-    // this.router.navigate(['/', 'landing', 'land1']);
-
-  }
-
-
+  constructor(public _ds: DataService, private router: Router) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this._ds.getOwnerNotifications().subscribe(ownerData => {
+        let counter = 0;
+        for (const data of ownerData) {
+          counter = counter + data.totalReactions;
+        }
+        this.notificador = counter;
+      });
+    }, 3000);
   }
-
 }

@@ -39,7 +39,6 @@ import { RecienteComponent } from "./components/reciente/reciente.component";
 import { HotComponent } from "./components/hot/hot.component";
 import { SiguiendoComponent } from "./components/siguiendo/siguiendo.component";
 import { ProductoComponent } from "./components/producto/producto.component";
-import { PostComponent } from "./components/post/post.component";
 import { Land1Component } from "./components/land1/land1.component";
 import { Land2Component } from "./components/land2/land2.component";
 import { Land3Component } from "./components/land3/land3.component";
@@ -47,6 +46,10 @@ import { LikesComponent } from "./components/likes/likes.component";
 import { GuardadoComponent } from "./components/guardado/guardado.component";
 import { NgDropFilesDirective } from "./directive/ng-drop-files.directive";
 import { DropZoneDirective } from "./directives/drop-zone.directive";
+import { NavegarService } from "./providers/navegar.service";
+import { InputComponent } from "./components/input/input.component";
+import { MyPostComponent } from "./components/my-post/my-post.component";
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 
 @NgModule({
   declarations: [
@@ -75,14 +78,16 @@ import { DropZoneDirective } from "./directives/drop-zone.directive";
     HotComponent,
     SiguiendoComponent,
     ProductoComponent,
-    PostComponent,
     Land1Component,
     Land2Component,
     Land3Component,
     LikesComponent,
     GuardadoComponent,
     NgDropFilesDirective,
-    DropZoneDirective
+    DropZoneDirective,
+    InputComponent,
+    MyPostComponent,
+    NotificacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +98,7 @@ import { DropZoneDirective } from "./directives/drop-zone.directive";
     AngularFireStorageModule,
     AngularFireAuthModule
   ],
-  providers: [PostService, DataService, BrowserService],
+  providers: [PostService, DataService, BrowserService, NavegarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

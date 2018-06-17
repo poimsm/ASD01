@@ -14,4 +14,7 @@ export class LoginComponent implements OnInit {
   ingresar(proveedor: string) {
     this._ds.login(proveedor);
   }
+  salir() {
+    this._ds.logout();
+  }
 }

@@ -1,0 +1,14 @@
+a {
+  /* padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 5px; */
+  text-decoration: none;
+}
+a:hover {
+  color: orangered !important;
+
+  /* color: pink !important; */
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5 !important;
+}

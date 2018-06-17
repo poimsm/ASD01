@@ -21,12 +21,13 @@ import { RecienteComponent } from "./components/reciente/reciente.component";
 import { SiguiendoComponent } from "./components/siguiendo/siguiendo.component";
 import { PmComponent } from "./components/pm/pm.component";
 import { ProductoComponent } from "./components/producto/producto.component";
-import { PostComponent } from "./components/post/post.component";
 import { Land1Component } from "./components/land1/land1.component";
 import { Land2Component } from "./components/land2/land2.component";
 import { Land3Component } from "./components/land3/land3.component";
 import { LikesComponent } from "./components/likes/likes.component";
 import { GuardadoComponent } from "./components/guardado/guardado.component";
+import { MyPostComponent } from "./components/my-post/my-post.component";
+import { NotificacionesComponent } from "./components/notificaciones/notificaciones.component";
 
 const app_routes: Routes = [
   {
@@ -75,9 +76,10 @@ const app_routes: Routes = [
   { path: "pm", component: PmComponent },
   { path: "producto", component: ProductoComponent },
   { path: "hot", component: HotComponent },
-  { path: "post/:action/:id", component: PostComponent },
   { path: "chat", component: ChatComponent },
   { path: "guardado", component: GuardadoComponent },
+  { path: "mypost/:action/:id", component: MyPostComponent },
+  { path: "notificaciones", component: NotificacionesComponent },
 
   { path: "**", pathMatch: "full", redirectTo: "landing/land1" }
 ];

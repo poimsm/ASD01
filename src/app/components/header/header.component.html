@@ -88,7 +88,7 @@
 <nav class="navbar navbar-dark bg-danger " style="display:flex; justify-content:space-around;flex-wrap: wrap">
   <div style="display:flex; flex-wrap:wrap; justify-content:space-around;max-width:300px">
     <a (click)="showBar = false" routerLink="landing/land1" style="margin-right:10px">
-      <h2 class="logo2">Joopiter</h2>
+      <h2 class="logo2" style="font-weight:600">Joopiter</h2>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
@@ -110,20 +110,26 @@
       <!-- <i style="font-size:20px" class="fas fa-cloud"></i> -->
       <!-- <i style="font-size:20px" class="fab fa-discourse"></i> -->
       <!-- <span style="font-size:20px">Oscar Garcia Fuen</span> -->
-      <span style="font-size:20px">{{_ps.usuario.name}}</span>
+      <span style="font-size:20px;font-weight:600">{{_ds.usr.nombre}}</span>
 
 
       <!-- <i  class="fab fa-rocketchat"></i> -->
     </a>
-    <a routerLink="login">
-      <!-- <i class="fas fa-bell"></i> -->
-      <i class="fas fa-shopping-cart"></i>
+    <a routerLink="notificaciones" style="position:relative">
+      <i class="fas fa-bell"></i>
+      <div *ngIf="notificador > 0" style="background:red;color:white;position:absolute;top:-3px;right:-15px;font-size:13px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+        {{notificador}}
+      </div>
+      <!-- <i class="fas fa-shopping-cart"></i> -->
     </a>
-    <a routerLink="user3">
+    <a routerLink="login">
+      <i class="fas fa-level-up-alt" style="font-size:25px"></i>
+      <!-- <span style="font-weight:600;color:white">Login</span> -->
+      <!-- routerLink="user3" -->
       <!-- <span style="font-size:20px">Oscar Garcia...</span> -->
       <!-- <span style="font-size:20px">{{_ps.usuario.name}}</span> -->
       <!-- <i style="width:15px;height:15px;font-size:40px" class="fab fa-grav"></i> -->
-      <i style="width:15px;height:15px" class="fas fa-user"></i>
+      <!-- <i style="width:15px;height:15px" class="fas fa-user"></i> -->
     </a>
   </div>
   <div style="width:3%">
@@ -249,19 +255,20 @@
   </div>
 </div> -->
 
-<div class="mobile" style="display;justify-content:center;align-items:center;flex-wrap:wrap">
+<div class="mobile" style="display;justify-content:center;align-items:center;flex-wrap:wrap;">
   <button routerLink="post" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
     Volver
   </button>
 
 </div>
 
-<div *ngIf="showBar" style="display;justify-content:center;align-items:center;flex-wrap:wrap">
-  <button [routerLink]="['/post','post', '']" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px" class="btn btn-primary">
+<div *ngIf="showBar" style="display;justify-content:center;align-items:center;flex-wrap:wrap;">
+  <button [routerLink]="['/mypost','post', '']" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600"
+    class="btn btn-primary">
     Nuevo post
   </button>
-  <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px" class="btn btn-primary">
-    Crear tienda
+  <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600" class="btn btn-primary">
+    Tablero
   </button>
 </div>
 
@@ -285,7 +292,7 @@
 
 
 
-<div *ngIf="showBar" class="row " style="padding-top:10px;padding-bottom:10px;width:100%">
+<div *ngIf="showBar" class="row " style="padding-top:10px;padding-bottom:10px;width:100%;">
   <div class="col-md-12  text-muted" style="display:flex;justify-content:center;border-bottom:0px solid #ccc;flex-wrap:wrap">
     <div style="display:flex;justify-content:center">
       <a routerLink="hot" class="text-muted">

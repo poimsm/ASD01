@@ -1,10 +1,21 @@
 <div class="row" style="margin-top:20px;padding-right:5px;padding-left:5px;margin-bottom:20px">
   <!-- background:rgb(147, 216, 9) -->
+
+
   <div class="col-md-4 offset-md-3 text-dark">
     <div style="width:350px;margin-left:50px">
 
-      <h5>32 amigos (6) activos</h5>
-      <div style="display:flex;justify-content:flex-start;;align-items:center;border:1px solid #eee;border-radius:5px;padding:10px">
+      <span style="font-weight:600;font-size:20px">32 amigos (6) activos</span>
+      <div style="position:relative;display:flex;justify-content:flex-start;;align-items:center;border:1px solid #eee;border-radius:5px;padding:10px">
+
+        <div class="btn-group dropleft" style="position:absolute;top:1px;right:2px">
+          <a style="padding:0px;" class="" data-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-ellipsis-h" style="color:#bbb"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a (click)="guardar(post.id)" class="dropdown-item">Cambiar vista</a>
+          </div>
+        </div>
 
         <div class="">
           <div (mouseleave)="showName2 = false" (mouseenter)="showName2 = true" style="position:relative">
@@ -65,7 +76,7 @@
         </div>
       </div>
       <br>
-      <h5>117 contactos (9) activos</h5>
+      <span style="font-weight:600;font-size:20px">117 contactos (9) activos</span>
       <div style="display:flex;justify-content:flex-start;;align-items:center;border:1px solid #eee;border-radius:5px;padding:10px">
         <div class="">
           <img src="assets/02.jpg" class="" style="margin-right:10px;margin-top:6px;width:60px;height:60px;object-fit:cover;border-radius:50%"
@@ -96,9 +107,9 @@
       </div>
 
       <br>
-      <h5> 3 miembros en
+      <span style="font-weight:600;font-size:20px"> 3 miembros en
         <span class="text-primary">@MiTiendaEcoleña</span>
-      </h5>
+      </span>
       <div style="display:flex;justify-content:flex-start;;align-items:center;border:1px solid #eee;border-radius:5px;padding:10px">
         <div class="">
           <img src="assets/02.jpg" class="" style="margin-right:10px;margin-top:6px;width:60px;height:60px;object-fit:cover;border-radius:50%"

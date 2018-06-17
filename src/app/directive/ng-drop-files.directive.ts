@@ -14,6 +14,7 @@ import { FileItem } from "../models/file-item";
 export class NgDropFilesDirective {
   @Input() archivos: FileItem[] = [];
   @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
+  @Output() imgReady: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}
 
@@ -31,7 +32,6 @@ export class NgDropFilesDirective {
   @HostListener("drop", ["$event"])
   public onDrop(event: any) {
     const transferencia = this._getTransferencia(event);
-
     if (!transferencia) {
       return;
     }
@@ -40,6 +40,7 @@ export class NgDropFilesDirective {
 
     this._prevenirDetener(event);
     this.mouseSobre.emit(false);
+    this.imgReady.emit(true);
   }
 
   private _getTransferencia(event: any) {

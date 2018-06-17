@@ -14,71 +14,62 @@ declare var $: any;
 })
 export class HotComponent implements OnInit {
   showResp = false;
-  showImg = false;
-
-  show = false;
-
-  comentarios: any = [];
-  posts: any = [];
-  postt: any;
-  likee: any;
+  posts: any;
+  likes: any;
   imagenes: any;
   usuarios: any;
-  comentarioss: any;
+  comentarios: any;
+  options: any;
+  actions: any;
+  rayos: any;
+  mm = "si";
+  optionValue = "";
 
-  likeC = 0;
-  comentC = 0;
-  k = 999;
   l: number;
-  items = [1, 2, 3];
-  fd = true;
 
   constructor(
     public _browserService: BrowserService,
     public _ds: DataService,
     private router: Router
   ) {
-    this._ds.getUser().subscribe(x => (this.usuarios = x));
-    this._ds.get2Post().subscribe(x => (this.postt = x));
-    this._ds.get2Coment().subscribe(x => (this.comentarioss = x));
-    this._ds.get2Like().subscribe(x => (this.likee = x));
-    this._ds.getImg().subscribe(x => (this.imagenes = x));
+    this._ds.getUsers().subscribe(x => (this.usuarios = x));
+    this._ds.getPosts().subscribe(x => (this.posts = x));
+    this._ds.getComents().subscribe(x => (this.comentarios = x));
+    this._ds.getLikes().subscribe(x => (this.likes = x));
+    this._ds.getImgs().subscribe(x => (this.imagenes = x));
+    this._ds.getActions().subscribe(x => (this.actions = x));
+    this._ds.getOptions().subscribe(x => (this.options = x));
+    this._ds.getClientNotifications().subscribe(x => (this.rayos = x));
   }
 
-  ngOnInit() {}
-
-  likecounter() {
-    this.likeC += 1;
-  }
-  likereset() {
-    this.likeC = 0;
-  }
-  comentcounter() {
-    this.comentC += 1;
-  }
-  comentreset() {
-    this.comentC = 0;
+  ngOnInit() {
+    $(".dropdown.keep-open").on({
+      "shown.bs.dropdown": function() {
+        this.closable = false;
+      },
+      click: function() {
+        this.closable = true;
+      },
+      "hide.bs.dropdown": function() {
+        return this.closable;
+      }
+    });
   }
 
   remove(dom: string) {
     $("#" + dom + "este").remove();
-  }
-  enviarContador(contador: number, postId: string, dato: string) {
-    if (dato === "comentario") {
-      console.log(contador);
-      // this._ds.postCounterByComent(contador, postId);
-    } else {
-    }
   }
 
   navegar(key: string) {
     this._browserService.goPlaces(key);
   }
 
-  agregarLikePost(dom) {
-    this._ds.add2LikeByPost(dom);
+  agregarLikePost(postId) {
+    this._ds.updateTotaLikes(postId, "add");
+    this._ds.addLikeByPost(postId);
   }
-  quitarLikePost(likeId: string) {
+  quitarLikePost(postId, likeId) {
+    this._ds.updateTotaLikes(postId, "");
     this._ds.deleteLikePost(likeId);
   }
   guardar(id: string) {
@@ -92,5 +83,53 @@ export class HotComponent implements OnInit {
   }
   ToggleTrueImg(id) {
     this._ds.updateImg(id, true);
+  }
+  change(id, content) {
+    $("#" + id).html(content);
+  }
+  optionToggle(id, flag) {
+    this._ds.updateOption(id, flag);
+  }
+  getSelections(optionId) {
+    this.optionValue = $("#" + optionId).html();
+  }
+  deleteRayo(id) {
+    $("#" + id).remove();
+  }
+
+  showTopic2(id) {
+    $("#" + id + "hunter")
+      .mouseover(function() {
+        $("#" + id + "target")
+          .stop(true, true)
+          .show(400);
+      })
+      .mouseout(function() {
+        $("#" + id + "target")
+          .stop(true, true)
+          .hide(400);
+      });
+  }
+
+  showTopic(id) {
+    $("#" + id + "target").show();
+  }
+  hideTopic(id) {
+    $("#" + id + "target").hide();
+  }
+
+  clickRayo(postId, ownerId) {
+    const values = [];
+    const titles = [];
+    for (const action of this.actions) {
+      if (action.postId === postId) {
+        const optionValue = $("#" + action.id).html();
+        values.push(optionValue);
+        titles.push(action.title);
+      }
+    }
+    console.log("Values", values);
+    console.log("Titles", titles);
+    this._ds.addNotificationByClient(postId, ownerId, titles, values);
   }
 }

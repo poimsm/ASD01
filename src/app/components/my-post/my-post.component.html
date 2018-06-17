@@ -1,0 +1,281 @@
+<div class="row">
+
+
+
+
+
+  <div class="col-md-4 offset-md-4">
+
+    <div style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:20px;">
+      <i class="fas fa-user-circle" style="margin-left: 5px;color:#ccc;width:40px;height:40px;font-size:40px"></i>
+      <div class="" style="width:300px">
+        <textarea type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand" rows='1' data-min-rows="1"
+          style="font-size:20px">
+        </textarea>
+      </div>
+      <a (click)="enviar(action)">
+        <i class="fas fa-location-arrow" style="color:#bbb; font-size: 30px"></i>
+      </a>
+    </div>
+
+
+    <div *ngIf="showBtn" style="width: 100%;display: flex;justify-content: space-around;flex-wrap: wrap">
+      <a (click)="showGallery = true; showBtn = false">
+        <div [ngClass]="{'dirty': false}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-cloud" style="color: #4db3f7;font-size:16px;margin-left:10px"></i>
+          <span style="margin-left:5px">Buscar imágen en galería</span>
+        </div>
+      </a>
+      <a (click)="showUpload = true; showBtn = false">
+        <div [ngClass]="{'dirty': archivos.length > 0}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-star" style="color: #fcd973;font-size:16px;margin-left:10px"></i>
+          <span style="margin-left:5px">Nueva imágen</span>
+        </div>
+      </a>
+      <a>
+        <div [ngClass]="{'dirty': actionSelected}" (click)="showActions = true; showBtn = false" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:16px;margin-left:10px"></i>
+          <span style="margin-left:5px">Llamada a la acción</span>
+        </div>
+      </a>
+      <a>
+        <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-hourglass-start" style="color: #30a28c;font-size:16px;margin-left:10px"></i>
+          <span style="margin-left:5px">Oferta de tiempo</span>
+        </div>
+      </a>
+    </div>
+
+
+
+
+
+    <div *ngIf="showUpload">
+      <div style="width:100%;display:flex;justify-content:center">
+        <a>
+          <div [ngClass]="{'dirty': archivos.length > 0}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+            <i class="fas fa-star" style="color: #fcd973;font-size:16px;margin-left:10px"></i>
+            <span style="margin-left:5px">Nueva imágen</span>
+          </div>
+        </a>
+      </div>
+      <div (click)="showUpload = false; showBtn = true" style="width:100%;text-align:right">
+        <a>
+          <span class="text-muted" style="font-weight: 600">Volver</span>
+        </a>
+      </div>
+      <div style="display: flex; justify-content: flex-start">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck1" #saveCb type="checkbox" (change)="saveImg = saveCb.checked">
+          <label class="custom-control-label" for="customCheck1">
+            <span class="text-muted" style="font-weight:600">Guardar imagenes en galería</span>
+          </label>
+        </div>
+      </div>
+      <div appNgDropFiles [archivos]="archivos" (imgReady)="imgReady = $event" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{ 'file-over': estaSobreElemento }"
+        class="well drop-zone">
+        <h4 *ngIf="!imgReady">Deje caer aquí las imagenes</h4>
+        <h4 *ngIf="imgReady" class="text-primary">Imagenes lista</h4>
+        <img src="assets/drop-images.png">
+      </div>
+      <br>
+      <div class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+        <input type="text" name="groupTitle" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:2px solid #bbb;display:flex;align-items:center;font-weight:600"
+          [(ngModel)]="groupTitle" (keyup.enter)="enviar(action)" placeholder="Agrega un título">
+      </div>
+    </div>
+
+
+    <div *ngIf="showGallery" style="width:100%">
+      <div style="width:100%;display:flex;justify-content:center">
+        <a>
+          <div [ngClass]="{'dirty': false}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+            <i class="fas fa-cloud" style="color: #4db3f7;font-size:16px;margin-left:10px"></i>
+            <span style="margin-left:5px">Buscar imágen en galería</span>
+          </div>
+        </a>
+      </div>
+      <div (click)="showGallery = false; showBtn = true" style="width:100%;text-align:right">
+        <a>
+          <span class="text-muted" style="font-weight: 600">Volver</span>
+        </a>
+      </div>
+      <div style="display: flex;justify-content: flex-start; flex-wrap: wrap">
+        <div *ngFor="let imagen of imagenes">
+          <div *ngIf="imagen.userId === _ds.userId ">
+            <div *ngIf="imagen.saveImg">
+              <a *ngIf="!imagen.selected" (click)="selection(imagen.id, 'selected')">
+                <img [src]="imagen.url" style="margin:5px;width:170px;height:170px;object-fit:cover;border-radius:12px;">
+              </a>
+              <a *ngIf="imagen.selected" (click)="selection(imagen.id, 'unselected')">
+                <img [src]="imagen.url" style="margin:5px;width:170px;height:170px;object-fit:cover;border-radius:12px;border:3px solid #bbb">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showActions" style="margin-bottom:50px">
+
+      <div style="width:100%;display:flex;justify-content:center">
+        <a>
+          <div [ngClass]="{'dirty': optionA1 !== '' && titleA !== ''}" (click)="showActions = true; showBtn = false" class="text-dark"
+            style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+            <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:16px;margin-left:10px"></i>
+            <span style="margin-left:5px">Llamada a la acción</span>
+          </div>
+        </a>
+      </div>
+      <div style="width:100%;display:flex;align-items:center;justify-content:space-between">
+        <div style="width:190px;display:flex;align-items:center;justify-content:space-between">
+          <i (click)="topycToggle()" class="fas fa-caret-left" style="font-size:30px;color:#bbb"></i>
+          <span class="text-muted" style="font-weight:600;font-size:18px">{{topyc}}</span>
+          <i (click)="topycToggle()" class="fas fa-caret-right" style="font-size:30px;color:#bbb"></i>
+        </div>
+        <a (click)="showActions = false; showBtn = true; sendActions()">
+          <span class="text-muted" style="font-weight: 600">Volver</span>
+        </a>
+      </div>
+
+      <div *ngIf="optionA" class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+        <input class="bg-light" type="text" name="titleA" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:1px solid #ccc;display:flex;align-items:center;font-weight:600"
+          [(ngModel)]="titleA" placeholder="Título">
+      </div>
+
+      <div *ngIf="sumOptionA >= 1" class="text-muted" style="margin-top:20px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionA1" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionA1" placeholder="Opción 1">
+      </div>
+
+      <div *ngIf="sumOptionA >= 2" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionA2" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionA2" placeholder="Opción 2">
+      </div>
+
+      <div *ngIf="sumOptionA >= 3" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionA3" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionA3" placeholder="Opción 3">
+      </div>
+
+      <div *ngIf="sumOptionA >= 4" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionA4" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionA4" placeholder="Opción 4">
+      </div>
+
+      <div *ngIf="sumOptionA >= 5" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionA5" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionA5" placeholder="Opción 5">
+      </div>
+
+      <div *ngIf="sumOptionA !== 5 && optionA" (click)="sumador('sumOptionA'); sumador('callToAction')" class="text-info" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra opción</a>
+      </div>
+      <div *ngIf="optionAbtn" (click)="optionAbtn = false; optionBbtn = true; optionB = true" class="text-primary" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra llamada a la acción</a>
+      </div>
+      <!-- ------------------------------OPCION B------------------------------ -->
+
+      <div *ngIf="optionB" class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+        <input class="bg-light" type="titleB" name="title" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:1px solid #ccc;display:flex;align-items:center;font-weight:600"
+          [(ngModel)]="titleB" placeholder="Título">
+      </div>
+
+      <div *ngIf="sumOptionB >= 1" class="text-muted" style="margin-top:20px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionB1" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionB1" placeholder="Opción 1">
+      </div>
+
+      <div *ngIf="sumOptionB >= 2" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionB2" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionB2" placeholder="Opción 2">
+      </div>
+
+      <div *ngIf="sumOptionB >= 3" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionB3" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionB3" placeholder="Opción 3">
+      </div>
+
+      <div *ngIf="sumOptionB >= 4" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionB4" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionB4" placeholder="Opción 4">
+      </div>
+
+      <div *ngIf="sumOptionB >= 5" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionB5" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionB5" placeholder="Opción 5">
+      </div>
+
+      <div *ngIf="sumOptionB !== 5 && optionB" (click)="sumador('sumOptionB'); sumador('callToAction')" class="text-info" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra opción</a>
+      </div>
+      <div *ngIf="optionBbtn" (click)="optionBbtn = false; optionCbtn = true; optionC = true" class="text-primary" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra llamada a la acción</a>
+      </div>
+
+      <!-- ------------------------------OPCION C------------------------------ -->
+
+      <div *ngIf="optionC" class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+        <input class="bg-light" type="titleC" name="title" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:1px solid #ccc;display:flex;align-items:center;font-weight:600"
+          [(ngModel)]="titleC" placeholder="Título">
+      </div>
+
+      <div *ngIf="sumOptionC >= 1" class="text-muted" style="margin-top:20px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionC1" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionC1" placeholder="Opción 1">
+      </div>
+
+      <div *ngIf="sumOptionC >= 2" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionC2" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionC2" placeholder="Opción 2">
+      </div>
+
+      <div *ngIf="sumOptionC >= 3" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionC3" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionC3" placeholder="Opción 3">
+      </div>
+
+      <div *ngIf="sumOptionC >= 4" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionC4" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionC4" placeholder="Opción 4">
+      </div>
+
+      <div *ngIf="sumOptionC >= 5" class="text-muted" style="margin-top:2px;display:flex;justify-content:center;align-items: center">
+        <i class="far fa-edit"></i>
+        <input type="text" name="optionC5" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:0px solid rgb(223, 223, 223);display:flex;align-items:center;font-weight:600;color:#6c757d"
+          [(ngModel)]="optionC5" placeholder="Opción 5">
+      </div>
+
+      <div *ngIf="sumOptionC !== 5 && optionC" (click)="sumador('sumOptionC')" class="text-info" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra opción</a>
+      </div>
+      <div *ngIf="optionCbtn" (click)="optionCbtn = false" class="text-primary" style="font-weight:600;margin-left:50px">
+        <a>+ Agregar otra llamada a la acción</a>
+      </div>
+
+    </div>
+
+
+
+    <div *ngIf="showTimeOffers">
+    </div>
+
+
+
+  </div>
+
+</div>

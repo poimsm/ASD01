@@ -1,14 +1,24 @@
 <div class="row" style="margin-top:100px">
   <div class="col-md-12 text-center">
-    <p>Ingrese a la página con su cuenta favorita</p>
 
-    <button class="btn btn-outline-danger" type="button" name="button" (click)="ingresar('google')">Google</button>
+    <p class="text-dark" style="font-weight:600">
+      Ingrese a la página con su cuenta favorita
+    </p>
 
-    <button class="btn btn-outline-primary" type="button" name="button" style="margin-left:10px" (click)="ingresar('facebook')">Facebook</button>
+    <button class="btn btn-danger" (click)="ingresar('google')">
+      <span style="font-weight:600">Google</span>
+    </button>
+
+    <button class="btn text-white" style="background:#39579b;margin-left:10px" (click)="ingresar('facebook')">
+      <span style="font-weight:600">Facebook</span>
+    </button>
   </div>
 
-  <div class="col-md-12 text-center">
-    <button class="btn btn-outline-danger" type="button" name="button" (click)="_ds.logout()">Salir</button>
+  <div class="col-md-12 text-center" style="margin-top:20px">
+    <button class="btn btn-light text-muted" (click)="salir()">
+      <i class="fas fa-bomb" style="font-size:30px"></i>
+      <span style="font-weight:600">Salir de Joopiter</span>
+    </button>
   </div>
 
 </div>

@@ -1,0 +1,65 @@
+.drop-zone {
+  border: dotted 3px #bbb;
+  opacity: 0.5;
+  color: #666;
+  text-align: center;
+}
+
+.file-over {
+  border: dotted 3px dodgerblue;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.text-green {
+  color: green;
+}
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: none !important;
+  cursor: pointer;
+  /* opacity: 0.5 !important; */
+}
+textarea {
+  color: gray;
+  outline: none;
+  border: 0px;
+  resize: none;
+  display: block;
+  box-sizing: padding-box;
+  overflow: hidden;
+  padding: 10px !important;
+  width: 300px;
+  font-size: 16px;
+  margin: 10px auto;
+  /* margin: 50px auto; */
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input:focus:-moz-placeholder {
+  color: transparent;
+} /* FF 4-18 */
+input:focus::-moz-placeholder {
+  color: transparent;
+} /* FF 19+ */
+input:focus:-ms-input-placeholder {
+  color: transparent;
+} /* IE 10+ */
+
+.dirty {
+  color: white !important;
+  background: #28a745 !important;
+}
+.clean {
+  color: #343a40;
+}
