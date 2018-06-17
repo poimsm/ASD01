@@ -19,6 +19,8 @@ export class MyPostComponent implements OnInit {
   groupTitle = "";
   keyOne = "";
   keyTwo = "";
+  showActions: boolean;
+  showTimeOffers: boolean;
   showUpload = false;
   payLink = false;
   saveImg = false;

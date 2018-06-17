@@ -11,6 +11,11 @@ declare var $: any;
 })
 export class ChatComponent implements OnInit {
   element: any;
+  showName1: boolean;
+  showName2: boolean;
+  showName3: boolean;
+  showName4: boolean;
+  showName5: boolean;
 
   constructor(public _ps: PostService) {}
 
