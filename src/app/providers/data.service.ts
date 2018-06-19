@@ -201,7 +201,7 @@ export class DataService {
       };
       this.userId = user.uid;
 
-      // this.afs.doc("usuarios/" + this.userId).set(this.usr);
+      this.afs.doc("usuarios/" + this.userId).set(this.usr);
       this.savedPostInit(user.uid).subscribe();
       // .catch(error => {
       //   this.afs.doc("usuarios/" + this.uid).set(this.usr);
@@ -440,11 +440,11 @@ export class DataService {
       contador += 1;
     }
     this.afs
-    .collection("client_notifications")
-    .add(selection)
-    .then(() => {
-      this.updateNotificationByOwner(ownerId, postId);
-    });
+      .collection("client_notifications")
+      .add(selection)
+      .then(() => {
+        this.updateNotificationByOwner(ownerId, postId);
+      });
   }
 
   addNotificationByClient2(postId, ownerId, titles, values) {
@@ -475,7 +475,6 @@ export class DataService {
     }
     return this.afs.collection("client_notifications").add(selection);
   }
-
 
   addSelectionByPost(postId, callIds, values) {
     const selection: Selection = {
@@ -749,15 +748,14 @@ export class DataService {
     this.afs.doc("posts/" + postId).delete();
   }
 
-
   // ----------------------------------------------------
   //                UPDATES
   // ----------------------------------------------------
   updateNotificationByOwner(ownerId, postId) {
-    this.ownerNotificationCollection = this.afs.collection<OwnerNotification>("owner_notifications",
-    ref => ref.where("ownerId_postId", "==",
-    ownerId + "_" + postId)
-  );
+    this.ownerNotificationCollection = this.afs.collection<OwnerNotification>(
+      "owner_notifications",
+      ref => ref.where("ownerId_postId", "==", ownerId + "_" + postId)
+    );
     this.ownerNotificationCollection
       .snapshotChanges()
       .map(docArray => {
@@ -772,10 +770,10 @@ export class DataService {
       .subscribe(notes => {
         let contador: number;
         for (const item of notes) {
-              contador = item.totalReactions + 1;
-            this.afs.doc("owner_notifications/" + item.id).update({
-              totalReactions: contador
-            });
+          contador = item.totalReactions + 1;
+          this.afs.doc("owner_notifications/" + item.id).update({
+            totalReactions: contador
+          });
         }
       });
   }
