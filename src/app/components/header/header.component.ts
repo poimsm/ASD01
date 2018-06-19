@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this._ds.getOwnerNotifications().subscribe(ownerData => {
+      this._ds.getOwnerNotifications(this._ds.userId).subscribe(ownerData => {
         let counter = 0;
         for (const data of ownerData) {
           counter = counter + data.totalReactions;

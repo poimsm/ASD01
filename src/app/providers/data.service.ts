@@ -11,51 +11,66 @@ import {
   AngularFireUploadTask
 } from "angularfire2/storage";
 import { FileItem } from "../models/file-item";
-import { Observable } from "rxjs";
+// import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 
 import { take } from "rxjs/operators";
 import { AngularFireAuth } from "angularfire2/auth";
 import { firebase } from "@firebase/app";
-import { createContentChild } from "@angular/compiler/src/core";
-import { isProtractorLocator } from "protractor/built/locators";
 
 export interface Usuario {
   nombre: string;
   fecha: number;
-  usuario_id: string;
+  userId: string;
   email?: string;
   password?: string;
   photoURL: string;
+  lastPostTime?: number;
+  firstPostTime?: number;
+  TotalSavePosts?: number;
 }
 export interface Post {
   nombre: string;
   mensaje: string;
   fecha: number;
-  usuario_id: string;
-  post_id?: string;
-  postId?: string;
+  userId: string;
+  postId: string;
   start: string;
   value: string;
   end: string;
-  totalComentarios?: number;
-  totalLikes?: number;
+  totalComentarios: number;
+  totalLikes: number;
   totalImages: number;
   topic: string;
   imgGroupTitle: string;
   photoURL: string;
+  totalComentarios_fecha: string;
 }
 export interface SavePost {
+  nombre: string;
+  mensaje: string;
+  fecha: number;
+  userId: string;
+  saveUserId: string;
   postId: string;
-  usuario_id: string;
+  start: string;
+  value: string;
+  end: string;
+  totalComentarios: number;
+  totalLikes: number;
+  totalImages: number;
+  topic: string;
+  imgGroupTitle: string;
+  photoURL: string;
+  saveUserId_Time: string;
 }
 export interface Comentario {
   nombre: string;
   mensaje: string;
   fecha: number;
-  usuario_id: string;
-  post_id: string;
-  comentario_id?: string;
+  userId: string;
+  postId: string;
+  comentId?: string;
   start?: string;
   value?: string;
   end?: string;
@@ -63,9 +78,9 @@ export interface Comentario {
 }
 export interface Like {
   nombre: string;
-  usuario_id: string;
-  post_id: string;
-  comentario_id?: string;
+  userId: string;
+  postId: string;
+  comentId?: string;
   likepost?: boolean;
   like_id?: string;
 }
@@ -123,6 +138,8 @@ export interface NotificationAction {
 }
 export interface OwnerNotification {
   ownerId: string;
+  postId: string;
+  ownerId_postId: string;
   totalReactions: number;
 }
 export interface ClientNotification {
@@ -149,15 +166,13 @@ export class DataService {
   ob: any;
   userId: any;
   postId: string;
-
   postGuardadoId: any;
 
   private usuariosCollection: AngularFirestoreCollection;
   private postsCollection: AngularFirestoreCollection<Post>;
   private comentariosCollection: AngularFirestoreCollection<Comentario>;
   private likesCollection: AngularFirestoreCollection<Like>;
-  private savePostIdCollection: AngularFirestoreCollection;
-  private savePostCollection: AngularFirestoreCollection;
+  private savedPostCollection: AngularFirestoreCollection<SavePost>;
   private imgCollection: AngularFirestoreCollection<Imagen>;
   private callToActionCollection: AngularFirestoreCollection<CallToAction>;
   private optionCollection: AngularFirestoreCollection<Option>;
@@ -178,18 +193,16 @@ export class DataService {
       if (!user) {
         return;
       }
-      console.log("HOOOOOOLAAAA");
-      console.log(user);
-
       this.usr = {
         nombre: user.displayName,
         fecha: new Date().getTime(),
-        usuario_id: user.uid,
+        userId: user.uid,
         photoURL: user.photoURL
       };
       this.userId = user.uid;
 
-      this.afs.doc("usuarios/" + this.userId).set(this.usr);
+      // this.afs.doc("usuarios/" + this.userId).set(this.usr);
+      this.savedPostInit(user.uid).subscribe();
       // .catch(error => {
       //   this.afs.doc("usuarios/" + this.uid).set(this.usr);
       // });
@@ -225,7 +238,7 @@ export class DataService {
     const usuario: Usuario = {
       nombre: this.usr.nombre,
       fecha: this.usr.fecha,
-      usuario_id: this.usr.usuario_id,
+      userId: this.usr.userId,
       photoURL: this.usr.photoURL
     };
     this.afs.collection("usuarios").add(usuario);
@@ -234,7 +247,7 @@ export class DataService {
   addPost(
     payLink,
     saveImg,
-    mensaje: string,
+    mensaje,
     imgGroupTitle,
     start,
     value,
@@ -250,11 +263,14 @@ export class DataService {
     keyOne,
     keyTwo
   ) {
+    const fecha = new Date().getTime();
+    this.postId = this.afs.createId();
     const post: Post = {
       nombre: this.usr.nombre,
       mensaje: mensaje,
-      fecha: new Date().getTime(),
-      usuario_id: this.usr.usuario_id,
+      fecha: fecha,
+      userId: this.usr.userId,
+      postId: this.postId,
       start: start,
       value: value,
       end: end,
@@ -263,17 +279,17 @@ export class DataService {
       totalImages: 0,
       topic: "",
       imgGroupTitle: "",
-      photoURL: this.usr.photoURL
+      photoURL: this.usr.photoURL,
+      totalComentarios_fecha: "0_" + fecha
     };
 
-    this.postId = this.afs.createId();
     if (keyOne === "IMAGEN") {
       post.imgGroupTitle = imgGroupTitle;
       this.addImgPost(archivo, this.postId, imgGroupTitle, payLink, saveImg);
     }
     if (keyTwo === "CALL_TO_ACTION") {
       post.topic = topic;
-      this.addNotificationByOwner();
+      this.addNotificationByOwner(this.postId);
       if (titleA !== "") {
         this.addCallToActionByPost(this.postId, titleA, optionsA);
       }
@@ -290,14 +306,23 @@ export class DataService {
       .set(post);
   }
 
-  savePostId(id: string) {
-    const savePost: SavePost = {
-      postId: id,
-      usuario_id: this.usr.usuario_id
-    };
-    return this.afs.collection("posts_guardados").add(savePost);
-  }
+  // savePostId(id: string) {
+  //   const savePost: SavePost = {
+  //     postId: id,
+  //     userId: this.usr.userId
+  //   };
+  //   return this.afs.collection("posts_guardados").add(savePost);
+  // }
 
+  addSavePost(PostArray, date) {
+    const fecha = 2553476400000 - date;
+    const PostObj = {
+      saveUserId: this.usr.userId,
+      saveUserId_Time: this.usr.userId + "_" + fecha
+    };
+    const savePost: SavePost = Object.assign(PostObj, ...PostArray);
+    return this.afs.collection("saved_posts").add(savePost);
+  }
   addComent(
     payLink,
     saveImg,
@@ -314,8 +339,8 @@ export class DataService {
       nombre: this.usr.nombre,
       mensaje: mensaje,
       fecha: new Date().getTime(),
-      usuario_id: this.usr.usuario_id,
-      post_id: postId,
+      userId: this.usr.userId,
+      postId: postId,
       start: start,
       value: value,
       end: end,
@@ -334,8 +359,8 @@ export class DataService {
   addLikeByPost(postId: string) {
     const like: Like = {
       nombre: this.usr.nombre,
-      usuario_id: this.usr.usuario_id,
-      post_id: postId
+      userId: this.usr.userId,
+      postId: postId
     };
     return this.afs.collection("likes").add(like);
   }
@@ -343,8 +368,8 @@ export class DataService {
   addLikeByComent(comentId: string) {
     const like: Like = {
       nombre: this.usr.nombre,
-      usuario_id: this.usr.usuario_id,
-      post_id: comentId
+      userId: this.usr.userId,
+      postId: comentId
     };
     return this.afs.collection("likes").add(like);
   }
@@ -353,14 +378,14 @@ export class DataService {
     const action: CallToAction = {
       active: false,
       title: title,
-      ownerId: this.usr.usuario_id,
+      ownerId: this.usr.userId,
       postId: postId,
       totalReplies: 0
     };
     const callId = this.afs.createId();
     this.addOption(callId, options);
     return this.afs
-      .collection("call_to_actions")
+      .collection("calls_to_action")
       .doc(callId)
       .set(action);
   }
@@ -378,9 +403,11 @@ export class DataService {
     this.afs.collection("options").add(option);
   }
 
-  addNotificationByOwner() {
+  addNotificationByOwner(postId) {
     const notification: OwnerNotification = {
-      ownerId: this.usr.usuario_id,
+      ownerId: this.usr.userId,
+      postId: postId,
+      ownerId_postId: this.usr.userId + "_" + postId,
       totalReactions: 0
     };
     this.afs.collection("owner_notifications").add(notification);
@@ -390,7 +417,41 @@ export class DataService {
     const selection: ClientNotification = {
       postId: postId,
       ownerId: ownerId,
-      clientId: this.usr.usuario_id,
+      clientId: this.usr.userId,
+      title1: "",
+      title2: "",
+      title3: "",
+      value1: "",
+      value2: "",
+      value3: ""
+    };
+    let contador = 0;
+    for (const callId of titles) {
+      if (contador === 0) {
+        selection.title1 = titles[contador];
+        selection.value1 = values[contador];
+      } else if (contador === 1) {
+        selection.title2 = titles[contador];
+        selection.value2 = values[contador];
+      } else {
+        selection.title3 = titles[contador];
+        selection.value3 = values[contador];
+      }
+      contador += 1;
+    }
+    this.afs
+    .collection("client_notifications")
+    .add(selection)
+    .then(() => {
+      this.updateNotificationByOwner(ownerId, postId);
+    });
+  }
+
+  addNotificationByClient2(postId, ownerId, titles, values) {
+    const selection: ClientNotification = {
+      postId: postId,
+      ownerId: ownerId,
+      clientId: this.usr.userId,
       title1: "",
       title2: "",
       title3: "",
@@ -415,9 +476,10 @@ export class DataService {
     return this.afs.collection("client_notifications").add(selection);
   }
 
+
   addSelectionByPost(postId, callIds, values) {
     const selection: Selection = {
-      userId: this.usr.usuario_id,
+      userId: this.usr.userId,
       postId,
       callId1: "",
       callId2: "",
@@ -450,7 +512,7 @@ export class DataService {
   getOwnerAction() {
     this.callToActionCollection = this.afs.collection<CallToAction>(
       "notificaciones",
-      ref => ref.where("ownwerId", "==", this.usr.usuario_id)
+      ref => ref.where("ownwerId", "==", this.usr.userId)
     );
     return this.callToActionCollection.snapshotChanges().map(docArray => {
       return docArray.map(doc => {
@@ -462,28 +524,52 @@ export class DataService {
     });
   }
 
-  clickRayo() {
-    // creo documento con uid y ownerId, actualizo contador
-    // .then(()=>)
-    this.getUserAction("hola").subscribe(id => {
-      this.postsCollection = this.afs.collection<Post>("posts", ref =>
-        ref.where("ownwerId", "==", id)
-      );
-    });
-  }
-  clickNuevoPost(postId, title, pool) {
-    this.addCallToActionByPost(postId, title, pool);
-    // creo documento con ownerId y contador .then(()=>)
-    // obtengo la data filtrada por ownerId
-    // y quedo atento a
-    // cambios en el contador
-  }
-
   getUserAction(ownerId) {
     this.postsCollection = this.afs.collection<Post>("posts", ref =>
       ref.where("userId", "==", ownerId)
     );
     return this.postsCollection.snapshotChanges().map(docArray => {
+      return docArray.map(doc => {
+        return {
+          id: doc.payload.doc.id,
+          ...doc.payload.doc.data()
+        };
+      });
+    });
+  }
+
+  savedPostInit(uid) {
+    const usuario: any = this.afs.doc("usuarios/" + uid);
+    return usuario.valueChanges().map(doc => {
+      const targetDate = new Date(2050, 11);
+      const futureTime = targetDate.getTime();
+      if (doc.totalSavedPost === undefined) {
+        const startTime = {
+          saveUserId_Time: uid + "_0000000000000"
+        };
+        const endTime = {
+          saveUserId_Time: uid + "_2553476400000"
+        };
+        this.afs.collection("saved_posts").add(startTime);
+        this.afs.collection("saved_posts").add(endTime);
+        this.afs.doc("usuarios/" + uid).update({
+          totalSavedPost: "Inicializado"
+        });
+      }
+    });
+  }
+
+  getSavedPosts() {
+    this.savedPostCollection = this.afs.collection<SavePost>(
+      "saved_posts",
+      ref =>
+        ref
+          .orderBy("saveUserId_Time")
+          .startAfter(this.usr.userId + "_0000000000000")
+          .endBefore(this.usr.userId + "_2553476400000")
+          .limit(4)
+    );
+    return this.savedPostCollection.snapshotChanges().map(docArray => {
       return docArray.map(doc => {
         return {
           id: doc.payload.doc.id,
@@ -520,53 +606,28 @@ export class DataService {
   }
 
   getBestPosts() {
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() - 1);
+    const yesterday = targetDate.getTime();
+    console.log("Fecha", yesterday);
+
     this.postsCollection = this.afs.collection<Post>("posts", ref =>
-      ref.where("totalComentarios", ">", 5)
+      ref.where("fecha", ">", yesterday)
     );
     return this.postsCollection.snapshotChanges().map(docArray => {
-      return docArray.map(doc => {
+      const posts: any = docArray.map(doc => {
         return {
           id: doc.payload.doc.id,
           ...doc.payload.doc.data()
         };
       });
-    });
-  }
-
-  getSavePostId() {
-    this.savePostIdCollection = this.afs.collection<SavePost>("guardados");
-    return this.savePostIdCollection.snapshotChanges().map(docArray => {
-      this.postGuardadoId = docArray.map(doc => {
-        return {
-          id: doc.payload.doc.id,
-          ...doc.payload.doc.data()
-        };
-      });
-    });
-  }
-
-  getSavePosts() {
-    this.savePostCollection = this.afs.collection<SavePost>("posts", ref =>
-      ref.orderBy("fecha", "desc").limit(15)
-    );
-    return this.savePostCollection.snapshotChanges().map(docArray => {
-      const savePosts: any = docArray.map(doc => {
-        return {
-          id: doc.payload.doc.id,
-          ...doc.payload.doc.data()
-        };
-      });
-      const postGuardado = [];
-      for (const post of savePosts) {
-        for (const postId of this.postGuardadoId) {
-          if (post.id === postId.postId) {
-            if (post.usuario_id === this.userId) {
-              postGuardado.push(post);
-            }
-          }
+      const BestPosts = [];
+      for (const post of posts) {
+        if (post.totalComentarios > 1) {
+          BestPosts.push(post);
         }
       }
-      return postGuardado;
+      return BestPosts;
     });
   }
 
@@ -596,12 +657,12 @@ export class DataService {
       });
       const data = [];
       for (const like of likes) {
-        if (like.usuario_id !== this.userId) {
+        if (like.userId !== this.userId) {
           data.push(like);
         }
       }
       for (const like of likes) {
-        if (like.usuario_id === this.userId) {
+        if (like.userId === this.userId) {
           data.push(like);
         }
       }
@@ -623,7 +684,7 @@ export class DataService {
 
   getActions() {
     this.callToActionCollection = this.afs.collection<CallToAction>(
-      "call_to_actions"
+      "calls_to_action"
     );
     return this.callToActionCollection.snapshotChanges().map(docArray => {
       return docArray.map(doc => {
@@ -650,7 +711,7 @@ export class DataService {
   getClientNotifications() {
     this.clientNotificationCollection = this.afs.collection<ClientNotification>(
       "client_notifications",
-      ref => ref.where("clientId", "==", this.usr.usuario_id)
+      ref => ref.where("clientId", "==", this.usr.userId)
     );
     return this.clientNotificationCollection.snapshotChanges().map(docArray => {
       return docArray.map(doc => {
@@ -662,12 +723,10 @@ export class DataService {
     });
   }
 
-  getOwnerNotifications() {
-    console.log(this.usr.usuario_id);
-
+  getOwnerNotifications(ownerId) {
     this.ownerNotificationCollection = this.afs.collection<OwnerNotification>(
       "owner_notifications",
-      ref => ref.where("ownerId", "==", this.usr.usuario_id)
+      ref => ref.where("ownerId", "==", ownerId)
     );
     return this.ownerNotificationCollection.snapshotChanges().map(docArray => {
       return docArray.map(doc => {
@@ -690,9 +749,36 @@ export class DataService {
     this.afs.doc("posts/" + postId).delete();
   }
 
+
   // ----------------------------------------------------
   //                UPDATES
   // ----------------------------------------------------
+  updateNotificationByOwner(ownerId, postId) {
+    this.ownerNotificationCollection = this.afs.collection<OwnerNotification>("owner_notifications",
+    ref => ref.where("ownerId_postId", "==",
+    ownerId + "_" + postId)
+  );
+    this.ownerNotificationCollection
+      .snapshotChanges()
+      .map(docArray => {
+        return docArray.map(doc => {
+          return {
+            id: doc.payload.doc.id,
+            ...doc.payload.doc.data()
+          };
+        });
+      })
+      .pipe(take(1))
+      .subscribe(notes => {
+        let contador: number;
+        for (const item of notes) {
+              contador = item.totalReactions + 1;
+            this.afs.doc("owner_notifications/" + item.id).update({
+              totalReactions: contador
+            });
+        }
+      });
+  }
 
   updateImg(imgId: string, flag: boolean) {
     this.afs.doc("imagenes/" + imgId).update({ active: flag });
@@ -726,9 +812,11 @@ export class DataService {
             } else {
               contador = item.totalComentarios + 1;
             }
-            this.afs
-              .doc("posts/" + postId)
-              .update({ totalComentarios: contador });
+            const contadorInverso = 10000 - contador;
+            this.afs.doc("posts/" + postId).update({
+              totalComentarios: contador,
+              totalComentarios_fecha: contadorInverso + "_" + item.fecha
+            });
           }
         }
       });
@@ -803,7 +891,7 @@ export class DataService {
             active: false,
             payLink,
             saveImg,
-            userId: this.usr.usuario_id,
+            userId: this.usr.userId,
             selected: false,
             index: contador
           });
@@ -839,7 +927,7 @@ export class DataService {
             active: false,
             payLink,
             saveImg,
-            userId: this.usr.usuario_id,
+            userId: this.usr.userId,
             selected: false,
             index: contador
           });

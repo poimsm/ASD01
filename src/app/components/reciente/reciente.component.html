@@ -1,8 +1,7 @@
 <div class="row" style="background:#fff;">
 
-
   <div *ngFor="let post of posts; let i = index" class="shadow-bottom-rightt col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-3 col-xl-4 offset-xl-3 "
-    style=";margin-bottom:0px;border-radius:6px;display:flex;justify-content:center">
+    style="margin-bottom:0px;border-radius:6px;display:flex;justify-content:center">
 
     <div class="" id="visto" style="width:100%;;padding:10px">
       <div class="" style="width:100%;text-align:right;margin-bottom:-10px;padding-right:10px">
@@ -12,53 +11,188 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a (click)="guardar(post.id)" class="dropdown-item">Guardar</a>
-            <a [routerLink]="['/post','PM', post.id]" *ngIf="post.usuario_id !== _ds.uid" class="dropdown-item text-dark">Mandar PM</a>
-            <a class="dropdown-item" *ngIf="post.usuario_id !== _ds.uid">Reportar</a>
-            <a class="dropdown-item" *ngIf="post.usuario_id === _ds.uid">Editar</a>
-            <a (click)="deletePost(post.id)" *ngIf="post.usuario_id === _ds.uid" class="dropdown-item">Hibernar</a>
+            <a [routerLink]="['/post','PM', post.id]" *ngIf="post.userId !== _ds.userId" class="dropdown-item text-dark">Mandar PM</a>
+            <a class="dropdown-item" *ngIf="post.userId !== _ds.userId">Reportar</a>
+            <a class="dropdown-item" *ngIf="post.userId === _ds.userId">Editar</a>
+            <a (click)="deletePost(post.id)" *ngIf="post.userId === _ds.userId" class="dropdown-item">Eliminar</a>
           </div>
         </div>
       </div>
+
+
       <div class="" style="border-radius:5px;;display:flex;justify-content:flex-start;align-items:flex-start;">
         <div style="padding-left:10px">
-          <img src="assets/02.jpg" class="" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+          <img [src]="post.photoURL" class="" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
         </div>
         <div style="padding-left:15px;width:100%">
-          <p style="font-weight:450;padding:0px;margin:0px;font-size:16px;max-width:420px">
+          <div style="font-weight:600;padding:0px;margin:0px;font-size:16px;max-width:420px">
 
             {{post.start}}
+            <!-- <div style="position:relative">
+                <i (mouseover)="showTime=true" (mouseleave)="showTime=false" class="fas fa-hourglass-start" style="font-size:20px;color:gold"></i>
+                <div class="text-info" *ngIf="showTime" style="position: absolute;top:-30px;left:0px;z-index: 2;background: white;border-radius:10px;padding:3px">
+                  termina en 32:02
+                </div>
+              </div> -->
+
             <span class="text-primary" style="color:dodgerblue">
               {{post.value}}
             </span>
             {{post.end}}
 
-          </p>
+          </div>
 
           <div *ngFor="let imagen of imagenes">
             <div *ngIf="imagen.postId === post.id">
-              <div style="max-width:280px">
-                <img class="" [src]="imagen.url" style="max-height:100%;max-width:100%;border-radius:2px;border-bottom:5px solid dodgerblue;"
-                  alt="">
+              <div *ngIf="imagen.active" [attr.id]="imagen.id" (click)="ToggleFalseImg($event.currentTarget.id)" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
+                <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative;border-radius: 8px 8px 8px 8px;padding:3px">
+                  <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
+                  <div style="position:relative">
+                    <img [src]="imagen.url" style="max-width: 450px;max-height: 400px">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
+          <div *ngIf="post.totalImages === 1" style="display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;height:200px">
+            <ng-container *ngFor="let imagen of imagenes">
+              <div *ngIf="imagen.postId === post.id" style="width:100%;padding:3px">
+                <img [src]="imagen.url" style="width:100%;height:200px;object-fit:cover;border-radius:6px">
+              </div>
+            </ng-container>
+          </div>
+
+          <div *ngIf="post.totalImages === 2" style="height:200px;width:100%;display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap">
+            <ng-container *ngFor="let imagen of imagenes">
+              <div *ngIf="imagen.postId === post.id" style="width:50%;padding:3px">
+                <div *ngIf="imagen.index === 1">
+                  <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="width:100%;height:200px;object-fit:cover;border-radius:6px">
+                </div>
+                <div *ngIf="imagen.index === 2">
+                  <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="width:100%;height:200px;object-fit:cover;border-radius:6px">
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div *ngIf="post.totalImages === 3" style="z-index:5;display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;height:200px">
+            <ng-container *ngFor="let imagen of imagenes">
+              <div *ngIf="imagen.postId === post.id && imagen.index === 1" style="order:1;width:50%;padding-right:3px">
+                <img [src]="imagen.url" style="width:100%;height:200px;object-fit:cover;border-radius:6px">
+              </div>
+            </ng-container>
+            <div style="order:2;width:50%;padding-left:3px;display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;">
+              <ng-container *ngFor="let imagen of imagenes">
+                <div *ngIf="imagen.postId === post.id && imagen.index === 2" style="order: 1">
+                  <img [src]="imagen.url" style="width:100%;height:97px;object-fit:cover;border-radius:6px;margin-bottom:3px">
+                </div>
+              </ng-container>
+              <ng-container *ngFor="let imagen of imagenes">
+                <div *ngIf="imagen.postId === post.id && imagen.index === 3" style="order: 2">
+                  <img [src]="imagen.url" style="width:100%;height:97px;object-fit:cover;border-radius:6px;margin-top:3px">
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div *ngIf="post.totalImages === 4" style="display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;height:200px;">
+            <div style="width:50%;display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;">
+              <ng-container *ngFor="let imagen of imagenes">
+                <div *ngIf="imagen.postId === post.id && imagen.index === 1" style="order: 1">
+                  <img [src]="imagen.url" style="width:100%;height:100px;object-fit:cover; border-radius:10px 0px 0px 0px">
+                </div>
+                <div *ngIf="imagen.postId === post.id && imagen.index === 2" style="order: 2">
+                  <img [src]="imagen.url" style="width:100%;height:100px;object-fit:cover; border-radius:0px 0px 0px 10px">
+                </div>
+              </ng-container>
+            </div>
+            <div style="width:50%;display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;">
+              <ng-container *ngFor="let imagen of imagenes">
+                <div *ngIf="imagen.postId === post.id && imagen.index === 3" style="order:1">
+                  <img [src]="imagen.url" style="order:3;width:100%;height:100px;object-fit:cover; border-radius:0px 10px 0px 0px">
+                </div>
+                <div *ngIf="imagen.postId === post.id && imagen.index === 4" style="order:2">
+                  <img [src]="imagen.url" style="order:4;width:100%;height:100px;object-fit:cover; border-radius:0px 0px 10px 0px">
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div *ngIf="post.imgGroupTitle.length > 0" class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
+            <div class="text-muted" style="height: 25px;padding:2px">
+              <span style="font-weight:600"> {{post.imgGroupTitle}} </span>
+            </div>
+          </div>
+
+
+          <div style="display:flex;">
+            <div style="width:80%">
+
+              <div *ngFor="let action of actions">
+                <div *ngIf="action.postId === post.id">
+                  <div *ngFor="let option of options">
+                    <div *ngIf="option.callId === action.id">
+                      <div class="dropdown" style="margin-top:5px">
+                        <a [attr.id]="option.id" data-toggle="dropdown" aria-expanded="false">
+                          <div style="display: flex; justify-content: flex-start">
+                            <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:26px"></i>
+                            <span [attr.id]="action.id" style="margin-left:5px;font-weight:600">{{action.title}}</span>
+                          </div>
+                        </a>
+                        <div class="dropdown-menu" [attr.aria-labelledby]="option.id">
+                          <button *ngIf="option.option1 !== ''" (click)="change(action.id, option.option1)" class="dropdown-item" type="button">{{option.option1}}</button>
+                          <button *ngIf="option.option2 !== ''" (click)="change(action.id, option.option2)" class="dropdown-item" type="button">{{option.option2}}</button>
+                          <button *ngIf="option.option3 !== ''" (click)="change(action.id, option.option3)" class="dropdown-item" type="button">{{option.option3}}</button>
+                          <button *ngIf="option.option4 !== ''" (click)="change(action.id, option.option4)" class="dropdown-item" type="button">{{option.option4}}</button>
+                          <button *ngIf="option.option5 !== ''" (click)="change(action.id, option.option5)" class="dropdown-item" type="button">{{option.option5}}</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div style="width:20%;text-align:right;display:flex;justify-content:center;align-items: center">
+              <ng-container *ngFor="let rayo of rayos">
+                <div *ngIf="rayo.postId === post.id">
+                  <a (mouseover)="showTopic(post.id)" (mouseleave)="hideTopic(post.id)">
+                    {{deleteRayo(post.id + 'rayo')}}
+                    <i class="fas fa-bolt" style="color: #fcd973; font-size:30px"></i>
+                  </a>
+                </div>
+              </ng-container>
+              <div *ngIf="post.topic.length > 0" style="position:relative">
+                <a (mouseover)="showTopic(post.id)" (mouseleave)="hideTopic(post.id)" (click)="clickRayo(post.id, post.userId)">
+                  <i [attr.id]="post.id + 'rayo'" class="fas fa-bolt" style="color: #bbb; font-size:30px"></i>
+                </a>
+                <div [attr.id]="post.id + 'target'" class="text-info all" style="text-align:center;display:none;position: absolute;top:-30px;left:0px;z-index: 2;background: white;border-radius:10px;padding:3px; "
+                  [ngStyle]="{'width': post.topic.length >= 15 ? '160px' : '140px'}">
+                  {{post.topic}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
           <div class="text-muted" style="margin:0px;color:#333;display:flex;justify-content:space-between;flex-wrap:wrap">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-              <div class="text-muted" style="margin-right:10px;">
-                Hace 14 min
+              <div class="text-muted" style="margin-right:10px">
+                {{post.fecha | amLocale: "es" | amTimeAgo}}
               </div>
               <div class="text-muted" style="display:flex;justify-content:flex-start;align-items:center">
                 <!-- <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
                   </div> -->
                 <a (click)="navegar('user')" style="padding:0px;">
-                  <span class="text-primary" style="font-weight:450">{{post.nombre}} </span>
+                  <span class="text-primary" style="font-weight:600">{{post.nombre}} </span>
                 </a>
                 <a *ngIf="l != i" (click)="l = i" style="padding:0px;margin-left:10px" class="dropdown-toggle">
-                  <span class="text-dark" style="font-weight:450">Ver respuestas</span>
+                  <span class="text-dark" style="font-weight:600">Ver respuestas</span>
                 </a>
                 <a *ngIf="l === i" (click)="l = 999" style="padding:0px;margin-left:10px;width:100px" class="dropdown-toggle">
-                  <span class="text-dark" style="font-weight:450">Ocultar</span>
+                  <span class="text-dark" style="font-weight:600">Ocultar</span>
                 </a>
               </div>
             </div>
@@ -76,13 +210,14 @@
                 <div *ngIf="post.totalLikes > 0">
                   <div *ngFor="let like of likes; let idx = index">
                     <ng-template #goo>
-                      <a *ngIf="like.length - 1 === idx" (click)="agregarLikePost(post.id)" [attr.id]="post.id + 'este'" style="display: flex;align-items: center">
+
+                      <a *ngIf="likes.length - 1 === idx" (click)="agregarLikePost(post.id)" [attr.id]="post.id + 'este'" style="display: flex;align-items: center">
                         {{post.totalLikes}}
                         <i class="fas fa-thumbs-up" style="color:#bbb;margin-left:3px"></i>
                         <span class="text-muted" style="font-weight:400;margin-left: 3px">Likes</span>
                       </a>
                     </ng-template>
-                    <a *ngIf="like.usuario_id === _ds.userId && like.post_id === post.id; else goo" (click)="quitarLikePost(post.id, $event.currentTarget.id)"
+                    <a *ngIf="like.userId === _ds.userId && like.postId === post.id; else goo" (click)="quitarLikePost(post.id, $event.currentTarget.id)"
                       style="display: flex;align-items: center" [attr.id]="like.id">
                       {{post.totalLikes}} {{ remove(post.id) }}
                       <i class="fas fa-thumbs-up" style="color:gold;margin-left:3px"></i>
@@ -104,17 +239,19 @@
 
             <div *ngIf="i === l" class="" style="padding-left:8px;padding-right:8px;padding-bottom:15px;border-radius:3px">
               <div *ngFor="let comentario of comentarios">
-                <div *ngIf="comentario.post_id === post.id">
+                <div *ngIf="comentario.postId === post.id">
                   <div class="" style="margin-left:-5px;display:flex;justify-content:flex-start;align-items:center">
                     <div>
-                      <img src="assets/10.jpg" class="" style="margin-right:5px;margin-top:6px;width:40px;height:40px;object-fit:cover;border-radius:50%"
+                      <img [src]="comentario.photoURL" class="" style="margin-right:5px;margin-top:6px;width:40px;height:40px;object-fit:cover;border-radius:50%"
                         alt="">
                     </div>
                     <div style="width: 200px;display: flex;flex-wrap:wrap; align-items:center">
-                      <span style="color:#007bff;font-size:16px;font-weight:450;">Oscar Garcia</span>
-                      <div class="text-muted" style="font-size:13px;width: 100%;padding-left:10px">
-                        hace un momento
-                      </div>
+                      <span style="color:#007bff;font-size:16px;font-weight:600">
+                        {{comentario.nombre}}
+                      </span>
+                      <!-- <div class="text-muted" style="font-size:13px;width: 100%;">
+                          hace un momento
+                        </div> -->
                     </div>
 
                   </div>
@@ -126,52 +263,86 @@
 
                     </div>
                     <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center;">
-                      <div style="position:relative">
+                      <!-- <div style="position:relative">
                         <div style="width:100%;display: flex;justify-content: flex-end">
                         </div>
-                      </div>
+                      </div> -->
 
                       <div *ngFor="let imagen of imagenes">
                         <div *ngIf="imagen.comentId === comentario.id">
                           <div>
                             <div style="max-width:280px;position:relative">
                               <div></div>
-                              <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="margin:5px;width:200px;height:200px;object-fit:cover;border-radius:12px;"
+                              <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="margin:5px;width:200px;height:200px;object-fit:cover;border-radius:6px;"
                                 alt="">
+
+
+                              <!-- <div class="dropdown">
+                                <a id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                                  <div style="display: flex; justify-content: flex-start">
+                                    <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:26px"></i>
+                                    <span style="margin-left:5px;font-weight:600">Selecione una talla</span>
+                                  </div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                  <button class="dropdown-item" type="button">40</button>
+                                  <button class="dropdown-item" type="button">41</button>
+                                  <button class="dropdown-item" type="button">42</button>
+                                  <button class="dropdown-item" type="button">43</button>
+                                </div>
+                              </div>  -->
+
+                              <!-- <div class="progress">
+                                  <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div> -->
+
+
+                              <!-- <div class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
+                                <div class="text-muted" style="height: 25px;padding:2px">
+                                  <h6>Auto de juguete modelo</h6>
+                                </div>
+                              </div>
                               <div style="position:absolute;top:6px;right:-26px;display:flex">
                                 <i class="fas fa-heart" style="font-size:20px;color:#eb5f67"></i>
-                                <h6 class="text-muted" style="">2</h6>
+                                <h6 class="" style="color:white">12</h6>
+                              </div>
+                              <div style="position:absolute;top:20px;right:-26px;display:flex">
+                                <i class="fas fa-heart" style="font-size:20px;color:#eb5f67"></i>
+                                <h6 class="text-muted" style="">12</h6>
+                              </div> -->
+
+
+                              <!-- <div style="position:absolute;top:50px;right:-26px;display:flex">
+                                  <i class="fas fa-check" style="font-size:30px;color:rgb(51, 148, 51)"></i>
+                                  <h6 class="" style="color:white">1</h6>
+                                </div> -->
+                              <div style="position:absolute;top:50px;right:-26px;display:flex">
+                                <!-- <i class="fas fa-check" style="font-size:30px;color:rgb(51, 148, 51)"></i> -->
+                                <!-- <h6 class="" style="color:rgb(51, 148, 51);font-weight:700">Stock</h6> -->
+                                <!-- <h6>
+                                  <span class="badge badge-secondary">Stock</span>
+                                </h6> -->
+                              </div>
+                              <div style="position:absolute;top:80px;right:-26px;display:flex">
+                                <!-- <i class="fas fa-hourglass-start" style="font-size:20px;color:#bbb"></i> -->
+                                <!-- <span class="badge badge-pill badge-danger">Danger</span> -->
                               </div>
                             </div>
                           </div>
 
 
                           <div *ngIf="imagen.active" [attr.id]="imagen.id" (click)="ToggleFalseImg($event.currentTarget.id)" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
-                            <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative">
+                            <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative;border-radius: 8px 8px 8px 8px;padding:3px">
                               <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
-                              <div class="text-muted" style="position:absolute;top:0px;left:0px;padding:10px">
-                                <h5 class="">{{comentario.mensaje}}
-                                </h5>
-                              </div>
-                              <div style="display:flex; justify-content: flex-end;align-items:flex-end ;position:absolute;bottom:20px;left:0px;width:100%">
-                                <div style="font-size:20px">
-                                  Añadir a la cesta
-                                  <i class="fas fa-toggle-off" style="margin-right:20px;color:dodgerblue"></i>
-                                </div>
-                              </div>
-
-
-                              <div class="text-muted" style="position:absolute;bottom:10px;left:20px;padding:10px">
-                                <span style="font-size:26px;color:rgb(27, 48, 61)"></span>
-                              </div>
                               <div style="position:relative">
                                 <img [src]="imagen.url" style="max-width: 450px;max-height: 400px">
                               </div>
                             </div>
                           </div>
-                        </div>
 
+                        </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -179,8 +350,8 @@
             </div>
 
             <div style="display:flex;justify-content:flex-start;align-items:center">
-              <a [routerLink]="['/post','comentar', post.id]">
-                <h5>Comentar</h5>
+              <a [routerLink]="['/mypost','comentar', post.id]">
+                <span style="font-weight:600;font-size:20px">Comentar</span>
               </a>
               <a (click)="navegar('post')">
                 <i class="fas fa-chevron-circle-right" style="margin-left: 5px;color:#bbb;font-size:25px"></i>

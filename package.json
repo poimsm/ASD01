@@ -24,6 +24,7 @@
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0",
     "@angular/router": "6.0.0",
+    "angular2-moment": "^1.9.0",
     "angularfire2": "^5.0.0-rc.9",
     "core-js": "^2.4.1",
     "express": "^4.16.3",

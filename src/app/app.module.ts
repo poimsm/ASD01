@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
+import { MomentModule } from "angular2-moment";
+
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireStorageModule } from "angularfire2/storage";
@@ -49,7 +51,7 @@ import { DropZoneDirective } from "./directives/drop-zone.directive";
 import { NavegarService } from "./providers/navegar.service";
 import { InputComponent } from "./components/input/input.component";
 import { MyPostComponent } from "./components/my-post/my-post.component";
-import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { NotificacionesComponent } from "./components/notificaciones/notificaciones.component";
 
 @NgModule({
   declarations: [
@@ -96,7 +98,8 @@ import { NotificacionesComponent } from './components/notificaciones/notificacio
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MomentModule
   ],
   providers: [PostService, DataService, BrowserService, NavegarService],
   bootstrap: [AppComponent]

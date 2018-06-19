@@ -33,7 +33,7 @@ export class HotComponent implements OnInit {
     private router: Router
   ) {
     this._ds.getUsers().subscribe(x => (this.usuarios = x));
-    this._ds.getPosts().subscribe(x => (this.posts = x));
+    this._ds.getBestPosts().subscribe(x => (this.posts = x));
     this._ds.getComents().subscribe(x => (this.comentarios = x));
     this._ds.getLikes().subscribe(x => (this.likes = x));
     this._ds.getImgs().subscribe(x => (this.imagenes = x));
@@ -73,7 +73,15 @@ export class HotComponent implements OnInit {
     this._ds.deleteLikePost(likeId);
   }
   guardar(id: string) {
-    this._ds.savePostId(id);
+    const savePost = [];
+    let postDate = "";
+    for (const post of this.posts) {
+      if (post.id === id) {
+        savePost.push(post);
+        postDate = post.fecha;
+      }
+    }
+    this._ds.addSavePost(savePost, postDate);
   }
   deletePost(id: string) {
     this._ds.deletePost(id);

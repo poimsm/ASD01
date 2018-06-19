@@ -30,6 +30,7 @@ export class MyPostComponent implements OnInit {
   showImgOptions = false;
   showSteps = false;
   showBtn = true;
+  flagComent = false;
   step = 1;
   array = [];
   id: string;
@@ -89,6 +90,7 @@ export class MyPostComponent implements OnInit {
         this.holder = "Comenzar post...";
       }
       if (this.action === "comentar") {
+        this.flagComent = true;
         this.holder = "Escribe un comentario";
       }
       if (this.action === "PM") {

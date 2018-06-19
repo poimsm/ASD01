@@ -32,13 +32,13 @@
           <span style="margin-left:5px">Nueva imágen</span>
         </div>
       </a>
-      <a>
+      <a *ngIf="!flagComent">
         <div [ngClass]="{'dirty': actionSelected}" (click)="showActions = true; showBtn = false" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:16px;margin-left:10px"></i>
           <span style="margin-left:5px">Llamada a la acción</span>
         </div>
       </a>
-      <a>
+      <a *ngIf="!flagComent">
         <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-hourglass-start" style="color: #30a28c;font-size:16px;margin-left:10px"></i>
           <span style="margin-left:5px">Oferta de tiempo</span>
