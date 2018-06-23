@@ -3,6 +3,7 @@ import { DataService } from "../../providers/data.service";
 import { BrowserService } from "../../providers/browser.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { TouchEventModule } from "ng2-events/lib/touch";
 
 declare var jQuery: any;
 declare var $: any;
@@ -25,9 +26,10 @@ export class RecienteComponent implements OnInit {
   options: any;
   actions: any;
   rayos: any;
-  mm = "si";
+  mm = "";
+  newprogress = 0;
   optionValue = "";
-
+  interval: any;
   l: number;
 
   constructor(
@@ -46,17 +48,24 @@ export class RecienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(".dropdown.keep-open").on({
-      "shown.bs.dropdown": function() {
-        this.closable = false;
-      },
-      click: function() {
-        this.closable = true;
-      },
-      "hide.bs.dropdown": function() {
-        return this.closable;
+    setTimeout(() => {
+      const self = this;
+      for (const post of this.posts) {
+        $("#" + post.id + "rayo").on("touchstart mousedown", function(e) {
+          e.preventDefault();
+          console.log("ENTER");
+          self.progress(post.id, post.userId, 0);
+        });
+        $("#" + post.id + "rayo").on("touchend mouseup mouseleave", function(
+          e
+        ) {
+          e.preventDefault();
+          console.log("LEAVE");
+
+          self.progress(post.id, post.userId, 100);
+        });
       }
-    });
+    }, 2000);
   }
 
   remove(dom: string) {
@@ -122,11 +131,99 @@ export class RecienteComponent implements OnInit {
       });
   }
 
+  progress(postId, postUserId, value) {
+    if (value === 0) {
+      this.interval = setInterval(() => {
+        this.newprogress += 1;
+        const self = this;
+        $("#" + postId + "rayoBar")
+          .width(self.newprogress + "%")
+          .attr("aria-valuenow", self.newprogress + "")
+          .parent()
+          .show();
+      }, 10);
+    }
+    // if (value === 100) {
+    //   clearInterval(this.interval);
+    //   console.log("PASOO");
+    // }
+    if (this.newprogress >= 100 && value === 100) {
+      clearInterval(this.interval);
+      this.newprogress = 0;
+      const self = this;
+      this.clickRayo(postId, postUserId);
+
+      $("#" + postId + "rayoBar")
+        .width(self.newprogress + "%")
+        .attr("aria-valuenow", self.newprogress + "")
+        .parent()
+        .hide();
+    }
+    if (this.newprogress < 100 && value === 100) {
+      clearInterval(this.interval);
+      this.newprogress = 0;
+      const self = this;
+
+      $("#" + postId + "rayoBar")
+        .width(self.newprogress + "%")
+        .attr("aria-valuenow", self.newprogress + "")
+        .parent()
+        .hide();
+    }
+
+    //  else if (this.newprogress < 100) {
+    //   setTimeout(() => {
+    //     $("#" + postId + "rayoBar")
+    //       .width("0%")
+    //       .attr("aria-valuenow", "0")
+    //       .parent()
+    //       .hide();
+    //   }, 1000);
+    // } else if (this.newprogress === 100) {
+    //   setTimeout(() => {
+    //     $("#" + postId + "rayoBar")
+    //       .width("0%")
+    //       .attr("aria-valuenow", "0")
+    //       .parent()
+    //       .show();
+    //   }, 1000);
+    // }
+    // if (value === 0) {
+    //   const interval = setInterval(() => {
+    //     this.newprogress += 100;
+    //     $("#" + postId + "rayoBar")
+    //       .width("100%")
+    //       .attr("aria-valuenow", "100")
+    //       .parent()
+    //       .show();
+    //     if (this.newprogress === 100) {
+    //       clearInterval(interval);
+    //     }
+    //   }, 700);
+    // } else {
+    //   setTimeout(() => {
+    //     $("#" + postId + "rayoBar")
+    //       .width("0%")
+    //       .attr("aria-valuenow", "0")
+    //       .parent()
+    //       .hide();
+    //   }, 1000);
+    //   if (this.newprogress === 100) {
+    //     this.clickRayo(postId, postUserId);
+    //   }
+    //   this.newprogress = 0;
+    // }
+  }
+
   showTopic(id) {
     $("#" + id + "target").show();
   }
   hideTopic(id) {
     $("#" + id + "target").hide();
+  }
+
+  comentarioToggle(postId, flag) {
+    this._ds.updateShowComentario(postId, flag);
   }
 
   clickRayo(postId, ownerId) {

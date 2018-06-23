@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "../../providers/data.service";
+import { OutsideEventModule } from "ng2-events";
 declare var jQuery: any;
 declare var $: any;
 @Component({
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
   showBar = false;
   ownerData: any;
   notificador = 0;
+  showNotes = false;
 
   constructor(public _ds: DataService, private router: Router) {}
 
@@ -25,5 +27,8 @@ export class HeaderComponent implements OnInit {
         this.notificador = counter;
       });
     }, 3000);
+  }
+  close() {
+    this.showNotes = false;
   }
 }

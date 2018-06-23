@@ -1,20 +1,20 @@
-<div class="row">
+<div class="row" style="padding-right:10px;padding-left:10px">
 
 
 
 
 
-  <div class="col-md-4 offset-md-4">
+  <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-5 offset-xl-3 ">
 
-    <div style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:20px;">
+    <div class="adaptable" style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:8px;">
       <i class="fas fa-user-circle" style="margin-left: 5px;color:#ccc;width:40px;height:40px;font-size:40px"></i>
-      <div class="" style="width:300px">
-        <textarea type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand" rows='1' data-min-rows="1"
-          style="font-size:20px">
+      <div class="">
+        <textarea class="expandible" type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand" rows='1'
+          data-min-rows="1" style="font-size:20px">
         </textarea>
       </div>
       <a (click)="enviar(action)">
-        <i class="fas fa-location-arrow" style="color:#bbb; font-size: 30px"></i>
+        <i class="fas fa-location-arrow" style="font-size: 30px" [ngStyle]="{'color': enviado ? '#333' : '#bbb'}"></i>
       </a>
     </div>
 
@@ -35,7 +35,7 @@
       <a *ngIf="!flagComent">
         <div [ngClass]="{'dirty': actionSelected}" (click)="showActions = true; showBtn = false" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Llamada a la acción</span>
+          <span style="margin-left:5px">Crear opciones</span>
         </div>
       </a>
       <a *ngIf="!flagComent">
@@ -44,9 +44,19 @@
           <span style="margin-left:5px">Oferta de tiempo</span>
         </div>
       </a>
+      <a *ngIf="!flagComent">
+        <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-lightbulb" style="color: #9d87d2;font-size:16px;margin-left:10px"></i>
+          <span style="margin-left:5px">Crear un equipo</span>
+        </div>
+      </a>
+      <a *ngIf="!flagComent">
+        <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
+          <i class="fas fa-bicycle" style="color: #9d87d2;font-size:18px;margin-left:10px"></i>
+          <span style="margin-left:5px">Crear una carrera</span>
+        </div>
+      </a>
     </div>
-
-
 
 
 
@@ -59,9 +69,12 @@
           </div>
         </a>
       </div>
-      <div (click)="showUpload = false; showBtn = true" style="width:100%;text-align:right">
+      <div (click)="showUpload = false; showBtn = true" style="width:100%;display:flex;justify-content:flex-end">
         <a>
-          <span class="text-muted" style="font-weight: 600">Volver</span>
+          <div class="bg-secondary text-white" style="border-radius:10px;padding:3px;width:120px;text-align: center">
+            <i class="fas fa-arrow-alt-circle-left" style="color:white"></i>
+            <span style="font-weight: 600;margin-left:5px">Volver</span>
+          </div>
         </a>
       </div>
       <div style="display: flex; justify-content: flex-start">
@@ -95,9 +108,12 @@
           </div>
         </a>
       </div>
-      <div (click)="showGallery = false; showBtn = true" style="width:100%;text-align:right">
+      <div (click)="showGallery = false; showBtn = true" style="width:100%;display:flex;justify-content:flex-end">
         <a>
-          <span class="text-muted" style="font-weight: 600">Volver</span>
+          <div class="bg-secondary text-white" style="border-radius:10px;padding:3px;width:120px;text-align: center">
+            <i class="fas fa-arrow-alt-circle-left" style="color:white"></i>
+            <span style="font-weight: 600;margin-left:5px">Volver</span>
+          </div>
         </a>
       </div>
       <div style="display: flex;justify-content: flex-start; flex-wrap: wrap">
@@ -134,7 +150,10 @@
           <i (click)="topycToggle()" class="fas fa-caret-right" style="font-size:30px;color:#bbb"></i>
         </div>
         <a (click)="showActions = false; showBtn = true; sendActions()">
-          <span class="text-muted" style="font-weight: 600">Volver</span>
+          <div class="bg-secondary text-white" style="border-radius:10px;padding:3px;width:120px;text-align: center">
+            <i class="fas fa-arrow-alt-circle-left" style="color:white"></i>
+            <span style="font-weight: 600;margin-left:5px">Volver</span>
+          </div>
         </a>
       </div>
 

@@ -15,12 +15,14 @@ declare var $: any;
 export class MyPostComponent implements OnInit {
   text = "";
   holder = "";
-  topyc = "Realizar encuesta";
+  topyc = "Solicitar compra";
+  topic = "Solicitar compra";
   groupTitle = "";
   keyOne = "";
   keyTwo = "";
   showActions: boolean;
   showTimeOffers: boolean;
+  enviado = false;
   showUpload = false;
   payLink = false;
   saveImg = false;
@@ -177,7 +179,7 @@ export class MyPostComponent implements OnInit {
           this.poolA,
           this.poolB,
           this.poolC,
-          this.topyc,
+          this.topic,
           this.keyOne,
           this.keyTwo
         )
@@ -190,6 +192,25 @@ export class MyPostComponent implements OnInit {
           this.keyOne = "";
           this.groupTitle = "";
           this.imgReady = false;
+          this.enviado = true;
+          this.titleA = "";
+          this.titleB = "";
+          this.titleC = "";
+          this.optionA1 = "";
+          this.optionA2 = "";
+          this.optionA3 = "";
+          this.optionA4 = "";
+          this.optionA5 = "";
+          this.optionB1 = "";
+          this.optionB2 = "";
+          this.optionB3 = "";
+          this.optionB4 = "";
+          this.optionB5 = "";
+          this.optionC1 = "";
+          this.optionC2 = "";
+          this.optionC3 = "";
+          this.optionC4 = "";
+          this.optionC5 = "";
         });
     }
 
@@ -280,10 +301,12 @@ export class MyPostComponent implements OnInit {
     }
   }
   topycToggle() {
-    if (this.topyc === "Realizar encuesta") {
+    if (this.topyc === "Crear encuesta") {
+      this.topic = "Solicitar compra";
       this.topyc = "Solicitar compra";
     } else {
-      this.topyc = "Realizar encuesta";
+      this.topyc = "Crear encuesta";
+      this.topic = "Completar encuesta";
     }
   }
   limpiarArchivos() {

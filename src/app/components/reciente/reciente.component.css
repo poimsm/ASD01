@@ -122,3 +122,34 @@ a:hover {
 .switch-input:checked + .switch-label .toggle--off {
   display: none;
 }
+
+@media only screen and (max-width: 500px) and (min-width: 20px) {
+  /* .hora {
+    width: 100%;
+  } */
+}
+@media only screen and (max-width: 970px) {
+  /* .ajuste{
+    height:auto;
+  } */
+  .fondo {
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) and (min-width: 20px) {
+  .showRespuesta {
+    display: none;
+  }
+}
+.progress-bar {
+  -webkit-transition: initial !important;
+  -o-transition: initial !important;
+  transition: initial !important;
+}
+
+.progress-bar.active,
+.progress.active .progress-bar {
+  -webkit-animation: initial !important;
+  -o-animation: initial !important;
+  animation: initial !important;
+}

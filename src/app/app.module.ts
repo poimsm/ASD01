@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 import { MomentModule } from "angular2-moment";
+import {Ng2EventsModule} from "ng2-events";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
@@ -99,7 +100,8 @@ import { NotificacionesComponent } from "./components/notificaciones/notificacio
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    MomentModule
+    MomentModule,
+    Ng2EventsModule
   ],
   providers: [PostService, DataService, BrowserService, NavegarService],
   bootstrap: [AppComponent]

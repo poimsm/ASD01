@@ -45,6 +45,7 @@ export interface Post {
   imgGroupTitle: string;
   photoURL: string;
   totalComentarios_fecha: string;
+  showComentario: boolean;
 }
 export interface SavePost {
   nombre: string;
@@ -167,6 +168,7 @@ export class DataService {
   userId: any;
   postId: string;
   postGuardadoId: any;
+  isAuth = false;
 
   private usuariosCollection: AngularFirestoreCollection;
   private postsCollection: AngularFirestoreCollection<Post>;
@@ -200,6 +202,7 @@ export class DataService {
         photoURL: user.photoURL
       };
       this.userId = user.uid;
+      this.isAuth = true;
 
       this.afs.doc("usuarios/" + this.userId).set(this.usr);
       this.savedPostInit(user.uid).subscribe();
@@ -219,6 +222,9 @@ export class DataService {
 
   logout() {
     this.afAuth.auth.signOut();
+    this.usr = null;
+    this.userId = "";
+    this.isAuth = false;
     // this.afs
     //   .doc("usuarios/" + this.uid)
     //   .update({ active: false })
@@ -280,6 +286,7 @@ export class DataService {
       topic: "",
       imgGroupTitle: "",
       photoURL: this.usr.photoURL,
+      showComentario: false,
       totalComentarios_fecha: "0_" + fecha
     };
 
@@ -776,6 +783,10 @@ export class DataService {
           });
         }
       });
+  }
+
+  updateShowComentario(postId: string, flag: boolean) {
+    this.afs.doc("posts/" + postId).update({ showComentario: flag });
   }
 
   updateImg(imgId: string, flag: boolean) {

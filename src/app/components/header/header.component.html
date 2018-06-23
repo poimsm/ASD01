@@ -85,7 +85,7 @@
 </nav> -->
 <!-- ------------------------ -->
 <!-- <a routerLink="login"><h2>wewewe</h2></a> -->
-<nav class="navbar navbar-dark bg-danger " style="display:flex; justify-content:space-around;flex-wrap: wrap">
+<nav class="navbar navbar-dark bg-danger adaptable" style="display:flex;flex-wrap: wrap">
   <div style="display:flex; flex-wrap:wrap; justify-content:space-around;max-width:300px">
     <a (click)="showBar = false" routerLink="landing/land1" style="margin-right:10px">
       <h2 class="logo2" style="font-weight:600">Joopiter</h2>
@@ -104,34 +104,193 @@
     </div>
   </div>
 
-  <div style="color:#fff;padding:3px;border-radius:5px; display:flex;width:250px;background:#e33d4c;align-items:center; justify-content:space-around">
-    <a (click)="showBar = true" routerLink="hot" style="color:#fff;">
-      <!-- <i style="font-size:30px" class="fab fa-cloudversify"></i> -->
-      <!-- <i style="font-size:20px" class="fas fa-cloud"></i> -->
-      <!-- <i style="font-size:20px" class="fab fa-discourse"></i> -->
-      <!-- <span style="font-size:20px">Oscar Garcia Fuen</span> -->
-      <span style="font-size:20px;font-weight:600">{{_ds.usr.nombre}}</span>
+  <div class="adaptableMenu">
+    <div style="color:#fff;padding:3px;border-radius:5px; display:flex;background:#e33d4c;align-items:center; justify-content:space-around">
+      <a *ngIf="_ds.isAuth" (click)="showBar = true" routerLink="hot" style="color:#fff;margin-left:20px; margin-right:20px">
+        <!-- <i style="font-size:30px" class="fab fa-cloudversify"></i> -->
+        <!-- <i style="font-size:20px" class="fas fa-cloud"></i> -->
+        <!-- <i style="font-size:20px" class="fab fa-discourse"></i> -->
+        <!-- <span style="font-size:20px">Oscar Garcia Fuen</span> -->
+        <span style="font-size:20px;font-weight:600">{{_ds.usr.nombre}}</span>
 
 
-      <!-- <i  class="fab fa-rocketchat"></i> -->
-    </a>
-    <a routerLink="notificaciones" style="position:relative">
-      <i class="fas fa-bell"></i>
-      <div *ngIf="notificador > 0" style="background:red;color:white;position:absolute;top:-3px;right:-15px;font-size:13px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;justify-content:center;align-items:center">
-        {{notificador}}
+        <!-- <i  class="fab fa-rocketchat"></i> -->
+      </a>
+      <div *ngIf="_ds.isAuth" style="position:relative; margin-left:20px; margin-right:20px">
+        <a (click)="showNotes = !showNotes" (outside.click)="close()">
+          <i class="fas fa-bell"></i>
+        </a>
+        <div *ngIf="notificador > 0" style="background:red;color:white;position:absolute;top:-3px;right:-15px;font-size:13px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;justify-content:center;align-items:center">
+          {{notificador}}
+        </div>
+        <!-- <i class="fas fa-shopping-cart"></i> -->
+        <div class="all" *ngIf="showNotes" style="border-radius:0px;border:0px solid #bbb;position:absolute;top:40px;right:-12px;min-height:300px;width:400px;z-index:99;background:white"
+          (click)="showNotes = false">
+          <div class="speech-bubble speech-bubble:after">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-muted" style="font-weight:600;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-muted" style="font-weight:600;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-dark" style="font-weight:700;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-muted" style="font-weight:600;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-dark" style="font-weight:700;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+            <button class="" routerLink="notificaciones" style="width:100%">
+              <div style="display: flex; justify-content:space-between;align-items:center;height:80px;width:100%;border-radius:4px;border:0px solid #f8f9fa;padding:3px">
+                <img src="assets/03.jpg" style="height:50px;width:70px;border-radius:3px;object-fit:cover">
+                <div class="text-muted" style="font-weight:600;padding-left:10px">
+                  Recibistes una
+                  <span>respuesta</span>
+                  de
+                  <span>
+                    Oscar Garcia
+                  </span>
+                </div>
+                <div class="text-muted" style="width:150px;font-weight:600;font-size:14px">
+                  <i class="far fa-comment-alt"></i>
+
+                  hace 3 minutos
+                </div>
+              </div>
+            </button>
+            <hr style="padding:0px;margin:0px;">
+
+
+
+            <!-- <div class="" style="display: flex; justify-content:space-between;width:100%;border-radius:4px;border:0px solid #ccc;padding:3px">
+              <div class="text-muted" style="padding-left:10px">
+                Recibistes una
+                <span style="font-weight:600">Respuesta</span>
+                de
+                <span class="text-primary" style="font-weight:600">
+                  Oscar Garcia F
+                </span>
+              </div>
+              <div class="text-white bg-secondary" style="border-radius:4px;font-weight:600;width:50px;display:flex;justify-content:center;align-items:center">
+                Ok
+              </div>
+            </div>
+
+            <div class="" style="display: flex; justify-content:space-between;width:100%;border-radius:4px;border:0px solid #ccc;padding:3px">
+              <div class="text-muted" style="padding-left:10px">
+                <a>
+                  <span style="font-weight:600">Solicitud de compra</span>
+                  de
+                  <span class="text-primary" style="font-weight:600">
+                    Rodrigo Diaz F
+                  </span>
+                </a>
+              </div>
+              <div class="text-white bg-secondary" style="border-radius:4px;font-weight:600;width:50px;display:flex;justify-content:center;align-items:center">
+                Ok
+              </div>
+            </div> -->
+
+          </div>
+        </div>
       </div>
-      <!-- <i class="fas fa-shopping-cart"></i> -->
-    </a>
-    <a routerLink="login">
-      <i class="fas fa-level-up-alt" style="font-size:25px"></i>
-      <!-- <span style="font-weight:600;color:white">Login</span> -->
-      <!-- routerLink="user3" -->
-      <!-- <span style="font-size:20px">Oscar Garcia...</span> -->
-      <!-- <span style="font-size:20px">{{_ps.usuario.name}}</span> -->
-      <!-- <i style="width:15px;height:15px;font-size:40px" class="fab fa-grav"></i> -->
-      <!-- <i style="width:15px;height:15px" class="fas fa-user"></i> -->
-    </a>
+      <a routerLink="login" style="margin-left:20px;margin-right:20px">
+        <i class="fas fa-level-up-alt" style="font-size:25px"></i>
+        <!-- <span style="font-weight:600;color:white">Login</span> -->
+        <!-- routerLink="user3" -->
+        <!-- <span style="font-size:20px">Oscar Garcia...</span> -->
+        <!-- <span style="font-size:20px">{{_ps.usuario.name}}</span> -->
+        <!-- <i style="width:15px;height:15px;font-size:40px" class="fab fa-grav"></i> -->
+        <!-- <i style="width:15px;height:15px" class="fas fa-user"></i> -->
+      </a>
+    </div>
   </div>
+
   <div style="width:3%">
   </div>
 </nav>
@@ -255,21 +414,21 @@
   </div>
 </div> -->
 
-<div class="mobile" style="display;justify-content:center;align-items:center;flex-wrap:wrap;">
+<!-- <div class="mobile" style="display:flex ;justify-content: center;align-items:center;flex-wrap:wrap;">
   <button routerLink="post" style="border-bottom:2px solid dodgerblue;width:100%;border-radius:0px" class="btn btn-primary">
     Volver
   </button>
 
-</div>
+</div> -->
 
-<div *ngIf="showBar" style="display;justify-content:center;align-items:center;flex-wrap:wrap;">
-  <button [routerLink]="['/mypost','post', '']" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600"
+<div *ngIf="showBar" style="display:flex ; justify-content: center;align-items:center;flex-wrap:wrap;">
+  <div [routerLink]="['/mypost','post', '']" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600"
     class="btn btn-primary">
     Nuevo post
-  </button>
-  <button routerLink="producto" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600" class="btn btn-primary">
+  </div>
+  <div routerLink="producto" style="border-bottom:2px solid dodgerblue;width:50%;border-radius:0px;font-weight:600" class="btn btn-primary">
     Tablero
-  </button>
+  </div>
 </div>
 
 
@@ -296,17 +455,17 @@
   <div class="col-md-12  text-muted" style="display:flex;justify-content:center;border-bottom:0px solid #ccc;flex-wrap:wrap">
     <div style="display:flex;justify-content:center">
       <a routerLink="hot" class="text-muted">
-        <span style="margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Popular ahora</span>
+        <span style="font-weight:600;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Popular ahora</span>
       </a>
     </div>
     <div style="display:flex;justify-content:center">
       <a routerLink="reciente" class="text-muted">
-        <span style="margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Lo más reciente</span>
+        <span style="font-weight:600;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Lo más reciente</span>
       </a>
     </div>
     <div style="display:flex;justify-content:center">
       <a routerLink="guardado" class="text-muted">
-        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Guardado
+        <span style="font-weight:600;border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Guardado
           <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
             3
           </div>
@@ -315,7 +474,7 @@
     </div>
     <div style="display:flex;justify-content:center">
       <a routerLink="siguiendo" class="text-muted">
-        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Seguidos
+        <span style="font-weight:600;border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Seguidos
           <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
             5
           </div>
@@ -324,7 +483,7 @@
     </div>
     <div style="display:flex;justify-content:center">
       <a routerLink="pm" class="text-muted">
-        <span style="border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Mensajes
+        <span style="font-weight:600;border-right:0px solid #ccc;margin-top:0px;border-left:0px solid #ccc;padding:20px;height:40px;font-size:18px;display:flex;align-items:center">Mensajes
           <div class="bg-primary text-white" style=";font-size:12px;width:15px;height:15px;border-radius:50%;display:flex;justify-content:center;align-items:center">
             3
           </div>

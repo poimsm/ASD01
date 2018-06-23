@@ -29,6 +29,7 @@
     "core-js": "^2.4.1",
     "express": "^4.16.3",
     "firebase": "^5.0.3",
+    "ng2-events": "^4.2.0",
     "rxjs": "6.1.0",
     "rxjs-compat": "^6.0.0-uncanny-rc.7",
     "typescript": "2.7.2",
