@@ -6,17 +6,32 @@
 
   <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-5 offset-xl-3 ">
 
-    <div class="adaptable" style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:8px;">
-      <i class="fas fa-user-circle" style="margin-left: 5px;color:#ccc;width:40px;height:40px;font-size:40px"></i>
-      <div class="">
-        <textarea class="expandible" type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand" rows='1'
-          data-min-rows="1" style="font-size:20px">
+    <div class="adaptable" style="margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:flex-start">
+      <img [src]="_ds.usr.photoURL" style="width:70px;height:50px;border-radius:5px;object-fit:cover">
+      <textarea class="expandible bg-light" type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand"
+        rows='1' data-min-rows="1" style="font-size:20px">
         </textarea>
-      </div>
-      <a (click)="enviar(action)">
-        <i class="fas fa-location-arrow" style="font-size: 30px" [ngStyle]="{'color': enviado ? '#333' : '#bbb'}"></i>
-      </a>
     </div>
+    <div style="display:flex;justify-content:flex-end;width:100%">
+      <button (click)="enviar(action)" class="btn btn-primary">
+        <span style="font-weight:600">Publicar </span>
+        <i class="fas fa-reply"></i>
+      </button>
+    </div>
+    <hr style="margin:0px;margin-top:5px;padding:0px;">
+
+
+    <!-- <div class="adaptable bg-light" style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:15px;">
+        <i class="fas fa-user-circle" style="margin-left: 5px;color:#ccc;width:40px;height:40px;font-size:40px"></i>
+        <div class="">
+          <textarea class="expandible bg-light" type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand"
+            rows='1' data-min-rows="1" style="font-size:20px">
+          </textarea>
+        </div>
+        <a (click)="enviar(action)">
+          <i class="fas fa-location-arrow" style="font-size: 30px" [ngStyle]="{'color': enviado ? '#333' : '#bbb'}"></i>
+        </a>
+      </div> -->
 
 
     <div *ngIf="showBtn" style="width: 100%;display: flex;justify-content: space-around;flex-wrap: wrap">
@@ -41,7 +56,7 @@
       <a *ngIf="!flagComent">
         <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-hourglass-start" style="color: #30a28c;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Oferta de tiempo</span>
+          <span style="margin-left:5px">Cuenta atrás</span>
         </div>
       </a>
       <a *ngIf="!flagComent">
@@ -52,8 +67,8 @@
       </a>
       <a *ngIf="!flagComent">
         <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
-          <i class="fas fa-bicycle" style="color: #9d87d2;font-size:18px;margin-left:10px"></i>
-          <span style="margin-left:5px">Crear una carrera</span>
+          <i class="fas fa-bicycle" style="color: #9d87d2;font-size:20px;margin-left:10px"></i>
+          <span style="margin-left:5px">Mensajero</span>
         </div>
       </a>
     </div>
@@ -92,10 +107,10 @@
         <img src="assets/drop-images.png">
       </div>
       <br>
-      <div class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
+      <!-- <div class="text-muted" style="margin-top:20px;margin-bottom:20px;display:flex;justify-content:center">
         <input type="text" name="groupTitle" style="padding-left:10px;height:40px;border-radius:10px;min-width:300px;max-width:400px;border:2px solid #bbb;display:flex;align-items:center;font-weight:600"
           [(ngModel)]="groupTitle" (keyup.enter)="enviar(action)" placeholder="Agrega un título">
-      </div>
+      </div> -->
     </div>
 
 

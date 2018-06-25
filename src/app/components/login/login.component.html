@@ -14,7 +14,7 @@
     </button>
   </div>
 
-  <div class="col-md-12 text-center" style="margin-top:20px">
+  <div *ngIf="_ds.isAuth" class="col-md-12 text-center" style="margin-top:20px">
     <button class="btn btn-light text-muted" (click)="salir()">
       <i class="fas fa-bomb" style="font-size:30px"></i>
       <span style="font-weight:600">Salir de Joopiter</span>

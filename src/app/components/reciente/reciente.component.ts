@@ -26,7 +26,7 @@ export class RecienteComponent implements OnInit {
   options: any;
   actions: any;
   rayos: any;
-  mm = "";
+  postActivos = [];
   newprogress = 0;
   optionValue = "";
   interval: any;
@@ -237,5 +237,30 @@ export class RecienteComponent implements OnInit {
       }
     }
     this._ds.addNotificationByClient(postId, ownerId, titles, values);
+  }
+  postToggle(postId): boolean {
+    let active = false;
+    for (const item of this.postActivos) {
+      if (item === postId) {
+        active = true;
+      }
+    }
+    return active;
+  }
+  addPostActivos(postId) {
+    let flag = false;
+    for (const item of this.postActivos) {
+      if (item === postId) {
+        flag = true;
+      }
+    }
+    if (flag) {
+      this.postActivos.splice(this.postActivos.indexOf(postId), 1);
+    }
+    if (!flag) {
+      this.postActivos.push(postId);
+    }
+    this.postToggle(postId);
+    console.log(this.postActivos);
   }
 }

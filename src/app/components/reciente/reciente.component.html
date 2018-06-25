@@ -4,7 +4,6 @@
   <div class="" *ngFor="let post of posts; let i = index" class="shadow-bottom-rightt col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-5 offset-xl-3 "
     style="margin-bottom:0px;border-radius:6px;display:flex;justify-content:center">
 
-
     <div class="" id="visto" style="width:100%;;padding:10px">
       <div class="" style="width:100%;text-align:right;margin-bottom:-10px;padding-right:10px">
         <div class="btn-group dropleft">
@@ -22,7 +21,161 @@
       </div>
 
 
+
+      <!-- -----------------------
+      MENSAJEROOOS
+      ----------------------- -->
       <div class="" style="border-radius:5px;;display:flex;justify-content:flex-start;align-items:flex-start;">
+        <div style="padding-left:10px">
+          <img [src]="post.photoURL" class="" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
+        </div>
+        <div style="padding-left:15px;width:100%">
+
+          <div style="font-weight:600;font-size:18px">
+            <div style="display:flex;align-items: center">
+              <div style="flex:1 1 auto">
+                SALIDA: Población Menzel
+                <br> LLEGADA: Centro
+                <br> COSTO: $1000
+              </div>
+            </div>
+            <i class="fas fa-bicycle" style="color: #9d87d2;font-size:20px"></i>
+            <span class="text-success" style="margin-left:5px">Disponible</span>
+          </div>
+
+
+          <div class="text-muted" style="margin:0px;color:#333">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;width:100%">
+              <div style="display:flex;">
+                <div class="text-muted hora" style="margin-right:10px">
+                  {{post.fecha | amLocale: "es" | amTimeAgo}}
+                </div>
+                <a (click)="navegar('user')" style="margin-right:10px">
+                  <span class="text-primary" style="font-weight:600">{{post.nombre}} </span>
+                </a>
+              </div>
+
+              <a (click)="showPrice = true">
+                <span style="font-size:14px">COMPRAR</span>
+              </a>
+
+            </div>
+
+            <div class="text-muted" style="font-weight:500;width:250px;display:flex;justify-content:flex-start;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;margin-right:10px">
+
+                <div *ngIf="post.totalLikes === 0">
+                  <a (click)="agregarLikePost(post.id)" style="display: flex;align-items: center">
+                    <i class="fas fa-thumbs-up" style="color:#bbb;margin-left:3px"></i>
+                    <span class="text-muted" style="font-weight:600;margin-left: 3px">Likes</span>
+                  </a>
+                </div>
+
+                <div *ngIf="post.totalLikes > 0">
+                  <div *ngFor="let like of likes; let idx = index">
+                    <ng-template #goo>
+
+                      <a *ngIf="likes.length - 1 === idx" (click)="agregarLikePost(post.id)" [attr.id]="post.id + 'este'" style="display: flex;align-items: center">
+                        {{post.totalLikes}}
+                        <i class="fas fa-thumbs-up" style="color:#bbb;margin-left:3px"></i>
+                        <span class="text-muted" style="font-weight:600;margin-left: 3px">Likes</span>
+                      </a>
+                    </ng-template>
+                    <a *ngIf="like.userId === _ds.userId && like.postId === post.id; else goo" (click)="quitarLikePost(post.id, $event.currentTarget.id)"
+                      style="display: flex;align-items: center" [attr.id]="like.id">
+                      {{post.totalLikes}} {{ remove(post.id) }}
+                      <i class="fas fa-thumbs-up" style="color:#333;margin-left:3px"></i>
+                      <span class="text-muted" style="font-weight:600;margin-left: 3px">Likes</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;margin-right:3px;">
+                <div *ngIf="post.totalComentarios > 0">
+                  {{post.totalComentarios}}
+                </div>
+                <i class="far fa-comment-alt" style="color:#bbb;margin-left:3px"></i>
+                <a (click)="addPostActivos(post.id)">
+                  <span style="font-weight:600;margin-left:3px">Comentarios</span>
+                </a>
+              </div>
+            </div>
+
+            <div *ngFor="let item of postActivos">
+              <div *ngIf="item === post.id">
+                <div class="" style="padding-left:8px;padding-right:8px;padding-bottom:15px;border-radius:3px">
+                  <div *ngFor="let comentario of comentarios">
+                    <div *ngIf="comentario.postId === post.id">
+                      <div class="" style="margin-left:-5px;display:flex;justify-content:flex-start;align-items:center">
+                        <div>
+                          <img [src]="comentario.photoURL" class="" style="margin-right:5px;margin-top:6px;width:40px;height:40px;object-fit:cover;border-radius:50%"
+                            alt="">
+                        </div>
+                        <div style="width: 200px;display: flex;flex-wrap:wrap; align-items:center">
+                          <span style="color:#007bff;font-size:16px;font-weight:600">
+                            {{comentario.nombre}}
+                          </span>
+                        </div>
+
+                      </div>
+                      <div class="" style="margin-left:0px; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                        <div class="text-dark" style="width:100%;font-size:18px;display:flex;margin-left:40px">
+                          {{comentario.mensaje}}
+                        </div>
+                        <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center;">
+
+                          <div *ngFor="let imagen of imagenes">
+                            <div *ngIf="imagen.comentId === comentario.id">
+                              <div>
+                                <div style="max-width:280px;position:relative">
+                                  <div></div>
+                                  <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="margin:5px;width:200px;height:200px;object-fit:cover;border-radius:6px;"
+                                    alt="">
+                                </div>
+                              </div>
+
+
+                              <div *ngIf="imagen.active" [attr.id]="imagen.id" (click)="ToggleFalseImg($event.currentTarget.id)" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
+                                <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative;border-radius: 8px 8px 8px 8px;padding:3px">
+                                  <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
+                                  <div style="position:relative">
+                                    <img [src]="imagen.url" style="max-width: 450px;max-height: 400px">
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <a [routerLink]="['/mypost','comentar', post.id]">
+              <div style="display:flex;justify-content:flex-start;align-items:center">
+                <span style="font-weight:600;font-size:20px">Comentar</span>
+                <i class="fas fa-chevron-circle-right" style="margin-left: 5px;color:#bbb;font-size:25px"></i>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <!-- -----------------------
+      PUBLICACIONEEEESSS
+      ----------------------- -->
+
+
+      <div class="" style="display:none; border-radius:5px;;display:flex;justify-content:flex-start;align-items:flex-start;">
         <div style="padding-left:10px">
           <img [src]="post.photoURL" class="" style="margin-top:6px;width:50px;height:50px;object-fit:cover;border-radius:50%" alt="">
         </div>
@@ -57,10 +210,73 @@
             </div>
           </div>
 
-          <div *ngIf="post.totalImages === 1" style="display:flex;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;height:200px">
+          <div *ngIf="post.totalImages === 1" style="width:100%">
             <ng-container *ngFor="let imagen of imagenes">
-              <div *ngIf="imagen.postId === post.id" style="width:100%;padding:3px">
-                <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="width:100%;height:200px;object-fit:cover;border-radius:6px">
+              <div *ngIf="imagen.postId === post.id" class="" style="display:flex;justify-content:flex-start">
+                <div style="position: relative;">
+
+
+                  <!-- <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="width:100%;max-height:200px;border-radius:6px;object-fit: scale-down"> -->
+                  <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="width:auto;height:250px;border-radius:6px">
+
+                  <!-- <div class="bg-light" style="width: 100%;display:flex;align-items: center;height: 40px;border-radius: 6px">
+                  <div class="text-muted" style="height: 25px;padding:2px">
+                    <i class="fas fa-money-bill-alt" style="color:#bbb;font-size:25px;margin-left:5px"></i>
+                    <i class="fas fa-heart" style="color:#bbb;font-size:25px;margin-left:5px"></i>
+                    <span style="font-weight:600"> {{post.imgGroupTitle}} </span>
+                  </div>
+                </div> -->
+                  <div style="display:flex;flex-direction:column;justify-content:flex-start;position:absolute;top:-4px;left:-5px;">
+                    <!-- <div class="bg-success" style="display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                    <i class="fas fa-star" style="color:white;font-size:30px"></i>
+                  </div>
+                  <div class="bg-danger" style="margin-top:5px;display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                    <a (click)="showPrice = true">
+                      <i class="far fa-money-bill-alt" style="color:white;font-size:30px"></i>
+                    </a>
+                  </div> -->
+                    <!-- <div class="bg-primary" style="display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                    <i class="fas fa-heart" style="color:white;font-size:30px"></i>
+                  </div> -->
+                  </div>
+                  <div *ngIf="showPrice" class="badge-secondary text-white" style="position:absolute;top:50%;left:0px;height:50px;width:100%;display:flex;align-items:center;justify-content:center">
+                    <span class="" style="font-size:20px;font-weight:700">
+                      $6000
+                    </span>
+                  </div>
+                  <!-- <div style="display:flex;flex-direction:column;justify-content:flex-start;position:absolute;bottom:-4px;right:0px;">
+                    <div class="bg-primary" style="display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                      <div style="position:relative">
+                        <i class="fas fa-heart" style="color:white;font-size:30px"></i>
+                        <div class="badge-secondary text-white" style="position:absolute;top:0px;right:-25px;height:18px;width:18px;border-radius:50%;display:flex;align-items:center;justify-content:center">
+                          <span style="font-weight:600">
+                            5
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                </div>
+
+                <!-- <div style="margin-top:-30px;padding:3px;display:flex">
+                  <div class="bg-danger" style="display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                    <a (click)="showPrice = true">
+                      <i class="far fa-money-bill-alt" style="color:white;font-size:30px"></i>
+                    </a>
+                  </div>
+                  <div class="bg-primary" style="margin-left:10px;display:flex;justify-content:center;align-items:center;border-radius:12px;color:white;font-weight:600;height:50px;width:50px">
+                    <div style="position:relative">
+                      <i class="fas fa-heart" style="color:white;font-size:30px"></i>
+                      <div class="badge-secondary text-white" style="position:absolute;bottom:-20px;right:-20px;height:18px;width:18px;border-radius:50%;display:flex;align-items:center;justify-content:center">
+                        <span style="font-weight:600">
+                          5
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+
               </div>
             </ng-container>
           </div>
@@ -121,11 +337,30 @@
             </div>
           </div>
 
-          <div *ngIf="post.imgGroupTitle.length > 0" class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
+          <!-- <div class="text-muted" style="width: 100%;display:flex;align-items: center;justify-content:flex-end;padding:4px;border-radius: 6px">
+            <a (click)="showPrice = true">
+              <span style="font-size:14px">OPCIONES</span>
+            </a>
+          </div> -->
+
+          <!-- <div class="" style="width: 100%;display:flex;align-items: center;justify-content: center;padding:4px;border-radius: 6px">
+              <a (click)="showPrice = true">
+                <i class="fas fa-money-bill-alt" style="color:#bbb;font-size:25px;margin-left:5px"></i>
+              </a>
+              <a>
+                <i class="fas fa-pencil-alt" style="color:#bbb;font-size:25px;margin-left:5px"></i>
+              </a>
+              <a>
+                <i class="fas fa-heart" style="color:#bbb;font-size:25px;margin-left:5px"></i>
+              </a>
+              <span style="font-weight:600;margin-left:5px"> {{post.imgGroupTitle}} </span>
+            </div> -->
+
+          <!-- <div *ngIf="post.imgGroupTitle.length > 0" class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
             <div class="text-muted" style="height: 25px;padding:2px">
               <span style="font-weight:600"> {{post.imgGroupTitle}} </span>
             </div>
-          </div>
+          </div> -->
 
 
           <div style="display:flex;justify-content:space-between">
@@ -161,7 +396,8 @@
                 <div *ngIf="rayo.postId === post.id">
                   <a (mouseover)="showTopic(post.id)" (mouseleave)="hideTopic(post.id)">
                     {{deleteRayo(post.id + 'rayo')}}
-                    <i class="fas fa-tag" style="color: #333; font-size:30px"></i>
+                    <!-- <span class="rotate" style="color: #333">Link</span> -->
+                    <i class="fas fa-reply" style="color: #333; font-size:30px"></i>
                   </a>
                 </div>
               </ng-container>
@@ -172,7 +408,8 @@
                 </a> -->
 
                 <a [attr.id]="post.id + 'rayo'">
-                  <i class="fas fa-tag" style="color: #bbb; font-size:30px"></i>
+                  <!-- <span class="rotate" style="color: #bbb">Link</span> -->
+                  <i class="fas fa-reply" style="color: #bbb; font-size:30px"></i>
                 </a>
 
                 <!-- <div [attr.id]="post.id + 'target'" class="badge-secondary text-white" style="display:none;text-align:center;display:none;position: absolute;top:10px;right:40px;z-index: 2;border-radius:4px;padding:3px;font-weight:600;width:30px"
@@ -199,22 +436,29 @@
 
 
           <div class="text-muted" style="margin:0px;color:#333">
-            <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;width:100%">
-              <div class="text-muted hora" style="margin-right:10px">
-                {{post.fecha | amLocale: "es" | amTimeAgo}}
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;width:100%">
+              <div style="display:flex;">
+                <div class="text-muted hora" style="margin-right:10px">
+                  {{post.fecha | amLocale: "es" | amTimeAgo}}
+                </div>
+                <a (click)="navegar('user')" style="margin-right:10px">
+                  <span class="text-primary" style="font-weight:600">{{post.nombre}} </span>
+                </a>
               </div>
+
 
               <!-- <div style="width:10px;height:10px;border-radius:50%;background:#7CBA00;margin-right:5px">
                   </div> -->
-              <a (click)="navegar('user')" style="margin-right:10px">
-                <span class="text-primary" style="font-weight:600">{{post.nombre}} </span>
-              </a>
+
               <!-- (click)="comentarioToggle(post.id, true)" -->
-              <a *ngIf="l != i" (click)="l = i; comentarioToggle(post.id, true)" style="padding:0px" class="dropdown-toggle showRespuesta">
+              <!-- <a *ngIf="l != i" (click)="l = i; comentarioToggle(post.id, true)" style="padding:0px" class="dropdown-toggle showRespuesta">
                 <span class="text-dark" style="font-weight:600">Ver respuestas</span>
               </a>
               <a *ngIf="l === i" (click)="l = 999; comentarioToggle(post.id, false)" style="padding:0px;margin-left:10px;width:100px" class="dropdown-toggle">
                 <span class="text-dark" style="font-weight:600">Ocultar</span>
+              </a> -->
+              <a (click)="showPrice = true">
+                <span style="font-size:14px">COMPRAR</span>
               </a>
 
             </div>
@@ -254,7 +498,7 @@
                   {{post.totalComentarios}}
                 </div>
                 <i class="far fa-comment-alt" style="color:#bbb;margin-left:3px"></i>
-                <a (click)="comentarioToggle(post.id, !post.showComentario)">
+                <a (click)="addPostActivos(post.id)">
                   <span style="font-weight:600;margin-left:3px">Comentarios</span>
                 </a>
               </div>
@@ -263,49 +507,50 @@
               </div> -->
             </div>
 
-
-
-            <div *ngIf="post.showComentario" class="" style="padding-left:8px;padding-right:8px;padding-bottom:15px;border-radius:3px">
-              <div *ngFor="let comentario of comentarios">
-                <div *ngIf="comentario.postId === post.id">
-                  <div class="" style="margin-left:-5px;display:flex;justify-content:flex-start;align-items:center">
-                    <div>
-                      <img [src]="comentario.photoURL" class="" style="margin-right:5px;margin-top:6px;width:40px;height:40px;object-fit:cover;border-radius:50%"
-                        alt="">
-                    </div>
-                    <div style="width: 200px;display: flex;flex-wrap:wrap; align-items:center">
-                      <span style="color:#007bff;font-size:16px;font-weight:600">
-                        {{comentario.nombre}}
-                      </span>
-                      <!-- <div class="text-muted" style="font-size:13px;width: 100%;">
+            <div *ngFor="let item of postActivos">
+              <div *ngIf="item === post.id">
+                <div class="" style="padding-left:8px;padding-right:8px;padding-bottom:15px;border-radius:3px">
+                  <div *ngFor="let comentario of comentarios">
+                    <div *ngIf="comentario.postId === post.id">
+                      <div class="" style="margin-left:-5px;display:flex;justify-content:flex-start;align-items:center">
+                        <div>
+                          <img [src]="comentario.photoURL" class="" style="margin-right:5px;margin-top:6px;width:40px;height:40px;object-fit:cover;border-radius:50%"
+                            alt="">
+                        </div>
+                        <div style="width: 200px;display: flex;flex-wrap:wrap; align-items:center">
+                          <span style="color:#007bff;font-size:16px;font-weight:600">
+                            {{comentario.nombre}}
+                          </span>
+                          <!-- <div class="text-muted" style="font-size:13px;width: 100%;">
                           hace un momento
                         </div> -->
-                    </div>
+                        </div>
 
-                  </div>
-                  <div class="" style="margin-left:0px; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
-                    <div style="width:100%;font-size:16px;display:flex;margin-left:40px">
-                      <div class="speech-bubble " style="padding:5px;background:#bbb;color:white">
-                        {{comentario.mensaje}}
                       </div>
+                      <div class="" style="margin-left:0px; display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center">
+                        <div class="text-dark" style="width:100%;font-size:18px;display:flex;margin-left:40px">
+                          {{comentario.mensaje}}
 
-                    </div>
-                    <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center;">
-                      <!-- <div style="position:relative">
+                          <!-- <div class="speech-bubble " style="padding:5px;background:#bbb;color:white;">
+                            {{comentario.mensaje}}
+                          </div> -->
+                        </div>
+                        <div style="display:flex;justify-content:flex-start;flex-wrap:wrap;align-items:center;">
+                          <!-- <div style="position:relative">
                         <div style="width:100%;display: flex;justify-content: flex-end">
                         </div>
                       </div> -->
 
-                      <div *ngFor="let imagen of imagenes">
-                        <div *ngIf="imagen.comentId === comentario.id">
-                          <div>
-                            <div style="max-width:280px;position:relative">
-                              <div></div>
-                              <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="margin:5px;width:200px;height:200px;object-fit:cover;border-radius:6px;"
-                                alt="">
+                          <div *ngFor="let imagen of imagenes">
+                            <div *ngIf="imagen.comentId === comentario.id">
+                              <div>
+                                <div style="max-width:280px;position:relative">
+                                  <div></div>
+                                  <img (click)="ToggleTrueImg($event.currentTarget.id)" [attr.id]="imagen.id" [src]="imagen.url" style="margin:5px;width:200px;height:200px;object-fit:cover;border-radius:6px;"
+                                    alt="">
 
 
-                              <!-- <div class="dropdown">
+                                  <!-- <div class="dropdown">
                                 <a id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
                                   <div style="display: flex; justify-content: flex-start">
                                     <i class="fas fa-pencil-alt" style="color: #eb5f67;font-size:26px"></i>
@@ -320,12 +565,12 @@
                                 </div>
                               </div>  -->
 
-                              <!-- <div class="progress">
+                                  <!-- <div class="progress">
                                   <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div> -->
 
 
-                              <!-- <div class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
+                                  <!-- <div class="bg-light" style="width: 100%;display:flex;align-items: center;height: 25px;border-radius: 6px">
                                 <div class="text-muted" style="height: 25px;padding:2px">
                                   <h6>Auto de juguete modelo</h6>
                                 </div>
@@ -340,51 +585,51 @@
                               </div> -->
 
 
-                              <!-- <div style="position:absolute;top:50px;right:-26px;display:flex">
+                                  <!-- <div style="position:absolute;top:50px;right:-26px;display:flex">
                                   <i class="fas fa-check" style="font-size:30px;color:rgb(51, 148, 51)"></i>
                                   <h6 class="" style="color:white">1</h6>
                                 </div> -->
-                              <div style="position:absolute;top:50px;right:-26px;display:flex">
-                                <!-- <i class="fas fa-check" style="font-size:30px;color:rgb(51, 148, 51)"></i> -->
-                                <!-- <h6 class="" style="color:rgb(51, 148, 51);font-weight:700">Stock</h6> -->
-                                <!-- <h6>
+                                  <div style="position:absolute;top:50px;right:-26px;display:flex">
+                                    <!-- <i class="fas fa-check" style="font-size:30px;color:rgb(51, 148, 51)"></i> -->
+                                    <!-- <h6 class="" style="color:rgb(51, 148, 51);font-weight:700">Stock</h6> -->
+                                    <!-- <h6>
                                   <span class="badge badge-secondary">Stock</span>
                                 </h6> -->
+                                  </div>
+                                  <div style="position:absolute;top:80px;right:-26px;display:flex">
+                                    <!-- <i class="fas fa-hourglass-start" style="font-size:20px;color:#bbb"></i> -->
+                                    <!-- <span class="badge badge-pill badge-danger">Danger</span> -->
+                                  </div>
+                                </div>
                               </div>
-                              <div style="position:absolute;top:80px;right:-26px;display:flex">
-                                <!-- <i class="fas fa-hourglass-start" style="font-size:20px;color:#bbb"></i> -->
-                                <!-- <span class="badge badge-pill badge-danger">Danger</span> -->
-                              </div>
-                            </div>
-                          </div>
 
 
-                          <div *ngIf="imagen.active" [attr.id]="imagen.id" (click)="ToggleFalseImg($event.currentTarget.id)" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
-                            <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative;border-radius: 8px 8px 8px 8px;padding:3px">
-                              <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
-                              <div style="position:relative">
-                                <img [src]="imagen.url" style="max-width: 450px;max-height: 400px">
+                              <div *ngIf="imagen.active" [attr.id]="imagen.id" (click)="ToggleFalseImg($event.currentTarget.id)" style="position:fixed;left:0px;top:0px;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6); height:100%;width:100%;z-index:2;display:flex;justify-content:center;align-items:center;">
+                                <div style="width:600px;height:500px;background:white;display:flex;justify-content:center; align-items: center;position:relative;border-radius: 8px 8px 8px 8px;padding:3px">
+                                  <i class="fas fa-times-circle" style="font-size:40px;color: lightcoral;position:absolute;top:-10px;right:-10px"></i>
+                                  <div style="position:relative">
+                                    <img [src]="imagen.url" style="max-width: 450px;max-height: 400px">
+                                  </div>
+                                </div>
                               </div>
+
                             </div>
                           </div>
 
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
-
-            <div style="display:flex;justify-content:flex-start;align-items:center">
-              <a [routerLink]="['/mypost','comentar', post.id]">
+            <a [routerLink]="['/mypost','comentar', post.id]">
+              <div style="display:flex;justify-content:flex-start;align-items:center">
                 <span style="font-weight:600;font-size:20px">Comentar</span>
-              </a>
-              <a (click)="navegar('post')">
                 <i class="fas fa-chevron-circle-right" style="margin-left: 5px;color:#bbb;font-size:25px"></i>
-              </a>
-            </div>
+              </div>
+            </a>
 
           </div>
         </div>

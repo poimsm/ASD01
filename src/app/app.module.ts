@@ -53,6 +53,7 @@ import { NavegarService } from "./providers/navegar.service";
 import { InputComponent } from "./components/input/input.component";
 import { MyPostComponent } from "./components/my-post/my-post.component";
 import { NotificacionesComponent } from "./components/notificaciones/notificaciones.component";
+import { Land4Component } from './components/land4/land4.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { NotificacionesComponent } from "./components/notificaciones/notificacio
     DropZoneDirective,
     InputComponent,
     MyPostComponent,
-    NotificacionesComponent
+    NotificacionesComponent,
+    Land4Component
   ],
   imports: [
     BrowserModule,

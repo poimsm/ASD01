@@ -24,6 +24,8 @@ import { ProductoComponent } from "./components/producto/producto.component";
 import { Land1Component } from "./components/land1/land1.component";
 import { Land2Component } from "./components/land2/land2.component";
 import { Land3Component } from "./components/land3/land3.component";
+import { Land4Component } from "./components/land4/land4.component";
+
 import { LikesComponent } from "./components/likes/likes.component";
 import { GuardadoComponent } from "./components/guardado/guardado.component";
 import { MyPostComponent } from "./components/my-post/my-post.component";
@@ -63,7 +65,8 @@ const app_routes: Routes = [
     children: [
       { path: "land1", component: Land1Component },
       { path: "land2", component: Land2Component },
-      { path: "land3", component: Land3Component }
+      { path: "land3", component: Land3Component },
+      { path: "land4", component: Land4Component }
     ]
   },
   { path: "user", component: UserComponent },

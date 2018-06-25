@@ -26,12 +26,14 @@ export class BrowserService {
     if (donde === "land3") {
       this.router.navigate(["../", "landing", "land3"]);
     }
+    if (donde === "land4") {
+      this.router.navigate(["../", "landing", "land4"]);
+    }
     if (donde === "chaat") {
       this.router.navigate(["../", "landing", "land3"]);
     }
     if (donde === "post") {
       this.router.navigate(["/", "post"]);
     }
-    console.log("aaaaajammmm");
   }
 }

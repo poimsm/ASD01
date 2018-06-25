@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../providers/post.service';
+import { Component, OnInit } from "@angular/core";
+import { BrowserService } from "../../providers/browser.service";
 
 @Component({
-  selector: 'app-land3',
-  templateUrl: './land3.component.html',
-  styleUrls: ['./land3.component.css']
+  selector: "app-land3",
+  templateUrl: "./land3.component.html",
+  styleUrls: ["./land3.component.css"]
 })
 export class Land3Component implements OnInit {
+  constructor(public _bs: BrowserService) {}
 
-  constructor( public _ps:PostService ) { }
-
-  ngOnInit() {
-  }
-  navegar(){
-    this._ps.goPlaces('land1');
+  ngOnInit() {}
+  navegar() {
+    this._bs.goPlaces("land4");
   }
 }

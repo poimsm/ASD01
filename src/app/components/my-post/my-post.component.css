@@ -29,6 +29,23 @@ a:hover {
   /* opacity: 0.5 !important; */
 }
 textarea {
+  margin-left: 15px;
+  flex: 1 1 auto;
+  color: gray;
+  outline: none;
+  border: 0px;
+  resize: none;
+  display: block;
+  box-sizing: padding-box;
+  overflow: hidden;
+  padding: 5px !important;
+  padding-top: 0px !important;
+  font-size: 16px;
+  background: white;
+  border-radius: 4px;
+  /* margin: 10px auto; */
+}
+/* textarea {
   color: gray;
   outline: none;
   border: 0px;
@@ -38,11 +55,11 @@ textarea {
   overflow: hidden;
   padding: 10px !important;
   padding-right: 5px !important;
-  /* width: 50%; */
   font-size: 16px;
+  background: white;
+  border-radius: 4px;
   margin: 10px auto;
-  /* margin: 50px auto; */
-}
+} */
 
 input:focus::-webkit-input-placeholder {
   color: transparent;
@@ -68,17 +85,17 @@ input:focus:-ms-input-placeholder {
   color: dodgerblue;
   font-size: 10px;
 }
-@media only screen and (max-width: 454px) and (min-width: 390px) {
+/* @media only screen and (max-width: 454px) and (min-width: 390px) {
   textarea {
     width: 300px;
   }
-}
+} */
 /* @media only screen and (max-width: 1000px) and (min-width: 455px) {
   textarea {
     width: 350px;
   }
 } */
-@media only screen and (max-width: 800px) and (min-width: 455px) {
+/* @media only screen and (max-width: 800px) and (min-width: 455px) {
   textarea {
     width: 350px;
   }
@@ -92,7 +109,7 @@ input:focus:-ms-input-placeholder {
   textarea {
     width: 430px;
   }
-}
+} */
 /* @media only screen and (max-width: 600px) and (min-width: 490px) {
   .adaptable {
     width: 400px;
