@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   ownerData: any;
   notificador = 0;
   showNotes = false;
+  showComments = false;
+  showChat = false;
+  showConfiguraciones = false;
 
   constructor(public _ds: DataService, private router: Router) {}
 
@@ -28,7 +31,15 @@ export class HeaderComponent implements OnInit {
       });
     }, 3000);
   }
-  close() {
-    this.showNotes = false;
+  close(key) {
+    if (key === "comentarios") {
+      this.showComments = false;
+    }
+    if (key === "chat") {
+      this.showChat = false;
+    }
+    if (key === "configuraciones") {
+      this.showConfiguraciones = false;
+    }
   }
 }

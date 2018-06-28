@@ -89,7 +89,7 @@ export class MyPostComponent implements OnInit {
       this.action = params["action"];
       this.id = params["id"];
       if (this.action === "post") {
-        this.holder = "Comenzar post...";
+        this.holder = "Comenzar...";
       }
       if (this.action === "comentar") {
         this.flagComent = true;

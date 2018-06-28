@@ -113,7 +113,7 @@ button:hover {
   content: "";
   position: absolute;
   top: 0;
-  right: 12px;
+  right: 40px;
   width: 0;
   height: 0;
   border: 12px solid transparent;

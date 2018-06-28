@@ -134,14 +134,14 @@ export class RecienteComponent implements OnInit {
   progress(postId, postUserId, value) {
     if (value === 0) {
       this.interval = setInterval(() => {
-        this.newprogress += 1;
+        this.newprogress += 8;
         const self = this;
         $("#" + postId + "rayoBar")
           .width(self.newprogress + "%")
           .attr("aria-valuenow", self.newprogress + "")
           .parent()
           .show();
-      }, 10);
+      }, 0.1);
     }
     // if (value === 100) {
     //   clearInterval(this.interval);

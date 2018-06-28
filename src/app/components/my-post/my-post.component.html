@@ -13,6 +13,10 @@
         </textarea>
     </div>
     <div style="display:flex;justify-content:flex-end;width:100%">
+
+      <!-- <div (click)="enviar(action)" style="background:#0079d3;display:flex;justify-content:center;align-items:center; color:white;width:200px;height:30px;border-radius:4px">
+        <span style="font-weight:600">PUBLICAR</span>
+      </div> -->
       <button (click)="enviar(action)" class="btn btn-primary">
         <span style="font-weight:600">Publicar </span>
         <i class="fas fa-reply"></i>
@@ -44,7 +48,7 @@
       <a (click)="showUpload = true; showBtn = false">
         <div [ngClass]="{'dirty': archivos.length > 0}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-star" style="color: #fcd973;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Nueva imágen</span>
+          <span style="margin-left:5px">Agregar imágen</span>
         </div>
       </a>
       <a *ngIf="!flagComent">
@@ -96,7 +100,7 @@
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="customCheck1" #saveCb type="checkbox" (change)="saveImg = saveCb.checked">
           <label class="custom-control-label" for="customCheck1">
-            <span class="text-muted" style="font-weight:600">Guardar imagenes en galería</span>
+            <span class="text-muted" style="font-weight:600">Guardar imágen en galería</span>
           </label>
         </div>
       </div>
@@ -211,7 +215,7 @@
         <a>+ Agregar otra opción</a>
       </div>
       <div *ngIf="optionAbtn" (click)="optionAbtn = false; optionBbtn = true; optionB = true" class="text-primary" style="font-weight:600;margin-left:50px">
-        <a>+ Agregar otra llamada a la acción</a>
+        <a>+ Agregar nuevo título</a>
       </div>
       <!-- ------------------------------OPCION B------------------------------ -->
 
