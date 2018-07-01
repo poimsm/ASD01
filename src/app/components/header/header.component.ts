@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   showComments = false;
   showChat = false;
   showConfiguraciones = false;
+  closeChat: boolean;
 
   constructor(public _ds: DataService, private router: Router) {}
 

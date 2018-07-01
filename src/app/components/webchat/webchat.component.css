@@ -1,0 +1,18 @@
+textarea {
+  margin-left: 15px;
+  flex: 1 1 auto;
+  color: black;
+  margin-bottom: 10px;
+  outline: none;
+  border: 0px solid red;
+  resize: none;
+  display: block;
+  box-sizing: padding-box;
+  overflow: hidden;
+  /* padding: 5px !important; */
+  /* padding-top: 0px !important; */
+  font-size: 16px;
+  background: white;
+  border-radius: 4px;
+  /* margin: 10px auto; */
+}

@@ -54,6 +54,9 @@ import { InputComponent } from "./components/input/input.component";
 import { MyPostComponent } from "./components/my-post/my-post.component";
 import { NotificacionesComponent } from "./components/notificaciones/notificaciones.component";
 import { Land4Component } from './components/land4/land4.component';
+import { WriteXComponent } from './components/write-x/write-x.component';
+import { WebchatComponent } from './components/webchat/webchat.component';
+import { WebmenuComponent } from './components/webmenu/webmenu.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +95,10 @@ import { Land4Component } from './components/land4/land4.component';
     InputComponent,
     MyPostComponent,
     NotificacionesComponent,
-    Land4Component
+    Land4Component,
+    WriteXComponent,
+    WebchatComponent,
+    WebmenuComponent
   ],
   imports: [
     BrowserModule,

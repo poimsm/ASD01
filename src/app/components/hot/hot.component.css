@@ -11,6 +11,17 @@ a:hover {
   cursor: pointer;
   opacity: 0.5;
 }
+.sideMenu:hover {
+  background: #22303a;
+  color: white;
+  font-weight: 600;
+}
+button {
+  background: none;
+  border: 0px;
+  font-weight: 600;
+  color: #88959e;
+}
 .shadow-bottom-right {
   box-shadow: 5px 0 10px -5px dodgerblue;
 }

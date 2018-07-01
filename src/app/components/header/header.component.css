@@ -55,8 +55,11 @@ a {
     border-radius: 5px; */
   text-decoration: none;
 }
+.Menu:hover {
+  background: none !important;
+}
 a:hover {
-  color: pink !important;
+  /* color: pink !important; */
   text-decoration: none;
   cursor: pointer;
 }
@@ -129,4 +132,7 @@ button:hover {
 }
 .all {
   box-shadow: 0 0 20px rgba(168, 168, 168, 0.75);
+}
+.shadow-bottom {
+  box-shadow: 0 10px 20px -5px rgb(58, 58, 58);
 }

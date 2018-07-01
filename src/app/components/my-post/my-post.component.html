@@ -9,7 +9,7 @@
     <div class="adaptable" style="margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:flex-start">
       <img [src]="_ds.usr.photoURL" style="width:70px;height:50px;border-radius:5px;object-fit:cover">
       <textarea class="expandible bg-light" type="text" name="text" [(ngModel)]="text" placeholder={{holder}} class="autoExpand"
-        rows='1' data-min-rows="1" style="font-size:20px">
+        rows='1' data-min-rows="1" style="font-size:16px">
         </textarea>
     </div>
     <div style="display:flex;justify-content:flex-end;width:100%">
@@ -17,13 +17,14 @@
       <!-- <div (click)="enviar(action)" style="background:#0079d3;display:flex;justify-content:center;align-items:center; color:white;width:200px;height:30px;border-radius:4px">
         <span style="font-weight:600">PUBLICAR</span>
       </div> -->
+      <!-- <div style="margin-left:10px;border-radius:10px;background:#2E86F3;color:white;width:80px;text-align:center;font-weight:600">
+        Publicar
+      </div> -->
       <button (click)="enviar(action)" class="btn btn-primary">
         <span style="font-weight:600">Publicar </span>
         <i class="fas fa-reply"></i>
       </button>
     </div>
-    <hr style="margin:0px;margin-top:5px;padding:0px;">
-
 
     <!-- <div class="adaptable bg-light" style="margin-bottom:20px;margin-top:20px;justify-content:space-around;display:flex;width:100%;align-items:center;border:1px solid #bbb;border-radius:15px;">
         <i class="fas fa-user-circle" style="margin-left: 5px;color:#ccc;width:40px;height:40px;font-size:40px"></i>
@@ -42,13 +43,13 @@
       <a (click)="showGallery = true; showBtn = false">
         <div [ngClass]="{'dirty': false}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-cloud" style="color: #4db3f7;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Buscar imágen en galería</span>
+          <span style="margin-left:5px">Buscar en galería</span>
         </div>
       </a>
       <a (click)="showUpload = true; showBtn = false">
         <div [ngClass]="{'dirty': archivos.length > 0}" class="text-dark" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-star" style="color: #fcd973;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Agregar imágen</span>
+          <span style="margin-left:5px">Agregar una imágen</span>
         </div>
       </a>
       <a *ngIf="!flagComent">
@@ -59,23 +60,13 @@
       </a>
       <a *ngIf="!flagComent">
         <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
-          <i class="fas fa-hourglass-start" style="color: #30a28c;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Cuenta atrás</span>
-        </div>
-      </a>
-      <a *ngIf="!flagComent">
-        <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
-          <i class="fas fa-lightbulb" style="color: #9d87d2;font-size:16px;margin-left:10px"></i>
-          <span style="margin-left:5px">Crear un equipo</span>
-        </div>
-      </a>
-      <a *ngIf="!flagComent">
-        <div class="text-dark" [ngClass]="{'dirty': false}" style="margin:5px;background:#f6f7f9;width:250px;height:30px;font-size:16px;font-weight:600;border-radius: 15px;display: flex;justify-content: flex-start;align-items: center">
           <i class="fas fa-bicycle" style="color: #9d87d2;font-size:20px;margin-left:10px"></i>
           <span style="margin-left:5px">Mensajero</span>
         </div>
       </a>
+
     </div>
+    <hr style="margin:0px;margin-top:5px;padding:0px;">
 
 
 

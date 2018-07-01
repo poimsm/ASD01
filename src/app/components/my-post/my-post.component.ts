@@ -89,7 +89,7 @@ export class MyPostComponent implements OnInit {
       this.action = params["action"];
       this.id = params["id"];
       if (this.action === "post") {
-        this.holder = "Comenzar...";
+        this.holder = "Escribir aquí...";
       }
       if (this.action === "comentar") {
         this.flagComent = true;
@@ -104,20 +104,16 @@ export class MyPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(document)
-      .one("focus.autoExpand", "textarea.autoExpand", function() {
-        const savedValue = this.value;
-        this.value = "";
-        this.baseScrollHeight = this.scrollHeight;
-        this.value = savedValue;
-      })
-      .on("input.autoExpand", "textarea.autoExpand", function() {
-        const minRows = 1;
-        this.rows = minRows;
-        const rows = Math.ceil(
-          (this.scrollHeight - this.baseScrollHeight) / 25
+    $("textarea")
+      .each(function() {
+        this.setAttribute(
+          "style",
+          "height:" + this.scrollHeight + "px;overflow-y:hidden;"
         );
-        this.rows = minRows + rows;
+      })
+      .on("input", function() {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
       });
   }
 
